@@ -1,0 +1,52 @@
+{
+  "primitives": [
+    {
+      "instance_id": 0,
+      "type": "sphere",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 1,
+      "center": [
+        0.0,
+        0.0,
+        8.83758
+      ],
+      "radius": 10.836999999999998
+    },
+    {
+      "instance_id": 1,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 2,
+      "axis_point": [
+        3.49148e-12,
+        0.0,
+        1000.0
+      ],
+      "axis_direction": [
+        -3.49148e-15,
+        -0.0,
+        -1.0
+      ],
+      "radius": 5.5
+    },
+    {
+      "instance_id": 2,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 3,
+      "point": [
+        -3.35238e-29,
+        0.0,
+        -9.60158e-15
+      ],
+      "normal": [
+        -3.49148e-15,
+        0.0,
+        -1.0
+      ]
+    }
+  ]
+}

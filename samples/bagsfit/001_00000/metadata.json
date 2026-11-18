@@ -1,0 +1,36 @@
+{
+  "dataset": "bagsfit_test20s",
+  "source_file": "00000.npz",
+  "variant": "noisy",
+  "num_points": 274394,
+  "num_instances": 13,
+  "type_counts": {
+    "plane": 4,
+    "sphere": 1,
+    "cone": 3,
+    "cylinder": 3,
+    "none": 2
+  },
+  "bbox": {
+    "x": [
+      -2.051666736602783,
+      2.128333330154419
+    ],
+    "y": [
+      -1.3036364316940308,
+      1.5977529287338257
+    ],
+    "z": [
+      0.7595953345298767,
+      4.088159084320068
+    ]
+  },
+  "units": "metres (Blensor simulated range camera)",
+  "param_fixes": [
+    "sphere center y sign-flipped to match scan geometry (source bug, verified 36/36 instances)"
+  ],
+  "no_param_instances": [
+    20,
+    21
+  ]
+}

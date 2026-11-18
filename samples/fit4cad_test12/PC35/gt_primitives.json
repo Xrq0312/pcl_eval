@@ -1,0 +1,138 @@
+{
+  "primitives": [
+    {
+      "instance_id": 0,
+      "type": "sphere",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 1,
+      "center": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "radius": 14.2812
+    },
+    {
+      "instance_id": 1,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 2,
+      "axis_point": [
+        0.0,
+        0.0,
+        29.3687
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 9.525
+    },
+    {
+      "instance_id": 2,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 3,
+      "axis_point": [
+        0.0,
+        0.0,
+        29.3687
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 9.525
+    },
+    {
+      "instance_id": 3,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 4,
+      "axis_point": [
+        29.3687,
+        0.0,
+        0.0
+      ],
+      "axis_direction": [
+        1.0,
+        -0.0,
+        -0.0
+      ],
+      "radius": 9.525
+    },
+    {
+      "instance_id": 4,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 5,
+      "axis_point": [
+        0.0,
+        -29.3687,
+        0.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -1.0,
+        -0.0
+      ],
+      "radius": 9.525
+    },
+    {
+      "instance_id": 5,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 6,
+      "axis_point": [
+        29.3687,
+        0.0,
+        0.0
+      ],
+      "axis_direction": [
+        1.0,
+        -0.0,
+        -0.0
+      ],
+      "radius": 9.525
+    },
+    {
+      "instance_id": 6,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 7,
+      "axis_point": [
+        0.0,
+        -29.3687,
+        0.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -1.0,
+        -0.0
+      ],
+      "radius": 9.525
+    },
+    {
+      "instance_id": 7,
+      "type": "sphere",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 8,
+      "center": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "radius": 23.8125
+    }
+  ]
+}

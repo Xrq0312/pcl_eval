@@ -1,0 +1,124 @@
+{
+  "primitives": [
+    {
+      "instance_id": 0,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 1,
+      "point": [
+        16.2277,
+        0.0,
+        29.21
+      ],
+      "normal": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "instance_id": 1,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 2,
+      "axis_point": [
+        0.0,
+        0.0,
+        20.6495
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 15.875
+    },
+    {
+      "instance_id": 2,
+      "type": "cone",
+      "is_target": false,
+      "has_params": false,
+      "source_primitive_id": 3
+    },
+    {
+      "instance_id": 3,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 4,
+      "axis_point": [
+        0.0,
+        0.0,
+        20.6495
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 3.81
+    },
+    {
+      "instance_id": 4,
+      "type": "cone",
+      "is_target": false,
+      "has_params": false,
+      "source_primitive_id": 5
+    },
+    {
+      "instance_id": 5,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 6,
+      "axis_point": [
+        0.0,
+        0.0,
+        20.6495
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 17.4625
+    },
+    {
+      "instance_id": 6,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 7,
+      "point": [
+        17.74,
+        0.0,
+        25.4
+      ],
+      "normal": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "instance_id": 7,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 8,
+      "axis_point": [
+        0.0,
+        0.0,
+        20.6495
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 19.05
+    }
+  ]
+}

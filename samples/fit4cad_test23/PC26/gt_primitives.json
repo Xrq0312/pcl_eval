@@ -1,0 +1,244 @@
+{
+  "primitives": [
+    {
+      "instance_id": 0,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 1,
+      "axis_point": [
+        25.4,
+        12.7,
+        25.4
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 6.477
+    },
+    {
+      "instance_id": 1,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 2,
+      "point": [
+        9.63173,
+        12.065,
+        25.4
+      ],
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 2,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 3,
+      "point": [
+        9.56786,
+        13.335,
+        25.4
+      ],
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 3,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 4,
+      "point": [
+        48.1695,
+        25.4,
+        25.4
+      ],
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 4,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 5,
+      "point": [
+        7.70372e-31,
+        19.05,
+        25.4
+      ],
+      "normal": [
+        -1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 5,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 6,
+      "point": [
+        92.0123,
+        13.335,
+        25.4
+      ],
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 6,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 7,
+      "point": [
+        91.8138,
+        12.065,
+        25.4
+      ],
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 7,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 8,
+      "axis_point": [
+        76.2,
+        12.7,
+        25.4
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 6.477
+    },
+    {
+      "instance_id": 8,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 9,
+      "point": [
+        101.6,
+        12.1886,
+        25.4
+      ],
+      "normal": [
+        -1.0,
+        -1.83697e-16,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 9,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 10,
+      "point": [
+        48.1695,
+        0.0,
+        25.4
+      ],
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 10,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 11,
+      "point": [
+        7.70372e-31,
+        13.2114,
+        25.4
+      ],
+      "normal": [
+        -1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 11,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 12,
+      "point": [
+        50.8,
+        12.7,
+        0.0
+      ],
+      "normal": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "instance_id": 12,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 13,
+      "point": [
+        50.8,
+        12.7,
+        25.4
+      ],
+      "normal": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "instance_id": 13,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 14,
+      "point": [
+        101.6,
+        19.05,
+        25.4
+      ],
+      "normal": [
+        -1.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

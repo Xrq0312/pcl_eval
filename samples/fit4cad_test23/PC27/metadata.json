@@ -1,0 +1,34 @@
+{
+  "dataset": "Fit4CAD",
+  "split": "official_test",
+  "source_model": "PC27",
+  "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+  "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+  "source_coordinate_units": "unspecified",
+  "num_points": 19339,
+  "num_primitives": 9,
+  "target_primitives": 7,
+  "ambiguous_multi_primitive_points": 1499,
+  "unlabeled_points": 0,
+  "label_policy": "one membership -> source primitive; zero or multiple -> none",
+  "bbox": {
+    "x": [
+      -12.7,
+      12.7
+    ],
+    "y": [
+      -27.380732,
+      -1.980737
+    ],
+    "z": [
+      -3.620555,
+      9.332753
+    ]
+  },
+  "source_sha256": {
+    "PC27.txt": "44c84c0c79e2f563681b0893ffbd684d33b7c1b0363d375fb1f0d640dffa9c3e",
+    "PC27_primitives.txt": "2a54351592e47b71b60fcd6a40ee7b3666d59ec1d2f7bf90252829c6bc10036e",
+    "PC27_parametric.txt": "a315ec0b7939e3980d9c4456c2e94ec92514f62395e5f92908b185ef8237b7e4",
+    "PC27_implicit.txt": "53da1b1139f747a6bac8430aff209d1cb39fac7db71b0ae6d732c2a69c059352"
+  }
+}

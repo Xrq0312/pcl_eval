@@ -1,0 +1,6 @@
+{
+  "dataset": "synthetic",
+  "units": "meters",
+  "num_points": 12000,
+  "note": "two coplanar patches (inst 0,1), sphere, cylinder + 2 cap planes, uniform noise"
+}

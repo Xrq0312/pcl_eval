@@ -1,0 +1,152 @@
+[
+  {
+    "sample": "000_00000",
+    "num_points": 215898,
+    "bbox": [
+      -1.98109769821167,
+      4.787449836730957
+    ],
+    "type_counts": {
+      "plane": 6,
+      "sphere": 2,
+      "cone": 2,
+      "cylinder": 3,
+      "none": 2
+    }
+  },
+  {
+    "sample": "000_00018",
+    "num_points": 141598,
+    "bbox": [
+      -1.9274097681045532,
+      4.851282119750977
+    ],
+    "type_counts": {
+      "plane": 6,
+      "sphere": 2,
+      "cone": 2,
+      "cylinder": 3,
+      "none": 2
+    }
+  },
+  {
+    "sample": "001_00000",
+    "num_points": 274394,
+    "bbox": [
+      -2.051666736602783,
+      4.088159084320068
+    ],
+    "type_counts": {
+      "plane": 4,
+      "sphere": 1,
+      "cone": 3,
+      "cylinder": 3,
+      "none": 2
+    }
+  },
+  {
+    "sample": "001_00018",
+    "num_points": 272700,
+    "bbox": [
+      -2.2035715579986572,
+      4.54807710647583
+    ],
+    "type_counts": {
+      "plane": 5,
+      "sphere": 2,
+      "cone": 3,
+      "cylinder": 4,
+      "none": 1
+    }
+  },
+  {
+    "sample": "002_00000",
+    "num_points": 224306,
+    "bbox": [
+      -2.0689024925231934,
+      4.605647563934326
+    ],
+    "type_counts": {
+      "plane": 5,
+      "sphere": 2,
+      "cone": 2,
+      "cylinder": 4,
+      "none": 1
+    }
+  },
+  {
+    "sample": "002_00018",
+    "num_points": 278382,
+    "bbox": [
+      -2.176764726638794,
+      4.3315019607543945
+    ],
+    "type_counts": {
+      "plane": 5,
+      "sphere": 2,
+      "cone": 2,
+      "cylinder": 4,
+      "none": 2
+    }
+  },
+  {
+    "sample": "004_00000",
+    "num_points": 277019,
+    "bbox": [
+      -1.665000081062317,
+      3.338038206100464
+    ],
+    "type_counts": {
+      "plane": 6,
+      "sphere": 2,
+      "cone": 2,
+      "cylinder": 4,
+      "none": 2
+    }
+  },
+  {
+    "sample": "004_00018",
+    "num_points": 283655,
+    "bbox": [
+      -1.315596342086792,
+      3.338038206100464
+    ],
+    "type_counts": {
+      "plane": 6,
+      "sphere": 2,
+      "cone": 2,
+      "cylinder": 3,
+      "none": 1
+    }
+  },
+  {
+    "sample": "006_00000",
+    "num_points": 281862,
+    "bbox": [
+      -1.9187500476837158,
+      3.7900643348693848
+    ],
+    "type_counts": {
+      "plane": 6,
+      "sphere": 2,
+      "cone": 3,
+      "cylinder": 3,
+      "none": 2
+    }
+  },
+  {
+    "sample": "006_00018",
+    "num_points": 161102,
+    "bbox": [
+      -1.8695783615112305,
+      4.851282119750977
+    ],
+    "type_counts": {
+      "plane": 5,
+      "sphere": 2,
+      "cone": 3,
+      "cylinder": 3,
+      "none": 2
+    }
+  }
+]

@@ -1,0 +1,123 @@
+{
+  "primitives": [
+    {
+      "instance_id": 0,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 1,
+      "axis_point": [
+        95.0,
+        50.0,
+        250.0
+      ],
+      "axis_direction": [
+        -1.0,
+        -0.0,
+        -6.12323e-17
+      ],
+      "radius": 5.0
+    },
+    {
+      "instance_id": 1,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 2,
+      "point": [
+        90.0,
+        50.1263,
+        250.0
+      ],
+      "normal": [
+        -1.0,
+        0.0,
+        -6.12323e-17
+      ]
+    },
+    {
+      "instance_id": 2,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 3,
+      "axis_point": [
+        95.0,
+        50.0,
+        250.0
+      ],
+      "axis_direction": [
+        -1.0,
+        -0.0,
+        -6.12323e-17
+      ],
+      "radius": 3.0
+    },
+    {
+      "instance_id": 3,
+      "type": "torus",
+      "is_target": false,
+      "has_params": false,
+      "source_primitive_id": 4
+    },
+    {
+      "instance_id": 4,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 5,
+      "point": [
+        100.0,
+        45.3592,
+        250.0
+      ],
+      "normal": [
+        -1.0,
+        0.0,
+        -6.12323e-17
+      ]
+    },
+    {
+      "instance_id": 5,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 6,
+      "axis_point": [
+        95.0,
+        50.0,
+        250.0
+      ],
+      "axis_direction": [
+        -1.0,
+        -0.0,
+        -6.12323e-17
+      ],
+      "radius": 10.0
+    },
+    {
+      "instance_id": 6,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 7,
+      "point": [
+        98.5,
+        44.0697,
+        250.0
+      ],
+      "normal": [
+        -1.0,
+        0.0,
+        -6.12323e-17
+      ]
+    },
+    {
+      "instance_id": 7,
+      "type": "torus",
+      "is_target": false,
+      "has_params": false,
+      "source_primitive_id": 8
+    }
+  ]
+}

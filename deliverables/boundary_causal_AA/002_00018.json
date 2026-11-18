@@ -1,0 +1,172 @@
+{
+  "sample": "002_00018",
+  "baseline": {
+    "protocol": "target-mask-v2",
+    "instance_precision": 0.26666666666666666,
+    "instance_f1": 0.3902439024390244,
+    "typed_pq": 0.27802670647329353,
+    "excess_fragments": 1.8181818181818181,
+    "fragment_counts": {
+      "0": 2,
+      "6": 3,
+      "7": 5,
+      "8": 3,
+      "10": 4,
+      "11": 4,
+      "12": 3,
+      "16": 0,
+      "17": 2,
+      "18": 1,
+      "19": 3
+    },
+    "merged_predictions": {
+      "1": [
+        6,
+        10
+      ],
+      "9": [
+        7,
+        11
+      ]
+    },
+    "merged_gt_ratio": 0.36363636363636365,
+    "size_groups": {
+      "small": {
+        "instances": 4,
+        "typed_detection": 0.25,
+        "excess_fragments": 1.0
+      },
+      "medium": {
+        "instances": 3,
+        "typed_detection": 0.6666666666666666,
+        "excess_fragments": 2.3333333333333335
+      },
+      "large": {
+        "instances": 4,
+        "typed_detection": 1.0,
+        "excess_fragments": 2.25
+      }
+    },
+    "typed_matches": [
+      [
+        0,
+        0,
+        0.795678782125178
+      ],
+      [
+        6,
+        1,
+        0.9066771485811376
+      ],
+      [
+        7,
+        9,
+        0.7471938775510204
+      ],
+      [
+        8,
+        14,
+        0.8187991422444604
+      ],
+      [
+        10,
+        36,
+        0.5724381625441696
+      ],
+      [
+        12,
+        15,
+        0.93325572370974
+      ],
+      [
+        19,
+        2,
+        0.9255046459468119
+      ]
+    ],
+    "typed_instance_precision": 0.23333333333333334,
+    "typed_instance_f1": 0.34146341463414637
+  },
+  "candidate": {
+    "protocol": "target-mask-v2",
+    "instance_precision": 0.225,
+    "instance_f1": 0.35294117647058826,
+    "typed_pq": 0.1887246614699038,
+    "excess_fragments": 2.4545454545454546,
+    "fragment_counts": {
+      "0": 10,
+      "6": 4,
+      "7": 5,
+      "8": 3,
+      "10": 4,
+      "11": 3,
+      "12": 1,
+      "16": 0,
+      "17": 2,
+      "18": 2,
+      "19": 3
+    },
+    "merged_predictions": {
+      "1": [
+        6,
+        10
+      ],
+      "5": [
+        7,
+        11
+      ]
+    },
+    "merged_gt_ratio": 0.36363636363636365,
+    "size_groups": {
+      "small": {
+        "instances": 4,
+        "typed_detection": 0.25,
+        "excess_fragments": 1.25
+      },
+      "medium": {
+        "instances": 3,
+        "typed_detection": 0.6666666666666666,
+        "excess_fragments": 1.3333333333333333
+      },
+      "large": {
+        "instances": 4,
+        "typed_detection": 0.75,
+        "excess_fragments": 4.5
+      }
+    },
+    "typed_matches": [
+      [
+        6,
+        1,
+        0.6382350656412646
+      ],
+      [
+        7,
+        5,
+        0.8349514563106796
+      ],
+      [
+        8,
+        20,
+        0.8994273443092341
+      ],
+      [
+        10,
+        56,
+        0.5899159663865546
+      ],
+      [
+        12,
+        22,
+        0.9492560091568104
+      ],
+      [
+        19,
+        3,
+        0.9006930256780035
+      ]
+    ],
+    "typed_instance_precision": 0.15,
+    "typed_instance_f1": 0.23529411764705882
+  }
+}

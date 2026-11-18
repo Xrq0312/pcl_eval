@@ -1,0 +1,22 @@
+{
+  "dataset": "synthetic_geometry_stress",
+  "seed": 20260928,
+  "kind": "cylinder",
+  "noise_sigma": 0.012,
+  "density": 2,
+  "num_points": 960,
+  "bbox": {
+    "x": [
+      -0.35,
+      0.35
+    ],
+    "y": [
+      -0.25,
+      0.25
+    ],
+    "z": [
+      1.4690706364111592,
+      1.6670352208995332
+    ]
+  }
+}

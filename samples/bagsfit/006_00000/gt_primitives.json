@@ -1,0 +1,268 @@
+{
+  "primitives": [
+    {
+      "instance_id": 0,
+      "is_target": true,
+      "type": "plane",
+      "source": "bagsfit_prim",
+      "has_params": true,
+      "point": [
+        -0.8905425667762756,
+        1.0925475358963013,
+        3.7611160278320312
+      ],
+      "normal": [
+        2.9103830456733704e-11,
+        0.004032693803310394,
+        -0.9999918937683105
+      ]
+    },
+    {
+      "instance_id": 6,
+      "is_target": true,
+      "type": "plane",
+      "source": "bagsfit_prim",
+      "has_params": true,
+      "point": [
+        -6.701156962662935e-08,
+        -5.587935447692871e-08,
+        2.2566978931427
+      ],
+      "normal": [
+        2.9103830456733704e-11,
+        0.004032693803310394,
+        -0.9999918937683105
+      ]
+    },
+    {
+      "instance_id": 7,
+      "is_target": true,
+      "type": "plane",
+      "source": "bagsfit_prim",
+      "has_params": true,
+      "point": [
+        -0.20327609777450562,
+        0.46537265181541443,
+        2.2180981636047363
+      ],
+      "normal": [
+        0.8986707329750061,
+        0.37251994013786316,
+        0.23156008124351501
+      ]
+    },
+    {
+      "instance_id": 8,
+      "is_target": true,
+      "type": "plane",
+      "source": "bagsfit_prim",
+      "has_params": true,
+      "point": [
+        -0.21176591515541077,
+        -0.32666993141174316,
+        2.1729238033294678
+      ],
+      "normal": [
+        -0.8620716333389282,
+        0.06753087788820267,
+        -0.5022670030593872
+      ]
+    },
+    {
+      "instance_id": 9,
+      "is_target": true,
+      "type": "plane",
+      "source": "bagsfit_prim",
+      "has_params": true,
+      "point": [
+        0.4106193780899048,
+        0.3292219638824463,
+        2.0888452529907227
+      ],
+      "normal": [
+        -0.5425781607627869,
+        0.204782634973526,
+        -0.8146612644195557
+      ]
+    },
+    {
+      "instance_id": 10,
+      "is_target": true,
+      "type": "plane",
+      "source": "bagsfit_prim",
+      "has_params": true,
+      "point": [
+        0.41798660159111023,
+        0.29305556416511536,
+        2.2080016136169434
+      ],
+      "normal": [
+        0.8200654983520508,
+        0.4444601833820343,
+        0.36048275232315063
+      ]
+    },
+    {
+      "instance_id": 11,
+      "is_target": true,
+      "type": "sphere",
+      "source": "bagsfit_prim",
+      "has_params": true,
+      "center": [
+        -0.37571248412132263,
+        -0.11606519669294357,
+        2.046701669692993
+      ],
+      "center_raw": [
+        -0.37571248412132263,
+        0.11606519669294357,
+        2.046701669692993
+      ],
+      "radius": 0.1279600394428883,
+      "param_fix": "sphere center y sign-flipped (verified vs scan)"
+    },
+    {
+      "instance_id": 12,
+      "is_target": true,
+      "type": "sphere",
+      "source": "bagsfit_prim",
+      "has_params": true,
+      "center": [
+        -0.7782760262489319,
+        -0.06289002299308777,
+        2.1576039791107178
+      ],
+      "center_raw": [
+        -0.7782760262489319,
+        0.06289002299308777,
+        2.1576039791107178
+      ],
+      "radius": 0.10691171541409128,
+      "param_fix": "sphere center y sign-flipped (verified vs scan)"
+    },
+    {
+      "instance_id": 13,
+      "is_target": false,
+      "type": "cone",
+      "source": "bagsfit_prim",
+      "has_params": true,
+      "apex": [
+        0.8892117142677307,
+        -0.38565725088119507,
+        2.6437177658081055
+      ],
+      "axis_direction": [
+        2.9103830456733704e-11,
+        0.004032693803310394,
+        -0.9999918937683105
+      ],
+      "half_angle": 0.2918144470400842
+    },
+    {
+      "instance_id": 14,
+      "is_target": false,
+      "type": "cone",
+      "source": "bagsfit_prim",
+      "has_params": true,
+      "apex": [
+        0.21481740474700928,
+        -0.11566182971000671,
+        1.9375993013381958
+      ],
+      "axis_direction": [
+        0.9945740103721619,
+        -0.10403070598840714,
+        -0.0004195463552605361
+      ],
+      "half_angle": 0.4972405726153475
+    },
+    {
+      "instance_id": 15,
+      "is_target": false,
+      "type": "cone",
+      "source": "bagsfit_prim",
+      "has_params": true,
+      "apex": [
+        -0.7892318964004517,
+        1.0708335638046265,
+        2.651437997817993
+      ],
+      "axis_direction": [
+        0.17308840155601501,
+        -0.8402833342552185,
+        -0.5137746930122375
+      ],
+      "half_angle": 0.21896198189874888
+    },
+    {
+      "instance_id": 17,
+      "is_target": true,
+      "type": "cylinder",
+      "source": "bagsfit_prim",
+      "has_params": true,
+      "axis_point": [
+        -0.5851064920425415,
+        0.8983855247497559,
+        3.049565553665161
+      ],
+      "axis_direction": [
+        -0.9945741295814514,
+        0.10403069108724594,
+        0.0004196783120278269
+      ],
+      "radius": 0.1977522473828931
+    },
+    {
+      "instance_id": 18,
+      "is_target": true,
+      "type": "cylinder",
+      "source": "bagsfit_prim",
+      "has_params": true,
+      "axis_point": [
+        -0.11651735007762909,
+        0.9362659454345703,
+        2.2118890285491943
+      ],
+      "axis_direction": [
+        -0.5451870560646057,
+        0.7930692434310913,
+        -0.271683931350708
+      ],
+      "radius": 0.10557859851421528
+    },
+    {
+      "instance_id": 19,
+      "is_target": true,
+      "type": "cylinder",
+      "source": "bagsfit_prim",
+      "has_params": true,
+      "axis_point": [
+        0.3639574944972992,
+        0.18007266521453857,
+        2.1039934158325195
+      ],
+      "axis_direction": [
+        -0.019201017916202545,
+        0.845393180847168,
+        -0.5337994694709778
+      ],
+      "radius": 0.21122959181622825
+    },
+    {
+      "instance_id": 20,
+      "is_target": false,
+      "type": "none",
+      "source": "bagsfit_prim",
+      "has_params": false,
+      "param_fix": "no prim row in source; type from cls only"
+    },
+    {
+      "instance_id": 21,
+      "is_target": false,
+      "type": "none",
+      "source": "bagsfit_prim",
+      "has_params": false,
+      "param_fix": "no prim row in source; type from cls only"
+    }
+  ]
+}

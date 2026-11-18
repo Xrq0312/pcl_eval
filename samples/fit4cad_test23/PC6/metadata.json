@@ -1,0 +1,34 @@
+{
+  "dataset": "Fit4CAD",
+  "split": "official_test",
+  "source_model": "PC6",
+  "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+  "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+  "source_coordinate_units": "unspecified",
+  "num_points": 9390,
+  "num_primitives": 26,
+  "target_primitives": 26,
+  "ambiguous_multi_primitive_points": 812,
+  "unlabeled_points": 0,
+  "label_policy": "one membership -> source primitive; zero or multiple -> none",
+  "bbox": {
+    "x": [
+      -68.507851,
+      89.641411
+    ],
+    "y": [
+      -46.462868,
+      43.880112
+    ],
+    "z": [
+      0.0,
+      10.16
+    ]
+  },
+  "source_sha256": {
+    "PC6.txt": "0ff5eb4c721d7f75df29f714ff639e057fca7ca1b7e2f3da83283f1c661e0866",
+    "PC6_primitives.txt": "dae152d2284305889ceb66cb8c5f29a2ad3023d0644035960b3df1657e4631c0",
+    "PC6_parametric.txt": "25d44bd194f170e6360b24db22cf43bb42a1c982f28529e1aec1b6ab5438771a",
+    "PC6_implicit.txt": "ae81ec0c3cf26d455a603e63a6170d79b4a4ee4023bb3f384407daa1ca4ab420"
+  }
+}

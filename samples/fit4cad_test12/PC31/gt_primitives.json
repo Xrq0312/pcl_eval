@@ -1,0 +1,158 @@
+{
+  "primitives": [
+    {
+      "instance_id": 0,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 1
+    },
+    {
+      "instance_id": 1,
+      "type": "plane",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 2
+    },
+    {
+      "instance_id": 2,
+      "type": "plane",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 3
+    },
+    {
+      "instance_id": 3,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 4
+    },
+    {
+      "instance_id": 4,
+      "type": "plane",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 5
+    },
+    {
+      "instance_id": 5,
+      "type": "plane",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 6
+    },
+    {
+      "instance_id": 6,
+      "type": "plane",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 7
+    },
+    {
+      "instance_id": 7,
+      "type": "plane",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 8
+    },
+    {
+      "instance_id": 8,
+      "type": "plane",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 9
+    },
+    {
+      "instance_id": 9,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 10
+    },
+    {
+      "instance_id": 10,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 11
+    },
+    {
+      "instance_id": 11,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 12
+    },
+    {
+      "instance_id": 12,
+      "type": "plane",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 13
+    },
+    {
+      "instance_id": 13,
+      "type": "plane",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 14
+    },
+    {
+      "instance_id": 14,
+      "type": "plane",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 15
+    },
+    {
+      "instance_id": 15,
+      "type": "plane",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 16
+    },
+    {
+      "instance_id": 16,
+      "type": "plane",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 17
+    },
+    {
+      "instance_id": 17,
+      "type": "plane",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 18
+    },
+    {
+      "instance_id": 18,
+      "type": "plane",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 19
+    },
+    {
+      "instance_id": 19,
+      "type": "plane",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 20
+    },
+    {
+      "instance_id": 20,
+      "type": "plane",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 21
+    },
+    {
+      "instance_id": 21,
+      "type": "plane",
+      "is_target": true,
+      "has_params": false,
+      "source_primitive_id": 22
+    }
+  ]
+}

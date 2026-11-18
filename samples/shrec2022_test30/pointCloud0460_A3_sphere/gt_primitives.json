@@ -1,0 +1,16 @@
+{
+  "primitives": [
+    {
+      "instance_id": 0,
+      "type": "sphere",
+      "is_target": true,
+      "has_params": true,
+      "radius": 1.27090301003344,
+      "center": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

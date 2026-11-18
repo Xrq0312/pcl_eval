@@ -1,0 +1,21 @@
+{
+  "primitives": [
+    {
+      "instance_id": 0,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "radius": 2.71571906354515,
+      "axis_direction": [
+        0.574077825687561,
+        -0.815515611181562,
+        -0.0732730371487722
+      ],
+      "axis_point": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

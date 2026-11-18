@@ -1,0 +1,1193 @@
+{
+  "primitives": [
+    {
+      "instance_id": 0,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 1,
+      "axis_point": [
+        0.0,
+        3.36778e-16,
+        7.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        -1.0
+      ],
+      "radius": 5.5
+    },
+    {
+      "instance_id": 1,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 2,
+      "point": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "normal": [
+        0.0,
+        0.0,
+        -1.0
+      ]
+    },
+    {
+      "instance_id": 2,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 3,
+      "point": [
+        0.0,
+        0.0,
+        7.0
+      ],
+      "normal": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "instance_id": 3,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 4,
+      "point": [
+        7.36122,
+        -4.25,
+        8.0
+      ],
+      "normal": [
+        -0.5000001748438417,
+        -0.8660253028382761,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 4,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 5,
+      "axis_point": [
+        -1.56125e-14,
+        5.63785e-15,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 9.5
+    },
+    {
+      "instance_id": 5,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 6,
+      "point": [
+        0.0,
+        1.0,
+        8.0
+      ],
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 6,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 7,
+      "axis_point": [
+        -4.84048e-16,
+        4.33681e-16,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 1.5
+    },
+    {
+      "instance_id": 7,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 8,
+      "axis_point": [
+        2.47198e-14,
+        -1.4962e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 7.5
+    },
+    {
+      "instance_id": 8,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 9,
+      "point": [
+        -8.08398,
+        2.62664,
+        8.0
+      ],
+      "normal": [
+        0.3090168573056278,
+        0.9510565608316645,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 9,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 10,
+      "point": [
+        -7.50505,
+        3.99051,
+        8.0
+      ],
+      "normal": [
+        0.4694717348687294,
+        0.882947501360837,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 10,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 11,
+      "axis_point": [
+        8.41341e-14,
+        -5.72459e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 9.5
+    },
+    {
+      "instance_id": 11,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 12,
+      "point": [
+        -6.31673,
+        5.68761,
+        8.0
+      ],
+      "normal": [
+        0.6691307369694428,
+        0.7431447078750746,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 12,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 13,
+      "axis_point": [
+        -6.245e-14,
+        6.07153e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 7.5
+    },
+    {
+      "instance_id": 13,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 14,
+      "point": [
+        -5.23312,
+        6.69809,
+        8.0
+      ],
+      "normal": [
+        0.7880110776025467,
+        0.6156610606296886,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 14,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 15,
+      "axis_point": [
+        5.83301e-14,
+        -9.62772e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 9.5
+    },
+    {
+      "instance_id": 15,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 16,
+      "point": [
+        -3.45726,
+        7.76514,
+        8.0
+      ],
+      "normal": [
+        0.9135452493092732,
+        0.40673711099979293,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 16,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 17,
+      "axis_point": [
+        -5.09575e-15,
+        3.55618e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 7.5
+    },
+    {
+      "instance_id": 17,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 18,
+      "point": [
+        -2.05634,
+        8.24751,
+        8.0
+      ],
+      "normal": [
+        0.9702957177895314,
+        0.24192192963701695,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 18,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 19,
+      "axis_point": [
+        -1.63122e-15,
+        3.46945e-15,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 9.5
+    },
+    {
+      "instance_id": 19,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 20,
+      "point": [
+        -7.67918e-16,
+        8.5,
+        8.0
+      ],
+      "normal": [
+        1.0,
+        1.22465e-16,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 20,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 21,
+      "axis_point": [
+        1.44923e-14,
+        4.16334e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 7.5
+    },
+    {
+      "instance_id": 21,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 22,
+      "point": [
+        1.47601,
+        8.37087,
+        8.0
+      ],
+      "normal": [
+        0.9848077908426045,
+        -0.17364796311995495,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 22,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 23,
+      "axis_point": [
+        1.51788e-14,
+        4.77049e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 9.5
+    },
+    {
+      "instance_id": 23,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 24,
+      "point": [
+        3.45726,
+        7.76514,
+        8.0
+      ],
+      "normal": [
+        0.9135452493092732,
+        -0.40673711099979293,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 24,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 25,
+      "axis_point": [
+        7.54605e-14,
+        1.1189e-13,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 7.5
+    },
+    {
+      "instance_id": 25,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 26,
+      "point": [
+        4.75314,
+        7.04682,
+        8.0
+      ],
+      "normal": [
+        0.8290376614654417,
+        -0.5591927716556355,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 26,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 27,
+      "axis_point": [
+        -5.11743e-14,
+        -7.02563e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 9.5
+    },
+    {
+      "instance_id": 27,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 28,
+      "point": [
+        6.31673,
+        5.68761,
+        8.0
+      ],
+      "normal": [
+        0.6691307369694428,
+        -0.7431447078750746,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 28,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 29,
+      "axis_point": [
+        5.46438e-14,
+        3.68629e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 7.5
+    },
+    {
+      "instance_id": 29,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 30,
+      "point": [
+        7.20841,
+        4.50431,
+        8.0
+      ],
+      "normal": [
+        0.5299191174128671,
+        -0.8480481878999377,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 30,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 31,
+      "axis_point": [
+        0.0,
+        -4.33681e-16,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 9.5
+    },
+    {
+      "instance_id": 31,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 32,
+      "point": [
+        8.08398,
+        2.62664,
+        8.0
+      ],
+      "normal": [
+        0.3090168573056278,
+        -0.9510565608316645,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 32,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 33,
+      "axis_point": [
+        4.16334e-14,
+        1.27936e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 7.5
+    },
+    {
+      "instance_id": 33,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 34,
+      "point": [
+        8.41728,
+        1.18297,
+        8.0
+      ],
+      "normal": [
+        0.13917301142937527,
+        -0.9902680813242841,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 34,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 35,
+      "axis_point": [
+        -8.06646e-14,
+        1.32273e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 9.5
+    },
+    {
+      "instance_id": 35,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 36,
+      "point": [
+        8.45344,
+        -0.888492,
+        8.0
+      ],
+      "normal": [
+        -0.10452799418468972,
+        -0.9945219446707676,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 36,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 37,
+      "axis_point": [
+        -3.42608e-14,
+        8.83625e-15,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 7.5
+    },
+    {
+      "instance_id": 37,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 38,
+      "point": [
+        8.17072,
+        -2.34292,
+        8.0
+      ],
+      "normal": [
+        -0.2756369464695186,
+        -0.9612618133167258,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 38,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 39,
+      "axis_point": [
+        -1.68702e-13,
+        -8.51099e-15,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 7.5
+    },
+    {
+      "instance_id": 39,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 40,
+      "point": [
+        -8.47929,
+        0.59293,
+        8.0
+      ],
+      "normal": [
+        0.06975650336964902,
+        0.9975640481882054,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 40,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 41,
+      "axis_point": [
+        9.19403e-14,
+        -3.46945e-15,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 9.5
+    },
+    {
+      "instance_id": 41,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 42,
+      "axis_point": [
+        -8.93383e-14,
+        -4.18502e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 7.5
+    },
+    {
+      "instance_id": 42,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 43,
+      "point": [
+        -7.98739,
+        -2.90717,
+        8.0
+      ],
+      "normal": [
+        -0.342019894888923,
+        0.9396927112094517,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 43,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 44,
+      "axis_point": [
+        3.29597e-14,
+        1.55041e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 9.5
+    },
+    {
+      "instance_id": 44,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 45,
+      "point": [
+        -8.45344,
+        -0.888492,
+        8.0
+      ],
+      "normal": [
+        -0.10452799418468972,
+        0.9945219446707676,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 45,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 46,
+      "axis_point": [
+        -7.89299e-14,
+        -9.28077e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 7.5
+    },
+    {
+      "instance_id": 46,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 47,
+      "point": [
+        -6.11439,
+        -5.9046,
+        8.0
+      ],
+      "normal": [
+        -0.6946580789951319,
+        0.71934008180192,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 47,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 48,
+      "axis_point": [
+        2.73219e-14,
+        1.47451e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 9.5
+    },
+    {
+      "instance_id": 48,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 49,
+      "point": [
+        -7.36122,
+        -4.25,
+        8.0
+      ],
+      "normal": [
+        -0.5000001748438417,
+        0.8660253028382761,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 49,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 50,
+      "axis_point": [
+        -2.29851e-14,
+        -5.9848e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 7.5
+    },
+    {
+      "instance_id": 50,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 51,
+      "point": [
+        -3.18416,
+        -7.88106,
+        8.0
+      ],
+      "normal": [
+        -0.9271837337569112,
+        0.3746068924307098,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 51,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 52,
+      "axis_point": [
+        4.57533e-14,
+        8.84709e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 9.5
+    },
+    {
+      "instance_id": 52,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 53,
+      "point": [
+        -4.99617,
+        -6.87664,
+        8.0
+      ],
+      "normal": [
+        -0.8090171162905557,
+        0.5877850844899976,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 53,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 54,
+      "axis_point": [
+        2.75116e-14,
+        -1.65232e-13,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 7.5
+    },
+    {
+      "instance_id": 54,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 55,
+      "point": [
+        0.296646,
+        -8.49482,
+        8.0
+      ],
+      "normal": [
+        -0.9993908271147711,
+        -0.03489949396271525,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 55,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 56,
+      "axis_point": [
+        1.81875e-14,
+        9.36751e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 9.5
+    },
+    {
+      "instance_id": 56,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 57,
+      "point": [
+        -1.76725,
+        -8.31425,
+        8.0
+      ],
+      "normal": [
+        -0.9781475551151176,
+        0.20791190543669705,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 57,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 58,
+      "axis_point": [
+        2.25514e-14,
+        -4.0766e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 7.5
+    },
+    {
+      "instance_id": 58,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 59,
+      "point": [
+        3.72615,
+        -7.63975,
+        8.0
+      ],
+      "normal": [
+        -0.8987940952375756,
+        -0.43837104645045616,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 59,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 60,
+      "axis_point": [
+        -5.13912e-14,
+        1.20563e-13,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 9.5
+    },
+    {
+      "instance_id": 60,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 61,
+      "point": [
+        1.76725,
+        -8.31425,
+        8.0
+      ],
+      "normal": [
+        -0.9781475551151176,
+        -0.20791190543669705,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 61,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 62,
+      "axis_point": [
+        1.30104e-13,
+        -8.71699e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 7.5
+    },
+    {
+      "instance_id": 62,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 63,
+      "point": [
+        6.51138,
+        -5.46369,
+        8.0
+      ],
+      "normal": [
+        -0.6427880569253128,
+        -0.7660440678408655,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 63,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 64,
+      "axis_point": [
+        -4.51028e-14,
+        4.90059e-14,
+        8.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 9.5
+    },
+    {
+      "instance_id": 64,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 65,
+      "point": [
+        4.99617,
+        -6.87664,
+        8.0
+      ],
+      "normal": [
+        -0.8090171162905557,
+        -0.5877850844899976,
+        0.0
+      ]
+    },
+    {
+      "instance_id": 65,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 66,
+      "point": [
+        0.0115708,
+        0.0,
+        0.0
+      ],
+      "normal": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "instance_id": 66,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 67,
+      "point": [
+        0.0115708,
+        0.0,
+        8.0
+      ],
+      "normal": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "instance_id": 67,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source_primitive_id": 68,
+      "axis_point": [
+        0.0,
+        -3.36778e-16,
+        1.0
+      ],
+      "axis_direction": [
+        -0.0,
+        -0.0,
+        1.0
+      ],
+      "radius": 5.5
+    }
+  ]
+}

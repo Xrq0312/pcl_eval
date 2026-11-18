@@ -1,0 +1,25 @@
+{
+  "dataset": "bagsfit_test20s",
+  "source_file": "D:\\download\\pcl_eval\\data\\bagsfit_data\\extracted\\014\\00018.npz",
+  "variant": "noisy",
+  "num_points": 282182,
+  "width": 640,
+  "height": 480,
+  "pixel_map": "pixel_map.txt",
+  "validity": "finite noisy XYZ and not all zero",
+  "bbox": {
+    "x": [
+      -1.9397369623184204,
+      2.0967392921447754
+    ],
+    "y": [
+      -1.4968421459197998,
+      1.5456522703170776
+    ],
+    "z": [
+      1.3887258768081665,
+      3.9548497200012207
+    ]
+  },
+  "source_sha256": "3ee818aaa3f1c9bc41ba0d69489016814fcfd3b74f1cc2a651a787a13e8f6ac8"
+}

@@ -1,0 +1,36 @@
+{
+  "primitives": [
+    {
+      "instance_id": 0,
+      "type": "plane",
+      "normal": [
+        -0.2,
+        -0.1,
+        1
+      ],
+      "point": [
+        0,
+        0,
+        1
+      ],
+      "is_target": true,
+      "has_params": true
+    },
+    {
+      "instance_id": 1,
+      "type": "plane",
+      "normal": [
+        -0.2,
+        -0.1,
+        1
+      ],
+      "point": [
+        0,
+        0,
+        1.15
+      ],
+      "is_target": true,
+      "has_params": true
+    }
+  ]
+}

@@ -1,0 +1,368 @@
+{
+  "dataset": "SHREC2022 official test set",
+  "source_repository": "https://github.com/chiararomanengo/SHREC2022",
+  "source_commit": "da2b5f4f5c69896c69ac2777db2d2d499e32f03d",
+  "selection": "median numeric source ID in each plane/cylinder/sphere x A0-A9 stratum, fixed before fitting",
+  "samples": [
+    {
+      "sample": "pointCloud0242_A8_sphere",
+      "source_id": 242,
+      "type": "sphere",
+      "artifact": "A8",
+      "points": 6374,
+      "source_sha256": {
+        "pointCloud242.txt": "902cb792787ce6d165389d4610dcd413f3354df7e09014d5170158507e6a0bd5",
+        "GTpointCloud242.txt": "1d82bb5b747fbcbdb96c8e72717081d302d5da354d23d08f83717e26c8b29554",
+        "infoPointCloud242.txt": "5c84daaef924f395fe62d0ec107251ded04caff60dba9b80ab83fd1ddebbf6f1"
+      }
+    },
+    {
+      "sample": "pointCloud0285_A5_sphere",
+      "source_id": 285,
+      "type": "sphere",
+      "artifact": "A5",
+      "points": 1150,
+      "source_sha256": {
+        "pointCloud285.txt": "907837e5a9a9c76ec18628dfc57f209c108cb2e5fc2c4fea2f379d476b5591ed",
+        "GTpointCloud285.txt": "c565615ee2ed28c43fd6dcf5e49ca4263bc787b73edb36c72faad428eb952f4b",
+        "infoPointCloud285.txt": "7df15f68133d581c0c5d076fe99ba1b242901b1e525c56586e349d9c957e222a"
+      }
+    },
+    {
+      "sample": "pointCloud0316_A7_plane",
+      "source_id": 316,
+      "type": "plane",
+      "artifact": "A7",
+      "points": 2431,
+      "source_sha256": {
+        "pointCloud316.txt": "4eb3d29e305e6f0920e7ab5c2e8ef66645cc9230ee739db593dc99a7d46d38dd",
+        "GTpointCloud316.txt": "3300965355d598834cac30323c7a111203a9d88511f0a3453dd80f790491f258",
+        "infoPointCloud316.txt": "242e8bdfda644f3ab09473b67eee0cb6600b3eda80014687233dda723b26b839"
+      }
+    },
+    {
+      "sample": "pointCloud0331_A1_cylinder",
+      "source_id": 331,
+      "type": "cylinder",
+      "artifact": "A1",
+      "points": 1907,
+      "source_sha256": {
+        "pointCloud331.txt": "b029a13ff85f1c60d7d7e578347b62e3b0182abc697daac401a180fa0255e78c",
+        "GTpointCloud331.txt": "025242b1546786ceb05f593389e7efbae36ea36cad7919cd15a76006af1c33b9",
+        "infoPointCloud331.txt": "ffbca08de957a53aaf7369a0b677fbb28f5339c22aa5e48b6820487c17705f30"
+      }
+    },
+    {
+      "sample": "pointCloud0334_A8_cylinder",
+      "source_id": 334,
+      "type": "cylinder",
+      "artifact": "A8",
+      "points": 2869,
+      "source_sha256": {
+        "pointCloud334.txt": "da824b9f939dcc1bffd612e7aa6d27066b157bf09a3980e7a7f81db8a79ddee9",
+        "GTpointCloud334.txt": "d7df451fe3c03c394030486033125c34550789da2af7f0b87a92af8b6d9fdf72",
+        "infoPointCloud334.txt": "bbf258be68902026a28f6d9cccdd8893ebc5e408a9e6f746268928b3daf0d3f4"
+      }
+    },
+    {
+      "sample": "pointCloud0338_A0_plane",
+      "source_id": 338,
+      "type": "plane",
+      "artifact": "A0",
+      "points": 3778,
+      "source_sha256": {
+        "pointCloud338.txt": "8a2e0b0b1885d94ebe6c747d2530af87f6ea3dc0dc27be5d1bb9ea49a2e966ea",
+        "GTpointCloud338.txt": "bfd60f3420efd074aae60269ae610686fd6d2bef35a72cb2fedbf104cac05f3c",
+        "infoPointCloud338.txt": "41424236fcf1c4a2d0eb5c5bbd2830ab99024ffbe5b588b458f6feb6b5e40172"
+      }
+    },
+    {
+      "sample": "pointCloud0350_A2_cylinder",
+      "source_id": 350,
+      "type": "cylinder",
+      "artifact": "A2",
+      "points": 1673,
+      "source_sha256": {
+        "pointCloud350.txt": "fee338a898a381ad06893d5f044d15f7207a0b0867223b584ff7048f775ffce4",
+        "GTpointCloud350.txt": "b42e5f4744d4744748dad50ef5c4415c9e7f15bf1522aadab812c34808ff635f",
+        "infoPointCloud350.txt": "e8ab282d8a9c4daff3ba90fadbd9d601e1556a23c0f83827e2266472fb79b372"
+      }
+    },
+    {
+      "sample": "pointCloud0379_A6_cylinder",
+      "source_id": 379,
+      "type": "cylinder",
+      "artifact": "A6",
+      "points": 440,
+      "source_sha256": {
+        "pointCloud379.txt": "43e69598516fe55e8e28e4b75475bf8cdd93633e47d57fbf3ece9b96149133c5",
+        "GTpointCloud379.txt": "6ece759238de7b016737207a8f1a0a5b213b26a82dc847931d9f6ed9de2113e3",
+        "infoPointCloud379.txt": "f578ffb3fbaef19d46d3570ac336fd78a75eb4173ea10d89f5dcd57078c5e696"
+      }
+    },
+    {
+      "sample": "pointCloud0413_A5_cylinder",
+      "source_id": 413,
+      "type": "cylinder",
+      "artifact": "A5",
+      "points": 1507,
+      "source_sha256": {
+        "pointCloud413.txt": "18f90a728810b9015f7027633881f0de47ac56f4f9f47b76c37dcc033d4951d6",
+        "GTpointCloud413.txt": "a57db24bf72b1cc24aecb4357304462966b2f148b850d31ced495fe2ec175b74",
+        "infoPointCloud413.txt": "f9cba5e62709c7c979ae4010eb05ba91f67539d3284b4a1305cc47de0d03dbe2"
+      }
+    },
+    {
+      "sample": "pointCloud0415_A5_plane",
+      "source_id": 415,
+      "type": "plane",
+      "artifact": "A5",
+      "points": 1367,
+      "source_sha256": {
+        "pointCloud415.txt": "c20928d734f9a96d029c9771f33a41e8739f11b095cf0aa0c13487721860ad12",
+        "GTpointCloud415.txt": "2276f8b4e85c8df530e48a20e9aa85de2ee85182c9e32f90945f36cc80577759",
+        "infoPointCloud415.txt": "2bb9769bc1e5605031f8bdaa3e98911333ec2087f8cabd15a465f6f2dd17f081"
+      }
+    },
+    {
+      "sample": "pointCloud0423_A3_cylinder",
+      "source_id": 423,
+      "type": "cylinder",
+      "artifact": "A3",
+      "points": 1060,
+      "source_sha256": {
+        "pointCloud423.txt": "2b34d19fbef08649a0ed40de46b9709ec0666cd0ade209549278ab6761a28a70",
+        "GTpointCloud423.txt": "a4784194df91e44f95e414aa748377b49cd9c7f7553b6e1a83058310ba78ae3c",
+        "infoPointCloud423.txt": "b5cea8e4043774d20e693338de4d76e846dc8b475c44be84282d5deb5e43f170"
+      }
+    },
+    {
+      "sample": "pointCloud0427_A4_sphere",
+      "source_id": 427,
+      "type": "sphere",
+      "artifact": "A4",
+      "points": 3730,
+      "source_sha256": {
+        "pointCloud427.txt": "4ffd7aa0117eac937d89bf925d5a332e93630469c3b542c032acddc6ca6b16b2",
+        "GTpointCloud427.txt": "17b775c8b39e844d0019eedb63ab962361f37180839244b7888fd40afb50a97a",
+        "infoPointCloud427.txt": "d5c6a2201b1712bab263b2ff3ece9a6083ec780a992be8aac654bc62d6a9d186"
+      }
+    },
+    {
+      "sample": "pointCloud0448_A0_sphere",
+      "source_id": 448,
+      "type": "sphere",
+      "artifact": "A0",
+      "points": 3027,
+      "source_sha256": {
+        "pointCloud448.txt": "96fbb17e4e13cc7cde343c8b059a1ccff78933453deecd1adeb153b82be49d38",
+        "GTpointCloud448.txt": "58b725a4c654135ed0617f9795d25571ba06426df0433b709126c06ec9274304",
+        "infoPointCloud448.txt": "e0c658c7e3a59f1b0fb63ca57c6bdab12d6bd6669b5133fc135898997d52a0b1"
+      }
+    },
+    {
+      "sample": "pointCloud0451_A9_plane",
+      "source_id": 451,
+      "type": "plane",
+      "artifact": "A9",
+      "points": 6400,
+      "source_sha256": {
+        "pointCloud451.txt": "8903897b56944b0f61879ab93e66f1791f8e2cd274988918caea54b91db86fda",
+        "GTpointCloud451.txt": "7b34eb0c426237b7e05d53a164e861ea411763186d62ca4f0e75c2d5546648df",
+        "infoPointCloud451.txt": "62634220529c6d266c398d93d8d9010ae1d04b05a55a9137e82a6cb2d8f3c362"
+      }
+    },
+    {
+      "sample": "pointCloud0457_A4_cylinder",
+      "source_id": 457,
+      "type": "cylinder",
+      "artifact": "A4",
+      "points": 1779,
+      "source_sha256": {
+        "pointCloud457.txt": "7e1c05a6aaa41b8f7ed09a92026a3522d06063cf026bba6caeedb9197dab9aab",
+        "GTpointCloud457.txt": "07bd72602edee9cf41d5443be05c628d0f653ec0ff9c01f1aade4f341af7b53a",
+        "infoPointCloud457.txt": "8cdca7e0c68b3927904cec2b24b43c2ee95e1ca22f6f4be73c6c68e60eec02a2"
+      }
+    },
+    {
+      "sample": "pointCloud0460_A3_sphere",
+      "source_id": 460,
+      "type": "sphere",
+      "artifact": "A3",
+      "points": 1958,
+      "source_sha256": {
+        "pointCloud460.txt": "fa0fbfbb0b3b8f66201c477a821d18537552cea0d07f5361fb99cd23b0235812",
+        "GTpointCloud460.txt": "a44b95de4384273edc3dca6bd233c6031d21fee2fb33e6b976f328cefeafcc93",
+        "infoPointCloud460.txt": "5e347fe6a79828768e4c1aca9e4ef3d502628277b914c3fb7d10ba4ecda6693d"
+      }
+    },
+    {
+      "sample": "pointCloud0471_A0_cylinder",
+      "source_id": 471,
+      "type": "cylinder",
+      "artifact": "A0",
+      "points": 2194,
+      "source_sha256": {
+        "pointCloud471.txt": "7530c342b6879056ad04fb732795147a9be88a0ceb4ca991b42422775acd4623",
+        "GTpointCloud471.txt": "6bcec5753769b07668f586c47aa95dc668c1ec59196e2832a1a74f29a811cfd7",
+        "infoPointCloud471.txt": "e0c658c7e3a59f1b0fb63ca57c6bdab12d6bd6669b5133fc135898997d52a0b1"
+      }
+    },
+    {
+      "sample": "pointCloud0475_A9_sphere",
+      "source_id": 475,
+      "type": "sphere",
+      "artifact": "A9",
+      "points": 6400,
+      "source_sha256": {
+        "pointCloud475.txt": "99303d1c9d2d39640d9d1db1e1cafc8a824dcb4bb20261da98989cf8b85632d5",
+        "GTpointCloud475.txt": "48450b42f4e8ec604bdee0d34a77e2f91a354a9a84681866fa8395b4659ef11b",
+        "infoPointCloud475.txt": "172cf41356d741c8cd551a55a4d1f82e701149ef607185c3aa72c3934b95d0da"
+      }
+    },
+    {
+      "sample": "pointCloud0477_A7_sphere",
+      "source_id": 477,
+      "type": "sphere",
+      "artifact": "A7",
+      "points": 3339,
+      "source_sha256": {
+        "pointCloud477.txt": "0d9ad705e95cc1204bf266fe57b3550451143e4422256a3efa7dd7c2654e50db",
+        "GTpointCloud477.txt": "abcfeaab8045168b031c12cbe3981e3f5ee712d734ebfd3a967f76dc46305829",
+        "infoPointCloud477.txt": "37d8885991041f9c16c3b8b7a30d3907c4430e390f59c7fa43c0af0fec6b7799"
+      }
+    },
+    {
+      "sample": "pointCloud0479_A6_plane",
+      "source_id": 479,
+      "type": "plane",
+      "artifact": "A6",
+      "points": 996,
+      "source_sha256": {
+        "pointCloud479.txt": "f8a5d68107273d9550b88b7c6d9e8b03753ac064cdda9bf4ed28e5845533bc7d",
+        "GTpointCloud479.txt": "e0f4adda2ddd720e9e021f933c00db6146ed118d9e51af1f66434f06d880a5ea",
+        "infoPointCloud479.txt": "347b63f947ab2b4851b2cc5162d28a82c32d8dfa14b3c8fd4b19049c72f06c12"
+      }
+    },
+    {
+      "sample": "pointCloud0490_A1_plane",
+      "source_id": 490,
+      "type": "plane",
+      "artifact": "A1",
+      "points": 3216,
+      "source_sha256": {
+        "pointCloud490.txt": "dc4c0b984ed27360b811d3d1bc76cd0bbac46060de00c0ccf5d60dd4489b9dbc",
+        "GTpointCloud490.txt": "9d89324569038f6ad0edaaaaf91603905463b276c84fe95e74d65a713e1cb063",
+        "infoPointCloud490.txt": "adfd5944a8a792799dbdc64bdd1e4116b4b0032899ba51d8943a0c592630cbdc"
+      }
+    },
+    {
+      "sample": "pointCloud0498_A2_sphere",
+      "source_id": 498,
+      "type": "sphere",
+      "artifact": "A2",
+      "points": 6400,
+      "source_sha256": {
+        "pointCloud498.txt": "2a470a8a7e8bff74e0703f906ccc5945616a7e521db5cb29c0fb77a0af35f816",
+        "GTpointCloud498.txt": "ad3f85420263b3fb6442462be2de0ba0ec357a7fd174c45cce396125e499f9ac",
+        "infoPointCloud498.txt": "51b6217d5b91e238c8bbab9ba64b4056ef182303de8877611775303d7a71ffc8"
+      }
+    },
+    {
+      "sample": "pointCloud0502_A6_sphere",
+      "source_id": 502,
+      "type": "sphere",
+      "artifact": "A6",
+      "points": 489,
+      "source_sha256": {
+        "pointCloud502.txt": "c97d801e680a33f99dc70f7a231f1dbbdb655d886692242a1cace6e2384f3af7",
+        "GTpointCloud502.txt": "ec201814407d4f1fc97c2fd9010317c624c616337b4aa9c93e9be5e34a74af0f",
+        "infoPointCloud502.txt": "5b7ccccc7143458c2422477ff02f2bf7061a401943235bfafade1ca514582a47"
+      }
+    },
+    {
+      "sample": "pointCloud0509_A8_plane",
+      "source_id": 509,
+      "type": "plane",
+      "artifact": "A8",
+      "points": 4376,
+      "source_sha256": {
+        "pointCloud509.txt": "89806d3e3ad8c95e7e79d6fc117fdc8e0ba8b6e5337601f244d5542913096e57",
+        "GTpointCloud509.txt": "4b70c4fe5d0fe6a972f06f8cb63d507988bc94bc6455212d09a5933b7893e196",
+        "infoPointCloud509.txt": "839bdc392a08a2c4166b130e3d748c256256200111f99b754a014e2bf5529296"
+      }
+    },
+    {
+      "sample": "pointCloud0528_A2_plane",
+      "source_id": 528,
+      "type": "plane",
+      "artifact": "A2",
+      "points": 4032,
+      "source_sha256": {
+        "pointCloud528.txt": "0e0d0634bddbd37375997e0647f3272031f79da2bc32f68ca05b3b8bd03ef0c6",
+        "GTpointCloud528.txt": "1e3db81b18d4137039c87d5193b5ec9e814798a36d391f6c0bfdcd69e01e0ec7",
+        "infoPointCloud528.txt": "0b80af376e76a27ab8811b0bd0c02117fea1870f862a083d6b88356c32b8b8ab"
+      }
+    },
+    {
+      "sample": "pointCloud0531_A3_plane",
+      "source_id": 531,
+      "type": "plane",
+      "artifact": "A3",
+      "points": 1021,
+      "source_sha256": {
+        "pointCloud531.txt": "11a485296056aea1536a4d6fa2a903303bc948a0b947d9432188fa1c32cd0860",
+        "GTpointCloud531.txt": "6088ba244bb1a62af85d9fbbb2b5a6ae3e5accc76140840ef49d1fec6440952a",
+        "infoPointCloud531.txt": "f392d0c9a60bdfa6bb27ca4068b6c19bf26370d63f70c58f877fd9010629daba"
+      }
+    },
+    {
+      "sample": "pointCloud0574_A1_sphere",
+      "source_id": 574,
+      "type": "sphere",
+      "artifact": "A1",
+      "points": 1366,
+      "source_sha256": {
+        "pointCloud574.txt": "a851c6e3722ca84adf7215e17cbd773c549a3ade7ccb1d24a47946c558850de8",
+        "GTpointCloud574.txt": "a7c2e3e414c3823279ef07c7ff9fe08f975ede3273f819b2612be1dede360888",
+        "infoPointCloud574.txt": "1c565c6a9fe4a1fba6d5c1fed775d0ff3fb0539a0b55cd5a63971b444aa5eb3e"
+      }
+    },
+    {
+      "sample": "pointCloud0576_A4_plane",
+      "source_id": 576,
+      "type": "plane",
+      "artifact": "A4",
+      "points": 2982,
+      "source_sha256": {
+        "pointCloud576.txt": "309f1bf99d5fb0100fd205e8da0246e2f5dbde1f74c79b095f15dbcfac722bcb",
+        "GTpointCloud576.txt": "9573214f423759282fd18ef8dc80e36ddfb0603da30df677ecc019974393da89",
+        "infoPointCloud576.txt": "159c6bd428925f089a175faeb80c8bd223a302a994d4dbe8c07cf356df9f934d"
+      }
+    },
+    {
+      "sample": "pointCloud0579_A7_cylinder",
+      "source_id": 579,
+      "type": "cylinder",
+      "artifact": "A7",
+      "points": 5261,
+      "source_sha256": {
+        "pointCloud579.txt": "f284aa2c5f6f6dfcd8f13fc3fa76ee4865b0c35030d0ec0ef5d50feef67c81a1",
+        "GTpointCloud579.txt": "9b859e67e3f51245db43b12f0ef98fa7bf7179d701e977ffc0cc0c3be9f9fb2d",
+        "infoPointCloud579.txt": "c28281cd9b9c66cd8eabfe7275e61b0047df00cea07d6620fdc0934d9d76d8d6"
+      }
+    },
+    {
+      "sample": "pointCloud0649_A9_cylinder",
+      "source_id": 649,
+      "type": "cylinder",
+      "artifact": "A9",
+      "points": 6400,
+      "source_sha256": {
+        "pointCloud649.txt": "1e5c2a765fab8d68f2abbe5dca825c6686cb2943ffe5fd01a8b5b91312ae06f4",
+        "GTpointCloud649.txt": "31c8c933116486c836b54b4d445a81f1f0cdfcc1ed0f6c34dd97d3c72332e7aa",
+        "infoPointCloud649.txt": "035fcaf1a0f609a23c8b9d681aef6d962e71e6613f13cd050c18ec3e7194cbc9"
+      }
+    }
+  ]
+}

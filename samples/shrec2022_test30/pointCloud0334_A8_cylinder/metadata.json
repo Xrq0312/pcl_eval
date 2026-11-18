@@ -1,0 +1,47 @@
+{
+  "dataset": "SHREC2022",
+  "split": "official_test",
+  "source_id": 334,
+  "source_repository": "https://github.com/chiararomanengo/SHREC2022",
+  "source_commit": "da2b5f4f5c69896c69ac2777db2d2d499e32f03d",
+  "artifact": "A8",
+  "artifact_description": "gaussian_noise+missing_parts",
+  "primitive_type": "cylinder",
+  "num_points": 2869,
+  "num_primitives": 1,
+  "target_primitives": 1,
+  "bbox": {
+    "x": [
+      -1.81753717251481,
+      4.18538020869286
+    ],
+    "y": [
+      -3.96012000681378,
+      1.7391217498336
+    ],
+    "z": [
+      -1.43492056135694,
+      2.84507058745802
+    ]
+  },
+  "info_vector": [
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    2090.0,
+    20.0,
+    0.0,
+    0.0,
+    1.0,
+    0.317810927297288,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "source_sha256": {
+    "pointCloud334.txt": "da824b9f939dcc1bffd612e7aa6d27066b157bf09a3980e7a7f81db8a79ddee9",
+    "GTpointCloud334.txt": "d7df451fe3c03c394030486033125c34550789da2af7f0b87a92af8b6d9fdf72",
+    "infoPointCloud334.txt": "bbf258be68902026a28f6d9cccdd8893ebc5e408a9e6f746268928b3daf0d3f4"
+  }
+}

@@ -1,0 +1,296 @@
+{
+  "sample": "synth_00",
+  "num_points": 12000,
+  "timing_seconds": {
+    "normals": 0.039829,
+    "region_growing": 0.0241252,
+    "fitting": 0.0775085,
+    "merging": 0.0002801
+  },
+  "config": {
+    "distance": 0.006,
+    "min_points": 80,
+    "smoothness_deg": 8,
+    "curvature": 0.1,
+    "min_radius": 0.05,
+    "max_radius": 1,
+    "merge_distance": 0.018,
+    "merge_angle_deg": 5,
+    "normal_k": 30,
+    "region_neighbors": 30,
+    "max_iterations": 2000,
+    "cylinder_iterations": 4000,
+    "min_inlier_ratio": 0.8,
+    "max_rmse_factor": 0.75,
+    "ablation": "D"
+  },
+  "premerge_instance": {
+    "num_gt": 6,
+    "num_pred": 6,
+    "num_gt_target": 6,
+    "num_pred_target": 6,
+    "detection_rate_iou0.5": 1.0,
+    "detection_rate_typed": 1.0,
+    "miou_target": 0.97696532064809,
+    "mean_iou_matched": 0.97696532064809,
+    "gt_unmatched": [],
+    "pred_unmatched": [
+      0,
+      1,
+      2,
+      4,
+      5
+    ],
+    "matched_pairs": [
+      {
+        "gt": 0,
+        "pred": 0,
+        "iou": 1.0,
+        "gt_type": "plane",
+        "pred_type": "plane"
+      },
+      {
+        "gt": 1,
+        "pred": 1,
+        "iou": 1.0,
+        "gt_type": "plane",
+        "pred_type": "plane"
+      },
+      {
+        "gt": 2,
+        "pred": 5,
+        "iou": 0.9996,
+        "gt_type": "sphere",
+        "pred_type": "sphere"
+      },
+      {
+        "gt": 3,
+        "pred": 4,
+        "iou": 0.9383,
+        "gt_type": "cylinder",
+        "pred_type": "cylinder"
+      },
+      {
+        "gt": 4,
+        "pred": 2,
+        "iou": 0.9527,
+        "gt_type": "plane",
+        "pred_type": "plane"
+      },
+      {
+        "gt": 5,
+        "pred": 3,
+        "iou": 0.9711,
+        "gt_type": "plane",
+        "pred_type": "plane"
+      }
+    ]
+  },
+  "final_instance": {
+    "num_gt": 6,
+    "num_pred": 5,
+    "num_gt_target": 6,
+    "num_pred_target": 5,
+    "detection_rate_iou0.5": 0.8333333333333334,
+    "detection_rate_typed": 0.8333333333333334,
+    "miou_target": 0.72696532064809,
+    "mean_iou_matched": 0.872358384777708,
+    "gt_unmatched": [
+      1
+    ],
+    "pred_unmatched": [
+      0,
+      1,
+      3,
+      4
+    ],
+    "matched_pairs": [
+      {
+        "gt": 0,
+        "pred": 0,
+        "iou": 0.5,
+        "gt_type": "plane",
+        "pred_type": "plane"
+      },
+      {
+        "gt": 2,
+        "pred": 4,
+        "iou": 0.9996,
+        "gt_type": "sphere",
+        "pred_type": "sphere"
+      },
+      {
+        "gt": 3,
+        "pred": 3,
+        "iou": 0.9383,
+        "gt_type": "cylinder",
+        "pred_type": "cylinder"
+      },
+      {
+        "gt": 4,
+        "pred": 1,
+        "iou": 0.9527,
+        "gt_type": "plane",
+        "pred_type": "plane"
+      },
+      {
+        "gt": 5,
+        "pred": 2,
+        "iou": 0.9711,
+        "gt_type": "plane",
+        "pred_type": "plane"
+      }
+    ]
+  },
+  "merge": {
+    "gt_regions_count": {
+      "0": 1,
+      "1": 1,
+      "2": 1,
+      "3": 88,
+      "4": 24,
+      "5": 11
+    },
+    "oversegmented_gt": {
+      "3": 88,
+      "4": 24,
+      "5": 11
+    },
+    "premerge_miou_target": 0.97696532064809,
+    "final_miou_target": 0.72696532064809,
+    "premerge_detection": 1.0,
+    "final_detection": 0.8333333333333334,
+    "gt_merged_into_multi": {}
+  },
+  "point_type_confusion": {
+    "plane": {
+      "plane": 6326,
+      "sphere": 0,
+      "cylinder": 0,
+      "none": 74
+    },
+    "sphere": {
+      "plane": 0,
+      "sphere": 2500,
+      "cylinder": 0,
+      "none": 0
+    },
+    "cylinder": {
+      "plane": 18,
+      "sphere": 0,
+      "cylinder": 2815,
+      "none": 167
+    },
+    "cone": {
+      "plane": 0,
+      "sphere": 0,
+      "cylinder": 0,
+      "none": 0
+    },
+    "none": {
+      "plane": 0,
+      "sphere": 1,
+      "cylinder": 0,
+      "none": 99
+    }
+  },
+  "point_type_prf": {
+    "plane": {
+      "precision": 0.9971626733921816,
+      "recall": 0.9884375,
+      "f1": 0.9927809165097301,
+      "points": 6400
+    },
+    "sphere": {
+      "precision": 0.9996001599360256,
+      "recall": 1.0,
+      "f1": 0.9998000399920016,
+      "points": 2500
+    },
+    "cylinder": {
+      "precision": 1.0,
+      "recall": 0.9383333333333334,
+      "f1": 0.9681857265692175,
+      "points": 3000
+    }
+  },
+  "point_type_accuracy_target": 0.9782352941176471,
+  "non_target": {
+    "cone_points": 0,
+    "cone_assigned_ratio": 0.0,
+    "none_points": 100,
+    "none_assigned_ratio": 0.01
+  },
+  "instance_type_accuracy": 1.0,
+  "parameter_errors": [
+    {
+      "gt": 0,
+      "pred": 0,
+      "type": "plane",
+      "iou": 0.5,
+      "gt_points": 2000,
+      "pred_points": 4000,
+      "pred_rmse": 0.00100427734456,
+      "normal_angle_deg": 0.005389688153759198,
+      "offset_dist": 3.78036857001e-05
+    },
+    {
+      "gt": 2,
+      "pred": 4,
+      "type": "sphere",
+      "iou": 0.9996,
+      "gt_points": 2500,
+      "pred_points": 2501,
+      "pred_rmse": 0.000972533183228,
+      "center_dist": 6.336025046894503e-05,
+      "radius_abs_err": 1.4251470999981919e-05,
+      "radius_rel_err": 4.071848857137692e-05
+    },
+    {
+      "gt": 3,
+      "pred": 3,
+      "type": "cylinder",
+      "iou": 0.9383,
+      "gt_points": 3000,
+      "pred_points": 2815,
+      "pred_rmse": 0.00102590122179,
+      "axis_angle_deg": 0.020228892293987583,
+      "axis_line_dist": 0.00010027216618353813,
+      "radius_abs_err": 0.00020182132699997357,
+      "radius_rel_err": 0.0008072853079998943
+    },
+    {
+      "gt": 4,
+      "pred": 1,
+      "type": "plane",
+      "iou": 0.9527,
+      "gt_points": 1200,
+      "pred_points": 1155,
+      "pred_rmse": 0.00102107092294,
+      "normal_angle_deg": 0.021483527796126112,
+      "offset_dist": 3.7217139999823345e-05
+    },
+    {
+      "gt": 5,
+      "pred": 2,
+      "type": "plane",
+      "iou": 0.9711,
+      "gt_points": 1200,
+      "pred_points": 1189,
+      "pred_rmse": 0.00105216904525,
+      "normal_angle_deg": 0.007812863703303499,
+      "offset_dist": 0.00024953186500001334
+    }
+  ],
+  "failures": {
+    "failed_region_count": 185,
+    "failed_region_reasons": {
+      "too_few_points": 185
+    },
+    "unassigned_points": 340,
+    "unassigned_ratio": 0.028333333333333332,
+    "nonfinite_param_models": 0,
+    "exit_code": null
+  },
+  "dataset": "synthetic"
+}

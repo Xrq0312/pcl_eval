@@ -1,0 +1,814 @@
+{
+  "selection": "23 remaining frozen official test IDs; excluded existing regression IDs",
+  "evaluation_status": "sealed",
+  "ids": [
+    2,
+    3,
+    5,
+    6,
+    8,
+    9,
+    11,
+    12,
+    14,
+    15,
+    17,
+    18,
+    20,
+    21,
+    23,
+    24,
+    26,
+    27,
+    29,
+    30,
+    32,
+    33,
+    34
+  ],
+  "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+  "samples": [
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC2",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 20621,
+      "num_primitives": 17,
+      "target_primitives": 15,
+      "ambiguous_multi_primitive_points": 938,
+      "unlabeled_points": 608,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          -14.4526,
+          14.4526
+        ],
+        "y": [
+          -7.143743,
+          7.143744
+        ],
+        "z": [
+          0.0,
+          25.4
+        ]
+      },
+      "source_sha256": {
+        "PC2.txt": "a7eef77568df2caed96732adb2315a8a02b37fa37c14aade594863b9847b2c8c",
+        "PC2_primitives.txt": "855c786ba24c25a81ebaaa5cf0dd0b4760e12327d4e0fbf245c974c4fef72530",
+        "PC2_parametric.txt": "c650f434ccc52a312f4f51d1415a5fc5d323503bc982f7298986e0c31e92e7d6",
+        "PC2_implicit.txt": "d5323e770f8f04fc3c41eb8f9a31f82974632f7e4706925cd30871219061f65e"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC3",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 9723,
+      "num_primitives": 35,
+      "target_primitives": 35,
+      "ambiguous_multi_primitive_points": 1225,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          -26.479334,
+          26.479025
+        ],
+        "y": [
+          -26.479334,
+          26.479025
+        ],
+        "z": [
+          0.0,
+          10.541
+        ]
+      },
+      "source_sha256": {
+        "PC3.txt": "1b992e2c00b1310a4cf63ba0966a5956c012a8c740a20b78396fbde61ba3b8c9",
+        "PC3_primitives.txt": "23ddda7f7e23f3d811e23d1b61cdb42ea7bfdf3dcefbc7b9f1ae4c238d430b08",
+        "PC3_parametric.txt": "aad3843be34c3cb316dafa45acec91edae9d21dc211330430cbf924319d88b2f",
+        "PC3_implicit.txt": "b7a42abe2bf7639c65428cbc17c5c6cdd92634d16327f62e5c9327bf89b07cd0"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC5",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 20000,
+      "num_primitives": 37,
+      "target_primitives": 37,
+      "ambiguous_multi_primitive_points": 1395,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          -167.790878,
+          167.790878
+        ],
+        "y": [
+          -88.185776,
+          93.402512
+        ],
+        "z": [
+          -119.071304,
+          19.049999
+        ]
+      },
+      "source_sha256": {
+        "PC5.txt": "94e0e2acfcac4ebeffebc442f5a6a6f0d8ef980828a81af6d88a267c5f01e7c7",
+        "PC5_primitives.txt": "3479860135b7a81daa114c29f0385559ebd0cedabb58bc6f53e2c05bfcb14bc4",
+        "PC5_parametric.txt": "f6982f75b1ee6eabe5d7f0c13843732a79e8906baad7304da92cd18132d168e1",
+        "PC5_implicit.txt": "4cd0138bc298d4b55618f09db79b19a0df181cd6576b90521b01dcc28b1b9106"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC6",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 9390,
+      "num_primitives": 26,
+      "target_primitives": 26,
+      "ambiguous_multi_primitive_points": 812,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          -68.507851,
+          89.641411
+        ],
+        "y": [
+          -46.462868,
+          43.880112
+        ],
+        "z": [
+          0.0,
+          10.16
+        ]
+      },
+      "source_sha256": {
+        "PC6.txt": "0ff5eb4c721d7f75df29f714ff639e057fca7ca1b7e2f3da83283f1c661e0866",
+        "PC6_primitives.txt": "dae152d2284305889ceb66cb8c5f29a2ad3023d0644035960b3df1657e4631c0",
+        "PC6_parametric.txt": "25d44bd194f170e6360b24db22cf43bb42a1c982f28529e1aec1b6ab5438771a",
+        "PC6_implicit.txt": "ae81ec0c3cf26d455a603e63a6170d79b4a4ee4023bb3f384407daa1ca4ab420"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC8",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 7500,
+      "num_primitives": 32,
+      "target_primitives": 32,
+      "ambiguous_multi_primitive_points": 733,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          -16.645367,
+          23.057961
+        ],
+        "y": [
+          0.0,
+          7.62
+        ],
+        "z": [
+          -16.645382,
+          16.645384
+        ]
+      },
+      "source_sha256": {
+        "PC8.txt": "f07f443b704e73077ae26f70758948d76c0b3689d3de8ae962c23646faf15090",
+        "PC8_primitives.txt": "86c1eeaff318e20986b2bdb1d5feeb4339e9b521ce2bf637482f23c2fba89e93",
+        "PC8_parametric.txt": "aa59f4d4a9fe441f84419c5ff887a6f5344168c4e7838c319b87c058dcb336e4",
+        "PC8_implicit.txt": "cd3f15ea4a9520642d164016bcf097912203d5b152d8aedfef74c4bdd2c687b9"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC9",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 17000,
+      "num_primitives": 104,
+      "target_primitives": 104,
+      "ambiguous_multi_primitive_points": 2069,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          -6.5,
+          6.5
+        ],
+        "y": [
+          -6.499998,
+          6.499999
+        ],
+        "z": [
+          -6.0,
+          8.0
+        ]
+      },
+      "source_sha256": {
+        "PC9.txt": "79bf046c1bb3f03bbb2a3ca2217eb1d87546ac24ad3ddcbcce00cd7ed40848c9",
+        "PC9_primitives.txt": "8dff72cafd1c1d5af13b85564cbae2aad6148b9440a1eb8d94a18cf1dcf8fae2",
+        "PC9_parametric.txt": "670c882d4d73ab81793b40eb8dda691f8ce966fe97d945c696a5eb29963de6ba",
+        "PC9_implicit.txt": "837acc2aee406c59f99296dc0d2917b14a45b8b336f012d4657e34d6a6c57b5b"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC11",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 13201,
+      "num_primitives": 13,
+      "target_primitives": 9,
+      "ambiguous_multi_primitive_points": 853,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          -28.499994,
+          28.5
+        ],
+        "y": [
+          -28.499992,
+          28.499998
+        ],
+        "z": [
+          -107.5,
+          26.5
+        ]
+      },
+      "source_sha256": {
+        "PC11.txt": "3d7b0e9f99be9fb6b2775dc95f7f7e3ae172987aba6918848014f16d8678eb3a",
+        "PC11_primitives.txt": "d8a68367c947b2b85e15216297b9efa69cd8d6f16c4c1446784719a69af98cf8",
+        "PC11_parametric.txt": "9162b5afc231d68ab9b08e10a30d779bef5e445a94feb731a8da52eb4d478a28",
+        "PC11_implicit.txt": "e6187c0d3801f7ac885010d1cb2004b089a518fe6c96c9d7f3ae852bd3b41401"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC12",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 12723,
+      "num_primitives": 6,
+      "target_primitives": 5,
+      "ambiguous_multi_primitive_points": 797,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          -15.0,
+          15.0
+        ],
+        "y": [
+          -14.999621,
+          14.999621
+        ],
+        "z": [
+          0.0,
+          5.5
+        ]
+      },
+      "source_sha256": {
+        "PC12.txt": "6a700aee36c8c190823592da35a7297608114d342c5fdd6a3dc3d11fa59d5049",
+        "PC12_primitives.txt": "824bd694c0c6ba289a4904564573e8071251300508450939a44ce84468f0f27d",
+        "PC12_parametric.txt": "b8a65817d710f4183bbed9e3592103e11fbeead6bd9e25539d8b7a2efed1bec6",
+        "PC12_implicit.txt": "1b8b66e989147a3312314055234c3ebc488da055c43c9ec94a8aab133ea40e93"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC14",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 7500,
+      "num_primitives": 8,
+      "target_primitives": 6,
+      "ambiguous_multi_primitive_points": 476,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          90.0,
+          100.0
+        ],
+        "y": [
+          40.0,
+          60.0
+        ],
+        "z": [
+          240.0,
+          260.0
+        ]
+      },
+      "source_sha256": {
+        "PC14.txt": "859bb31e783c078040d88747890622e51a26b5559bf04fce641b2c6be05aa1db",
+        "PC14_primitives.txt": "33ecdac5bebaa0b67cf51f10f45d5a5d5efecfaf9445fba603ba1c13174135f6",
+        "PC14_parametric.txt": "a6cb29cf12296d04a125cbe3953ecd8eae1b80dcc8ae3f2aadbf5142654ee1a8",
+        "PC14_implicit.txt": "ca36cdd620a81fcdbf4d7f00862a8117132b049442e9cf720913629e427f9120"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC15",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 5000,
+      "num_primitives": 15,
+      "target_primitives": 15,
+      "ambiguous_multi_primitive_points": 249,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          0.0,
+          42.0
+        ],
+        "y": [
+          -23.999975,
+          23.999998
+        ],
+        "z": [
+          -20.0,
+          20.0
+        ]
+      },
+      "source_sha256": {
+        "PC15.txt": "fa45237489d1a039424f0b6f3a078cfaf5ecafad4150dc4288a73cc338d961f2",
+        "PC15_primitives.txt": "6a5472aed96d30f1e6ecde28da92665cbc5ae447f0812a11ca53c5330859534d",
+        "PC15_parametric.txt": "7f68dedd58ea67cd80d87b4dbe7136ec3418821fc5471cda2674075787a84ba4",
+        "PC15_implicit.txt": "fed1274b0a4abec1018d198fedd61a90ead05b22d15be23329b26997f8601a16"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC17",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 21137,
+      "num_primitives": 45,
+      "target_primitives": 45,
+      "ambiguous_multi_primitive_points": 1858,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          -46.762394,
+          46.762394
+        ],
+        "y": [
+          0.0,
+          63.5
+        ],
+        "z": [
+          -47.625,
+          47.625
+        ]
+      },
+      "source_sha256": {
+        "PC17.txt": "e5d161bf02990d40f86ed70c41aa3fd942723193fd954812c562e5c556f1f64a",
+        "PC17_primitives.txt": "14fcafb0918796529f3e128db7b69a7b7f31103e4fd846755e4edf7c7c83e265",
+        "PC17_parametric.txt": "d656ad8e117984e9ec429af04ecf4bbd0fd19b9f720843d5c3495f8d14d43269",
+        "PC17_implicit.txt": "624fd7cbbd18a24b2e86ce6d7607dc6802ac4eb3d855a2aa1e945f515c38f83f"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC18",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 16406,
+      "num_primitives": 29,
+      "target_primitives": 27,
+      "ambiguous_multi_primitive_points": 2152,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          -105.841621,
+          105.841621
+        ],
+        "y": [
+          -394.037842,
+          -149.732895
+        ],
+        "z": [
+          -105.844498,
+          79.093185
+        ]
+      },
+      "source_sha256": {
+        "PC18.txt": "5e8b69b9b009fcd00cce52e8cefb7b96215f28b62644a961aa000265a120eeb1",
+        "PC18_primitives.txt": "e88baafba5f9461ca6868429db6607ec44868c20e418c341a76cc078e5d99ef1",
+        "PC18_parametric.txt": "5b0685f80ade307d24b5e946ebcbe2947db16255de457d1017512bd260bd6c64",
+        "PC18_implicit.txt": "307a916e679c82a857a1f3c4e88a8a4faf37ce1a2992dac7aa3261727fa511e2"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC20",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 2500,
+      "num_primitives": 14,
+      "target_primitives": 14,
+      "ambiguous_multi_primitive_points": 107,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          -4.762438,
+          4.7625
+        ],
+        "y": [
+          -4.759308,
+          4.762396
+        ],
+        "z": [
+          0.0,
+          23.622
+        ]
+      },
+      "source_sha256": {
+        "PC20.txt": "22d5c0c1ca7f11df914eb774f7c427b84e7eb6c87d5e6081bdc18768a25b5a53",
+        "PC20_primitives.txt": "33ea62df325dc7f8fd2e266a6725bceeb6e06f685f276d3bb2da6fbb6807b615",
+        "PC20_parametric.txt": "c8145eac04cb6a10fdc4b4692f90412d4423b2257fcc0250a4d37a13c10723d8",
+        "PC20_implicit.txt": "82fddae12acb9725cfd69fa1871499f936092ce7c002b37f336f2ba5f1a480c2"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC21",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 1000,
+      "num_primitives": 5,
+      "target_primitives": 3,
+      "ambiguous_multi_primitive_points": 45,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          0.0,
+          9.525
+        ],
+        "y": [
+          -12.7,
+          12.699816
+        ],
+        "z": [
+          -25.4,
+          -0.003873
+        ]
+      },
+      "source_sha256": {
+        "PC21.txt": "5df3f07b0c867cd303ce8a951e3de565f8cba556c1a26a2e32eb14938894390a",
+        "PC21_primitives.txt": "7139c78af03ee9219d534f7234871f4b44d42b59066e280ee7cfc1fde03d7c95",
+        "PC21_parametric.txt": "0cae88a4cc99193fee04a93f42b31cb46e435183599b511123866f1129e360d2",
+        "PC21_implicit.txt": "f71df7055b2b2574f8827688b2ced93697fc905cf2f6a0d9aa845d18ae473d0a"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC23",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 19088,
+      "num_primitives": 13,
+      "target_primitives": 8,
+      "ambiguous_multi_primitive_points": 1328,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          -21.999992,
+          22.0
+        ],
+        "y": [
+          -28.0,
+          0.0
+        ],
+        "z": [
+          -21.999943,
+          21.999956
+        ]
+      },
+      "source_sha256": {
+        "PC23.txt": "47ab348ba87948e405f00d7d5af94a37096e37ed1a178c5bdcc8a120a84056f9",
+        "PC23_primitives.txt": "afc24f6f0a22e472f05eee3faae9bf36373264e1feabb2aee582b7259c8bf441",
+        "PC23_parametric.txt": "63e16b367eb9805f67fe2f9369f6a08f285fe205635609bcdfe8adc2c68e5d81",
+        "PC23_implicit.txt": "eefcd6f58a4bfa5238e239bad9f861824b91b3239aa0a1c2cc8d6e6de8a28d70"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC24",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 13767,
+      "num_primitives": 27,
+      "target_primitives": 27,
+      "ambiguous_multi_primitive_points": 1300,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          -0.0,
+          74.0
+        ],
+        "y": [
+          -32.0,
+          0.0
+        ],
+        "z": [
+          0.0,
+          12.0
+        ]
+      },
+      "source_sha256": {
+        "PC24.txt": "0115768d5a81a98a8433a3b0dac84ef3c838db7a71a75e2ffc248e61271799ee",
+        "PC24_primitives.txt": "31143c013f0fded0150d4e96d642f527caedad08edc6f7f8e9923b9f5d04affc",
+        "PC24_parametric.txt": "6bdd10921d68b410f84ddd7870c3ccdf2461025ab2aa91e6214dac745a446668",
+        "PC24_implicit.txt": "9120cf72a7dae5453ae393983fe76a5e346ae2ccb4ca634b1f6bc2cf3b6dcfc8"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC26",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 17374,
+      "num_primitives": 14,
+      "target_primitives": 14,
+      "ambiguous_multi_primitive_points": 1044,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          0.0,
+          101.599998
+        ],
+        "y": [
+          0.0,
+          25.4
+        ],
+        "z": [
+          0.0,
+          25.4
+        ]
+      },
+      "source_sha256": {
+        "PC26.txt": "b7c72b3f172753f6ba56ed1e2badfac69a646ad2c8b1eb987855a536e3dd526b",
+        "PC26_primitives.txt": "fb9952a76e9cce6ba7256b5f38b05bf089bfa26ae0ae8aa2a354fa937cfaef56",
+        "PC26_parametric.txt": "26dbbd95f8f39e946aee87ee2aaa8061b0879b852c4d2265cb9733c7a47398f9",
+        "PC26_implicit.txt": "749a0fff8278224437e931194e48f1d54aa9f4b29cbb63e38e06c8725e834ef0"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC27",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 19339,
+      "num_primitives": 9,
+      "target_primitives": 7,
+      "ambiguous_multi_primitive_points": 1499,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          -12.7,
+          12.7
+        ],
+        "y": [
+          -27.380732,
+          -1.980737
+        ],
+        "z": [
+          -3.620555,
+          9.332753
+        ]
+      },
+      "source_sha256": {
+        "PC27.txt": "44c84c0c79e2f563681b0893ffbd684d33b7c1b0363d375fb1f0d640dffa9c3e",
+        "PC27_primitives.txt": "2a54351592e47b71b60fcd6a40ee7b3666d59ec1d2f7bf90252829c6bc10036e",
+        "PC27_parametric.txt": "a315ec0b7939e3980d9c4456c2e94ec92514f62395e5f92908b185ef8237b7e4",
+        "PC27_implicit.txt": "53da1b1139f747a6bac8430aff209d1cb39fac7db71b0ae6d732c2a69c059352"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC29",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 12753,
+      "num_primitives": 9,
+      "target_primitives": 7,
+      "ambiguous_multi_primitive_points": 613,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          -13.0,
+          13.0
+        ],
+        "y": [
+          -12.999999,
+          12.999999
+        ],
+        "z": [
+          -58.599998,
+          3.7
+        ]
+      },
+      "source_sha256": {
+        "PC29.txt": "0171f68548c7867f16a3c578dbaefa2f8565fc04f7aa2d0d60492b996d15906d",
+        "PC29_primitives.txt": "6cbb512e3b8e055a6070f623d47281af8a4349e3c55366282947c432ab3d608e",
+        "PC29_parametric.txt": "a1f4ac3e5f696bff06ba164aae69d33a6d6e9bcaf2380901bfb16944b056cd0c",
+        "PC29_implicit.txt": "e31a4f794e8bc91ed3329b6234fee211752854f5ea73780a7268a4919681f979"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC30",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 2500,
+      "num_primitives": 13,
+      "target_primitives": 13,
+      "ambiguous_multi_primitive_points": 135,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          -25.0,
+          5.0
+        ],
+        "y": [
+          0.0,
+          23.0
+        ],
+        "z": [
+          0.0,
+          6.0
+        ]
+      },
+      "source_sha256": {
+        "PC30.txt": "f0c64e2cd86c14a16612de48cc05634be7985fc81b7d75db55b0af84d14060ea",
+        "PC30_primitives.txt": "5f63d1b1f4d217efd7663576ae88e6552bda4d23cd1b63f6ffd5d8f81a108897",
+        "PC30_parametric.txt": "9945fd0f09cc28c0d3d1030897c33555536c542d7b06b270ae10cf300b9408cc",
+        "PC30_implicit.txt": "a73f38948550f5b95db31395cb49a9bdae2b1f7924628935630db5370ed6b984"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC32",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 18950,
+      "num_primitives": 22,
+      "target_primitives": 22,
+      "ambiguous_multi_primitive_points": 994,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          0.0,
+          42.0
+        ],
+        "y": [
+          0.0,
+          42.0
+        ],
+        "z": [
+          0.0,
+          62.0
+        ]
+      },
+      "source_sha256": {
+        "PC32.txt": "b2ff839a9d42b84ce2dacbfb2d276ccf0b193fc4639a86d1d06090236a6cb1c1",
+        "PC32_primitives.txt": "1b3dc2dcee5937c9d6c80dfca4bdfc5b406a9eeaaa3f71d444098c42202d565c",
+        "PC32_parametric.txt": "5951c636d32396b604839862b8581f85108209c0ae76519c63028cc19b976c7e",
+        "PC32_implicit.txt": "968ba7fe303fdc85cc58c36ab8add6cad93712b3aa81cdd8ded86b1ee646ac4f"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC33",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 1500,
+      "num_primitives": 3,
+      "target_primitives": 3,
+      "ambiguous_multi_primitive_points": 54,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          -5.499444,
+          5.5
+        ],
+        "y": [
+          -5.5,
+          5.493194
+        ],
+        "z": [
+          -1.999412,
+          -0.0
+        ]
+      },
+      "source_sha256": {
+        "PC33.txt": "d899d566138ffafebd332cd29edbf3c917a682dc21f57bbc43957707694c5796",
+        "PC33_primitives.txt": "f3ac9a50597acb945ef18f53c044cd02b770a34511f0272fe29f47384a39a950",
+        "PC33_parametric.txt": "4a71e5387a887f5644dd6f29e7ff6529073cc3baa2610930c78018a140dc92f2",
+        "PC33_implicit.txt": "eeea5ca77ef27456de8900465e71ebca4feac66e0d4731f8445683b95793e8e7"
+      }
+    },
+    {
+      "dataset": "Fit4CAD",
+      "split": "official_test",
+      "source_model": "PC34",
+      "source_repository": "https://github.com/chiararomanengo/Fit4CAD",
+      "source_commit": "abe2693789b0021f097aab210f354e8cf95a70c7",
+      "source_coordinate_units": "unspecified",
+      "num_points": 12089,
+      "num_primitives": 14,
+      "target_primitives": 13,
+      "ambiguous_multi_primitive_points": 660,
+      "unlabeled_points": 0,
+      "label_policy": "one membership -> source primitive; zero or multiple -> none",
+      "bbox": {
+        "x": [
+          -10.5,
+          10.5
+        ],
+        "y": [
+          -10.5,
+          10.5
+        ],
+        "z": [
+          -40.0,
+          6.593407
+        ]
+      },
+      "source_sha256": {
+        "PC34.txt": "ff5912efc4e3b4e4025ef9c8f600812d97615ffa8ec75081e7c81b485d3b93bc",
+        "PC34_primitives.txt": "31f5b551e686628d582ee20b9707fcf7129b6918018c99c3774aaf6d3446f84a",
+        "PC34_parametric.txt": "412a86eb6bf4de6f6058cda9706c13b2248f3a68a33549e36590a290acbe4156",
+        "PC34_implicit.txt": "ddb9d8d9fca667d9a492ae3fdf0940986f0baa76fd42f64112a514d0d2172b0c"
+      }
+    }
+  ]
+}

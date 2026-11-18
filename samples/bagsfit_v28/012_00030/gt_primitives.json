@@ -1,0 +1,202 @@
+{
+  "primitives": [
+    {
+      "instance_id": 0,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source": "bagsfit_prim",
+      "point": [
+        -1.3352257013320923,
+        -0.5906436443328857,
+        3.0608773231506348
+      ],
+      "normal": [
+        -3.725290298461914e-09,
+        0.08418687433004379,
+        -0.9964499473571777
+      ]
+    },
+    {
+      "instance_id": 6,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source": "bagsfit_prim",
+      "point": [
+        -3.5390257835388184e-08,
+        0.0,
+        1.6054350137710571
+      ],
+      "normal": [
+        -3.725290298461914e-09,
+        0.08418687433004379,
+        -0.9964499473571777
+      ]
+    },
+    {
+      "instance_id": 7,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source": "bagsfit_prim",
+      "point": [
+        -0.12821173667907715,
+        -0.04414080083370209,
+        1.5022364854812622
+      ],
+      "normal": [
+        0.48434773087501526,
+        -0.5996284484863281,
+        -0.6370659470558167
+      ]
+    },
+    {
+      "instance_id": 8,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source": "bagsfit_prim",
+      "point": [
+        0.334855854511261,
+        0.08565875887870789,
+        1.5340027809143066
+      ],
+      "normal": [
+        0.5494845509529114,
+        -0.831135630607605,
+        0.08532731980085373
+      ]
+    },
+    {
+      "instance_id": 9,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source": "bagsfit_prim",
+      "point": [
+        -0.1698477566242218,
+        0.19754020869731903,
+        1.4510910511016846
+      ],
+      "normal": [
+        0.49751800298690796,
+        0.1854580044746399,
+        0.8473972082138062
+      ]
+    },
+    {
+      "instance_id": 10,
+      "type": "plane",
+      "is_target": true,
+      "has_params": true,
+      "source": "bagsfit_prim",
+      "point": [
+        -0.19673320651054382,
+        -0.024653196334838867,
+        1.544317364692688
+      ],
+      "normal": [
+        0.48382651805877686,
+        -0.7610432505607605,
+        -0.4321170449256897
+      ]
+    },
+    {
+      "instance_id": 11,
+      "type": "sphere",
+      "is_target": true,
+      "has_params": true,
+      "source": "bagsfit_prim",
+      "center": [
+        0.6022681593894958,
+        0.2350033074617386,
+        1.3914666175842285
+      ],
+      "radius": 0.113891637271408,
+      "param_fix": "source sphere center y sign correction"
+    },
+    {
+      "instance_id": 12,
+      "type": "sphere",
+      "is_target": true,
+      "has_params": true,
+      "source": "bagsfit_prim",
+      "center": [
+        -0.6246469616889954,
+        -0.35571596026420593,
+        1.4912810325622559
+      ],
+      "radius": 0.19771418825521805,
+      "param_fix": "source sphere center y sign correction"
+    },
+    {
+      "instance_id": 13,
+      "type": "cone",
+      "is_target": false,
+      "has_params": true,
+      "source": "bagsfit_prim",
+      "apex": [
+        -0.331015020608902,
+        -0.04620164632797241,
+        1.8449465036392212
+      ],
+      "axis_direction": [
+        -3.725290298461914e-09,
+        0.08418687433004379,
+        -0.9964499473571777
+      ],
+      "half_angle": 0.6331862148657156
+    },
+    {
+      "instance_id": 18,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source": "bagsfit_prim",
+      "axis_point": [
+        -0.4201614260673523,
+        0.05581788718700409,
+        1.4731477499008179
+      ],
+      "axis_direction": [
+        -0.835829496383667,
+        -0.43739742040634155,
+        -0.33177220821380615
+      ],
+      "radius": 0.22893062105547193
+    },
+    {
+      "instance_id": 19,
+      "type": "cylinder",
+      "is_target": true,
+      "has_params": true,
+      "source": "bagsfit_prim",
+      "axis_point": [
+        0.07341813296079636,
+        -0.21671545505523682,
+        1.411923885345459
+      ],
+      "axis_direction": [
+        -0.5824302434921265,
+        -0.5978855490684509,
+        -0.5507339239120483
+      ],
+      "radius": 0.1382303958416597
+    },
+    {
+      "instance_id": 20,
+      "type": "none",
+      "is_target": false,
+      "has_params": false,
+      "source": "bagsfit_prim"
+    },
+    {
+      "instance_id": 21,
+      "type": "none",
+      "is_target": false,
+      "has_params": false,
+      "source": "bagsfit_prim"
+    }
+  ]
+}

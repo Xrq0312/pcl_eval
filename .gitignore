@@ -1,2 +1,9 @@
 data/
 results/
+build*/
+out/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+

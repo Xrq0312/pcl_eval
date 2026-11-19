@@ -12,11 +12,16 @@ idea at once.
 
 ## Stage 1: segmentation-independent candidate generation
 
+Status: implemented as `global_ransac` and `global_local`.
+
 - Generate global and spatially local hypotheses from oriented minimal
   samples, so a region-growing failure does not eliminate a primitive.
 - Use a deterministic pilot subset to rank hypotheses before full-cloud
   scoring, bounding CPU cost.
 - Add a three-oriented-point cylinder sampler and robust cylinder refit.
+- Use optional organized-depth normals/adjacency when a pixel map is supplied;
+  retain the KNN path for ordinary point clouds.
+- Reject geometrically unobservable strip and large-radius hypotheses.
 - Ablate global-only, local-only and global+local proposals.
 
 This stage draws on Efficient RANSAC/minimal quadric fitting and the CPFN
@@ -24,17 +29,26 @@ global/local decomposition, but it remains a non-learning CPU implementation.
 
 ## Stage 2: progressive multi-model management
 
+Status: first CPU approximation implemented as `joint_opt`.
+
 - Maintain a proposal pool rather than deleting points after the first fit.
 - Alternate model selection, point labeling and robust parameter refitting.
 - Penalize model count and overlapping explanations; prune duplicate models.
 - Stop when the probability of finding a new supported model falls below a
   configured bound or the time budget expires.
+- The current approximation uses support-aware assignment, adaptive bounded
+  noise scales, duplicate pruning and alternating refit. Spatial Potts terms
+  and explicit label-cost optimization remain future work.
 
 This is a bounded approximation of the Progressive-X/PEARL principle.  Full
 graph-cut alpha expansion is not required for the first CPU ablation; the
 energy and every approximation must be explicit.
 
 ## Stage 3: boundary-aware labeling
+
+Status: not implemented. `joint_opt` intentionally returns its unsplit model
+labels; the Stage 1 connectivity heuristic is not presented as SED-style
+boundary reasoning.
 
 - Build a sparse neighborhood graph once.
 - Derive a geometric boundary likelihood from normal jumps, curvature and

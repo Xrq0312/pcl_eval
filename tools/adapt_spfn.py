@@ -21,16 +21,48 @@ Target classes: plane, sphere, cylinder. cone is kept as non-target.
 Instance numbering in gt_labels is preserved as instance_id.
 """
 import argparse
+import ast
 import csv
+import hashlib
 import json
 import os
 import pickle
+import re
 import sys
 
 import h5py
 import numpy as np
 
 NON_TARGET = {"cone"}
+
+
+def decode_meta(raw, trust_pickle=False):
+    """Decode SPFN primitive metadata without silently executing pickle.
+
+    The official 8k release stores Python pickles in HDF5 attributes. Pickle
+    can execute code while loading, so callers must explicitly acknowledge
+    that the archive is trusted. Some CPFN-produced files instead store a
+    string representation, which can be parsed safely with literal_eval.
+    """
+    if isinstance(raw, str):
+        value = ast.literal_eval(raw)
+    else:
+        if not trust_pickle:
+            raise RuntimeError(
+                "primitive metadata is pickled; rerun with --trust-pickle "
+                "only after verifying the archive source/checksum")
+        value = pickle.loads(bytes(raw))
+    if not isinstance(value, dict) or "type" not in value:
+        raise RuntimeError("invalid primitive metadata: expected dict with type")
+    return value
+
+
+def sha256_file(path):
+    digest = hashlib.sha256()
+    with open(path, "rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
 
 
 def read_split(csv_path, h5_root, limit):
@@ -44,7 +76,7 @@ def read_split(csv_path, h5_root, limit):
     return out[:limit] if limit > 0 else out
 
 
-def convert_one(h5_path, out_dir, use_noisy=True):
+def convert_one(h5_path, out_dir, use_noisy=True, trust_pickle=False):
     os.makedirs(out_dir, exist_ok=True)
     name = os.path.splitext(os.path.basename(h5_path))[0]
     with h5py.File(h5_path, "r") as f:
@@ -52,19 +84,24 @@ def convert_one(h5_path, out_dir, use_noisy=True):
         gt_pts = f["gt_points"][()]
         labels = f["gt_labels"][()]
         keys = {}
-        import re
         for k in f.keys():
             m = re.match(r"(.*)_soup_([0-9]+)$", k)
             if m:
                 keys[int(m.group(2))] = k
         inst_params = {}
         for i in sorted(keys):
-            meta = pickle.loads(f[keys[i]].attrs["meta"])
+            meta = decode_meta(f[keys[i]].attrs["meta"], trust_pickle)
             inst_params[i] = meta
     pts = np.asarray(pts, dtype=float)
     labels = np.asarray(labels).astype(int)
     if len(pts) != len(labels):
         raise RuntimeError(f"{h5_path}: points {len(pts)} != labels {len(labels)}")
+    if pts.ndim != 2 or pts.shape[1] != 3 or not np.isfinite(pts).all():
+        raise RuntimeError(f"{h5_path}: points must be finite Nx3")
+    if set(np.unique(labels).tolist()) != set(inst_params):
+        raise RuntimeError(
+            f"{h5_path}: label ids and soup ids differ: "
+            f"{sorted(np.unique(labels).tolist())} vs {sorted(inst_params)}")
 
     # primitives JSON
     prims = []
@@ -114,6 +151,8 @@ def convert_one(h5_path, out_dir, use_noisy=True):
             "bbox": ranges,
             "units": "raw CAD units (unconverted)",
             "notes": "type ids taken from pickled meta dicts, not numeric ids",
+            "source_sha256": sha256_file(h5_path),
+            "pickle_trusted_by_user": bool(trust_pickle),
         }, f, indent=2)
     return name, len(pts), prims
 
@@ -126,6 +165,9 @@ def main():
     ap.add_argument("--out-root", required=True)
     ap.add_argument("--limit", type=int, default=0, help="0 = all")
     ap.add_argument("--clean", action="store_true", help="use gt_points instead of noisy")
+    ap.add_argument(
+        "--trust-pickle", action="store_true",
+        help="allow official SPFN pickle metadata after source/checksum review")
     args = ap.parse_args()
 
     files = []
@@ -140,8 +182,9 @@ def main():
         if not os.path.exists(p):
             print("MISSING", p)
             continue
-        name, n, prims = convert_one(p, os.path.join(args.out_root, name_safe(p)),
-                                     use_noisy=not args.clean)
+        name, n, prims = convert_one(
+            p, os.path.join(args.out_root, name_safe(p)),
+            use_noisy=not args.clean, trust_pickle=args.trust_pickle)
         counts = {}
         for pr in prims:
             counts[pr["type"]] = counts.get(pr["type"], 0) + 1

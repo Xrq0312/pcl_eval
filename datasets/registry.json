@@ -15,6 +15,7 @@
       "normal_gt": true,
       "best_for": ["instance_segmentation", "small_primitives", "generalization"],
       "integration_priority": 1,
+      "integration": "tools/adapt_spfn.py",
       "download_policy": "opt-in; verify availability and checksum",
       "license_note": "SPFN code is MIT; TraceParts-derived dataset redistribution terms are not stated in the repository and require separate review."
     },
@@ -47,6 +48,7 @@
       "normal_gt": true,
       "best_for": ["multi_type_surfaces", "instance_segmentation", "parameter_fitting"],
       "integration_priority": 3,
+      "integration": "tools/adapt_abcparts.py",
       "download_policy": "opt-in; alternatively preprocess the ParSeNet ABCParts release",
       "license_note": "HPNet README does not state a dataset license; preserve ABC/ParSeNet provenance and review terms before redistribution."
     },
@@ -62,6 +64,8 @@
       "normal_gt": true,
       "best_for": ["single_primitive_robustness", "noise_sensitivity", "runtime"],
       "integration_priority": 2,
+      "integration": "tools/adapt_ba.py --allow-derived-gt",
+      "annotation_status": "derived_pseudo_gt_only",
       "download_policy": "small Git clone",
       "license_note": "No license file was present at the verified commit.",
       "evaluation_note": "Not an instance-segmentation benchmark. Published size sequences give some radius/extent values, but random orientation parameters are not stored; any recovered parameter reference must be labeled derived pseudo-GT."
@@ -78,6 +82,8 @@
       "normal_gt": false,
       "best_for": ["qualitative_pipeline_detection", "false_positive_review", "runtime"],
       "integration_priority": 5,
+      "integration": "tools/audit_external_dataset.py --dataset gccao",
+      "annotation_status": "unlabeled_quantitative_evaluation_blocked",
       "download_policy": "Git clone after license review",
       "license_note": "No repository-level license was visible; a license file exists only in the adjustment subfolder and must not be assumed to cover all data/code.",
       "evaluation_note": "Detected-cylinder MAT files are algorithm outputs, not independent GT. Quantitative precision/recall requires a separately versioned manual annotation protocol."
@@ -94,6 +100,8 @@
       "label_schema": "type, position xyz, quaternion xyzw, dimensions xyz",
       "best_for": ["real_depth", "type", "pose_and_dimensions", "sim_to_real"],
       "integration_priority": 2,
+      "integration": "tools/audit_external_dataset.py --dataset primitive_object",
+      "annotation_status": "object_pose_dimensions_only_no_point_mask",
       "download_policy": "opt-in from OSF; start with the 200 real PCD files",
       "license_note": "The data note states a CC0 waiver applies to the released data unless otherwise stated.",
       "evaluation_note": "Scenes include table/background and provide no point mask. Parameter recovery can be scored only after a declared color/depth mask policy; do not report point IoU as official GT."

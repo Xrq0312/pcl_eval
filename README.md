@@ -65,4 +65,6 @@ in [`datasets/registry.json`](datasets/registry.json); missing point-level GT
 must not be silently synthesized or reported as official GT.
 The current measured results and their limitations are in
 [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md).
+Verified dataset tiers, adapter commands and GT restrictions are in
+[`docs/DATASETS.md`](docs/DATASETS.md).
 

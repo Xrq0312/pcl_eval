@@ -47,3 +47,37 @@ a cylinder. It requires deterministic fixed-seed output, more than 90% point
 coverage, detection of all three primitive types, and separation of the two
 coplanar instances. The frozen upstream prediction remains evaluated
 separately as documented in `SOURCE_AUDIT.md`.
+
+## GCCao industrial pipeline smoke run
+
+The two public PLY files were run directly with their supplied normals,
+`joint_opt`, fixed seed 1337, `min_points=200`, and automatically inferred
+distance. A post-refit validity gate was enabled after the initial Tube1 run
+revealed cylinders whose final RMSE exceeded the tolerance that admitted their
+support. The gate reduced Tube1 from 32 mostly duplicate/unstable cylinder
+models to five supported cylinder fragments.
+
+| Scene | Points | Distance | Cylinders | Other models | Cylinder-assigned points | Time |
+|---|---:|---:|---:|---:|---:|---:|
+| Tube1_scaned | 999,936 | 0.07532 | 5 | 4 planes | 407,520 | 14.72 s |
+| pipelines1_pointcloud_grab | 999,956 | 0.03511 | 15 | 11 planes, 4 spheres | 351,432 | 13.18 s |
+
+Tube1 cylinder radii lie in 18.67--19.00 data units. In the second scene, the
+15 fitted cylinder radii cluster tightly around 14 and 22 data units, matching
+the visibly different pipe diameters. Colored PLY files, cylinder-only PNG
+previews, model CSVs and complete JSON are written under ignored
+`results/gccao/`.
+
+These are qualitative detections, not precision/recall measurements. The
+repository's detected-cylinder MAT files are algorithm outputs rather than
+independent ground truth, and no official point-instance masks are available.
+
+## Rejected boundary-aware ablation
+
+On the same ten BAGSFit samples, the first organized edge-graph split added
+about 0.15 seconds per sample and slightly raised target mIoU (0.3191 to
+0.3224), but reduced target detection (0.2661 to 0.2452), typed detection
+(0.2229 to 0.1922), and target point accuracy (0.6455 to 0.6307). Increasing
+the occlusion-gap requirement to 16 times the connectivity radius still gave
+only 0.2452 detection and 0.3116 mIoU. Stage 3 is therefore retained as an
+experimental selectable mode, not accepted as the default pipeline.

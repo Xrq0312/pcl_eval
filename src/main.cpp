@@ -2,6 +2,7 @@
 
 #include <nlohmann/json.hpp>
 #include <pcl/io/pcd_io.h>
+#include <pcl/io/ply_io.h>
 #include <pcl/point_types.h>
 
 #include <Eigen/Core>
@@ -29,12 +30,19 @@ struct Arguments {
     pcl_eval::Config config;
 };
 
+struct LoadedCloud {
+    std::vector<Eigen::Vector3d> points;
+    std::vector<Eigen::Vector3d> normals;
+    bool has_normals = false;
+};
+
 void usage() {
     std::cout
         << "native_primitive_fit --input points.txt|cloud.pcd --output-prefix PATH\n"
-        << "  [--stage global_ransac|global_local|joint_opt] [--distance VALUE]\n"
+        << "  [--stage global_ransac|global_local|joint_opt|boundary_aware] [--distance VALUE]\n"
         << "  [--pixel-map pixel_map.txt]\n"
         << "  [--min-points N] [--global-iterations N] [--local-iterations N]\n"
+        << "  [--max-refit-rmse-factor VALUE] (0 disables the post-refit gate)\n"
         << "  [--normal-k N] [--seed N] [--threads N]\n";
 }
 
@@ -66,6 +74,9 @@ Arguments parse_args(int argc, char** argv) {
         else if (key == "--global-iterations") args.config.global_iterations = parse_number<int>(value(), "--global-iterations");
         else if (key == "--local-iterations") args.config.local_iterations = parse_number<int>(value(), "--local-iterations");
         else if (key == "--normal-k") args.config.normal_k = parse_number<int>(value(), "--normal-k");
+        else if (key == "--max-refit-rmse-factor")
+            args.config.max_refit_rmse_factor = parse_number<double>(
+                value(), "--max-refit-rmse-factor");
         else if (key == "--seed") args.config.seed = parse_number<std::uint64_t>(value(), "--seed");
         else if (key == "--threads") args.config.threads = parse_number<int>(value(), "--threads");
         else if (key == "--help" || key == "-h") { usage(); std::exit(0); }
@@ -100,20 +111,38 @@ pcl_eval::OrganizedGrid load_pixel_map(const fs::path& path, std::size_t point_c
     return grid;
 }
 
-std::vector<Eigen::Vector3d> load_points(const fs::path& path) {
+LoadedCloud load_cloud(const fs::path& path) {
     std::string extension = path.extension().string();
     std::transform(extension.begin(), extension.end(), extension.begin(),
                    [](unsigned char c) { return static_cast<char>(std::tolower(c)); });
-    std::vector<Eigen::Vector3d> result;
-    if (extension == ".pcd") {
+    LoadedCloud result;
+    if (extension == ".ply") {
+        pcl::PointCloud<pcl::PointNormal> cloud;
+        if (pcl::io::loadPLYFile(path.string(), cloud) < 0) {
+            throw std::runtime_error("cannot load PLY: " + path.string());
+        }
+        result.points.reserve(cloud.size());
+        result.normals.reserve(cloud.size());
+        bool all_normals_valid = true;
+        for (const auto& point : cloud) {
+            const Eigen::Vector3d p(point.x, point.y, point.z);
+            if (!p.allFinite()) continue;
+            const Eigen::Vector3d n(point.normal_x, point.normal_y, point.normal_z);
+            result.points.push_back(p);
+            result.normals.push_back(n);
+            all_normals_valid = all_normals_valid && n.allFinite() && n.norm() > 1e-12;
+        }
+        result.has_normals = all_normals_valid &&
+            result.normals.size() == result.points.size();
+    } else if (extension == ".pcd") {
         pcl::PointCloud<pcl::PointXYZ> cloud;
         if (pcl::io::loadPCDFile(path.string(), cloud) < 0) {
             throw std::runtime_error("cannot load PCD: " + path.string());
         }
-        result.reserve(cloud.size());
+        result.points.reserve(cloud.size());
         for (const auto& point : cloud) {
             const Eigen::Vector3d p(point.x, point.y, point.z);
-            if (p.allFinite()) result.push_back(p);
+            if (p.allFinite()) result.points.push_back(p);
         }
     } else {
         std::ifstream stream(path);
@@ -124,11 +153,12 @@ std::vector<Eigen::Vector3d> load_points(const fs::path& path) {
             std::istringstream row(line);
             Eigen::Vector3d p;
             if (row >> p.x() >> p.y() >> p.z()) {
-                if (p.allFinite()) result.push_back(p);
+                if (p.allFinite()) result.points.push_back(p);
             }
         }
     }
-    if (result.size() < 4) throw std::runtime_error("input has fewer than four finite points");
+    if (result.points.size() < 4)
+        throw std::runtime_error("input has fewer than four finite points");
     return result;
 }
 
@@ -188,7 +218,8 @@ void write_outputs(const fs::path& prefix,
             {"min_points", config.min_points}, {"normal_k", config.normal_k},
             {"normal_angle_deg", config.normal_angle_deg},
             {"global_iterations", config.global_iterations},
-            {"local_iterations", config.local_iterations}, {"seed", config.seed}
+            {"local_iterations", config.local_iterations}, {"seed", config.seed},
+            {"max_refit_rmse_factor", config.max_refit_rmse_factor}
         }},
         {"num_points", points.size()}, {"premerge_models", premerge}, {"models", final},
         {"failed_regions", json::array()},
@@ -200,6 +231,29 @@ void write_outputs(const fs::path& prefix,
     };
     std::ofstream primitives(prefix.string() + "_primitives.json");
     primitives << std::setw(2) << metadata << '\n';
+
+    pcl::PointCloud<pcl::PointXYZRGB> segmented;
+    segmented.reserve(points.size());
+    for (std::size_t i = 0; i < points.size(); ++i) {
+        pcl::PointXYZRGB point;
+        point.x = static_cast<float>(points[i].x());
+        point.y = static_cast<float>(points[i].y());
+        point.z = static_cast<float>(points[i].z());
+        const int label = result.labels[i];
+        if (label < 0) {
+            point.r = 70; point.g = 70; point.b = 70;
+        } else {
+            const std::uint32_t hash = 0x9e3779b9u * static_cast<std::uint32_t>(label + 1);
+            point.r = static_cast<std::uint8_t>(55 + (hash & 0x9f));
+            point.g = static_cast<std::uint8_t>(55 + ((hash >> 8) & 0x9f));
+            point.b = static_cast<std::uint8_t>(55 + ((hash >> 16) & 0x9f));
+        }
+        segmented.push_back(point);
+    }
+    segmented.width = static_cast<std::uint32_t>(segmented.size());
+    segmented.height = 1;
+    if (pcl::io::savePLYFileBinary(prefix.string() + "_segmented.ply", segmented) < 0)
+        throw std::runtime_error("cannot write segmented PLY");
 }
 
 }  // namespace
@@ -207,17 +261,19 @@ void write_outputs(const fs::path& prefix,
 int main(int argc, char** argv) {
     try {
         const auto arguments = parse_args(argc, argv);
-        const auto points = load_points(arguments.input);
+        const auto loaded = load_cloud(arguments.input);
         pcl_eval::OrganizedGrid grid;
         const pcl_eval::OrganizedGrid* grid_ptr = nullptr;
         if (!arguments.pixel_map.empty()) {
-            grid = load_pixel_map(arguments.pixel_map, points.size());
+            grid = load_pixel_map(arguments.pixel_map, loaded.points.size());
             grid_ptr = &grid;
         }
-        const auto result = pcl_eval::fit_primitives(points, arguments.config, nullptr, grid_ptr);
-        write_outputs(arguments.output_prefix, points, arguments.config, result);
+        const auto* normals = loaded.has_normals ? &loaded.normals : nullptr;
+        const auto result = pcl_eval::fit_primitives(
+            loaded.points, arguments.config, normals, grid_ptr);
+        write_outputs(arguments.output_prefix, loaded.points, arguments.config, result);
         std::cout << "stage=" << pcl_eval::to_string(arguments.config.stage)
-                  << " points=" << points.size() << " models=" << result.models.size()
+                  << " points=" << loaded.points.size() << " models=" << result.models.size()
                   << " distance=" << result.distance_threshold
                   << " seconds=" << result.timing.total << '\n';
         return 0;

@@ -50,7 +50,8 @@ ctest --preset release --output-on-failure
   --stages 'global_local,joint_opt' --distance 0.02 --min-points 80 --limit 10
 ```
 
-`native_primitive_fit` accepts unorganized TXT/PCD input.  For range-camera
+`native_primitive_fit` accepts unorganized TXT/PCD/PLY input and reuses PLY
+normals when all of them are valid. For range-camera
 data, `--pixel-map` optionally supplies image topology; no label or GT data is
 read by the fitter.  Available ablation stages are `global_ransac`,
 `global_local`, and `joint_opt`.

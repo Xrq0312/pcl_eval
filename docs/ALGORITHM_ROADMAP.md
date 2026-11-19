@@ -46,9 +46,12 @@ energy and every approximation must be explicit.
 
 ## Stage 3: boundary-aware labeling
 
-Status: not implemented. `joint_opt` intentionally returns its unsplit model
-labels; the Stage 1 connectivity heuristic is not presented as SED-style
-boundary reasoning.
+Status: an experimental `boundary_aware` stage was implemented and rejected
+by the first 10-sample ablation. It changed target mIoU from 0.3191 to 0.3224
+but reduced detection from 0.2661 to 0.2452 and typed detection from 0.2229 to
+0.1922. A more conservative rerun also failed. The accepted default therefore
+remains `joint_opt`; this negative result is not presented as a completed
+SED-style boundary solution.
 
 - Build a sparse neighborhood graph once.
 - Derive a geometric boundary likelihood from normal jumps, curvature and

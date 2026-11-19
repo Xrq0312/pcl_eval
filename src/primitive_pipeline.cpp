@@ -693,7 +693,9 @@ std::vector<Candidate> generate_proposals(Observations& obs, const Config& confi
             const auto support = candidate.model.points;
             if (!refit_model(obs, support, candidate.model)) break;
             candidate.model.proposal_source += "+refit";
-            const double adaptive_threshold = config.stage == PipelineStage::JointOptimization
+            const bool adaptive = config.stage == PipelineStage::JointOptimization ||
+                                  config.stage == PipelineStage::BoundaryAware;
+            const double adaptive_threshold = adaptive
                 ? std::clamp(4.0 * candidate.model.rmse, threshold, 3.0 * threshold)
                 : threshold;
             candidate.model.fit_threshold = adaptive_threshold;
@@ -789,12 +791,20 @@ void compact_and_refit(Observations& obs, const Config& config, double threshold
             if (labels[i] == static_cast<int>(model_id)) support.push_back(static_cast<int>(i));
         if (static_cast<int>(support.size()) < config.min_points) continue;
         PrimitiveModel model = models[model_id];
+        const double previous_threshold = model.fit_threshold > 0.0
+            ? model.fit_threshold : threshold;
         if (!refit_model(obs, support, model)) continue;
         model.points = std::move(support);
         double squared = 0.0;
         for (int index : model.points) { const double r = residual(model, obs.points[index]); squared += r * r; }
         model.rmse = std::sqrt(squared / model.points.size());
-        if (config.stage == PipelineStage::JointOptimization) {
+        // A least-squares update can jump to a different basin, especially
+        // for short cylinder arcs. Never keep a refit that no longer explains
+        // the support under the tolerance that admitted it.
+        if (config.max_refit_rmse_factor > 0.0 &&
+            model.rmse > config.max_refit_rmse_factor * previous_threshold) continue;
+        if (config.stage == PipelineStage::JointOptimization ||
+            config.stage == PipelineStage::BoundaryAware) {
             model.fit_threshold = std::clamp(4.0 * model.rmse, threshold, 3.0 * threshold);
         } else {
             model.fit_threshold = threshold;
@@ -826,7 +836,29 @@ std::vector<std::vector<int>> connected_components(const Observations& obs,
             const int current = queue.front(); queue.pop_front();
             components.back().push_back(current);
             neighbors.clear(); squared.clear();
-            obs.tree.radiusSearch(current, radius, neighbors, squared);
+            if (obs.grid_width > 0) {
+                const int pixel = obs.point_to_pixel[current];
+                const int x = pixel % obs.grid_width;
+                const int y = pixel / obs.grid_width;
+                for (int dy = -2; dy <= 2; ++dy) {
+                    for (int dx = -2; dx <= 2; ++dx) {
+                        if (dx == 0 && dy == 0) continue;
+                        const int xx = x + dx, yy = y + dy;
+                        if (xx < 0 || yy < 0 || xx >= obs.grid_width || yy >= obs.grid_height)
+                            continue;
+                        const int neighbor = obs.pixel_to_point[yy * obs.grid_width + xx];
+                        if (neighbor < 0) continue;
+                        const double edge = (obs.points[neighbor] - obs.points[current]).norm();
+                        if (edge > radius) continue;
+                        if (obs.normal_valid[current] && obs.normal_valid[neighbor] &&
+                            std::abs(obs.normals[current].dot(obs.normals[neighbor])) < 0.75)
+                            continue;
+                        neighbors.push_back(neighbor);
+                    }
+                }
+            } else {
+                obs.tree.radiusSearch(current, radius, neighbors, squared);
+            }
             for (int neighbor : neighbors) {
                 if (allowed.count(neighbor) && !visited.count(neighbor)) {
                     visited.insert(neighbor);
@@ -880,7 +912,9 @@ void split_disconnected(Observations& obs, const Config& config, double threshol
             }
             const double local_extent = std::min(
                 major_bounds[0].diagonal().norm(), major_bounds[1].diagonal().norm());
-            well_separated = gap.norm() > std::max(3.0 * radius, 0.25 * local_extent);
+            const double occlusion_gap_factor = obs.grid_width > 0 ? 16.0 : 3.0;
+            well_separated = gap.norm() > std::max(
+                occlusion_gap_factor * radius, 0.25 * local_extent);
         }
         // Connectivity is a boundary cue, not permission to explode a noisy
         // support into dozens of scan fragments. Split only when at least two
@@ -931,13 +965,15 @@ std::string to_string(PrimitiveType type) {
 std::string to_string(PipelineStage stage) {
     if (stage == PipelineStage::GlobalRansac) return "global_ransac";
     if (stage == PipelineStage::GlobalLocal) return "global_local";
-    return "joint_opt";
+    if (stage == PipelineStage::JointOptimization) return "joint_opt";
+    return "boundary_aware";
 }
 
 PipelineStage parse_stage(const std::string& value) {
     if (value == "global_ransac") return PipelineStage::GlobalRansac;
     if (value == "global_local") return PipelineStage::GlobalLocal;
     if (value == "joint_opt") return PipelineStage::JointOptimization;
+    if (value == "boundary_aware") return PipelineStage::BoundaryAware;
     throw std::runtime_error("unknown stage: " + value);
 }
 
@@ -969,7 +1005,9 @@ FitResult fit_primitives(const std::vector<Eigen::Vector3d>& points,
     const auto selection_begin = Clock::now();
     auto models = select_models(std::move(candidates), config, static_cast<int>(points.size()));
     const double minimum_alignment = std::cos(config.normal_angle_deg * kPi / 180.0);
-    const double support_prior_weight = config.stage == PipelineStage::JointOptimization
+    const bool joint_stage = config.stage == PipelineStage::JointOptimization ||
+                             config.stage == PipelineStage::BoundaryAware;
+    const double support_prior_weight = joint_stage
         ? config.joint_support_prior : 0.0;
     auto labels = assign_points(obs, models, result.distance_threshold, minimum_alignment,
                                 support_prior_weight);
@@ -987,7 +1025,8 @@ FitResult fit_primitives(const std::vector<Eigen::Vector3d>& points,
     result.timing.refinement = seconds(refinement_begin, Clock::now());
 
     const auto connectivity_begin = Clock::now();
-    if (config.stage == PipelineStage::GlobalLocal) {
+    if (config.stage == PipelineStage::GlobalLocal ||
+        config.stage == PipelineStage::BoundaryAware) {
         split_disconnected(obs, config, result.distance_threshold, result.spacing,
                            models, labels, result.models, result.labels);
     } else {

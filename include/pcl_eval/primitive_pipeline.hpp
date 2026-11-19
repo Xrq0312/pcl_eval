@@ -9,7 +9,7 @@
 namespace pcl_eval {
 
 enum class PrimitiveType { Plane, Sphere, Cylinder };
-enum class PipelineStage { GlobalRansac, GlobalLocal, JointOptimization };
+enum class PipelineStage { GlobalRansac, GlobalLocal, JointOptimization, BoundaryAware };
 
 struct Config {
     PipelineStage stage = PipelineStage::GlobalLocal;
@@ -27,6 +27,7 @@ struct Config {
     int max_models = 48;
     int refinement_iterations = 2;
     double joint_support_prior = 0.4;
+    double max_refit_rmse_factor = 0.0;  // 0: disabled
     double connectivity_spacing_factor = 12.0;
     std::uint64_t seed = 1337;
     int threads = 0;

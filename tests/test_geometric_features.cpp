@@ -100,6 +100,48 @@ void test_plane() {
             "plane curvatures must be zero");
 }
 
+void test_multiscale_aso_and_curvature_boundary() {
+    const Eigen::Vector3d center = Eigen::Vector3d::Zero();
+    constexpr double radius = 2.0;
+    std::vector<Eigen::Vector3d> points, normals;
+    for (int latitude = 1; latitude < 25; ++latitude) {
+        const double phi = kPi * latitude / 25.0;
+        for (int longitude = 0; longitude < 48; ++longitude) {
+            const double theta = 2.0 * kPi * longitude / 48.0;
+            const Eigen::Vector3d normal(std::sin(phi) * std::cos(theta),
+                std::sin(phi) * std::sin(theta), std::cos(phi));
+            points.push_back(center + radius * normal);
+            normals.push_back(normal);
+        }
+    }
+    const std::size_t query = points.size() / 2;
+    const auto scales = pcl_eval::features::estimate_multiscale_aso(
+        query, {24, 48, 96}, points, normals);
+    require(scales.size() == 3, "expected three ASO scales");
+    for (const auto& scale : scales) {
+        require(scale.aso.valid, "multiscale ASO invalid");
+        require(std::abs(std::abs(scale.aso.curvatures(0)) - 1.0 / radius) < 0.08,
+                "multiscale sphere k1 inaccurate");
+        require(std::abs(std::abs(scale.aso.curvatures(1)) - 1.0 / radius) < 0.08,
+                "multiscale sphere k2 inaccurate");
+    }
+
+    std::size_t neighbor = query + 1;
+    const auto smooth = pcl_eval::features::estimate_curvature_boundary(
+        points[query], normals[query], points[neighbor], normals[neighbor],
+        scales.front().aso);
+    require(smooth.valid && smooth.residual < 0.02,
+            "smooth sphere normal change should be predicted by ASO");
+
+    const Eigen::AngleAxisd crease(30.0 * kPi / 180.0,
+        scales.front().aso.directions.col(0).normalized());
+    const auto boundary = pcl_eval::features::estimate_curvature_boundary(
+        points[query], normals[query], points[neighbor],
+        crease * normals[neighbor], scales.front().aso);
+    require(boundary.valid && boundary.residual > 0.35,
+            "unexplained crease normal jump should yield a boundary residual");
+}
+
 }  // namespace
 
 int main() {
@@ -107,6 +149,7 @@ int main() {
         test_exact_sphere();
         test_exact_cylinder();
         test_plane();
+        test_multiscale_aso_and_curvature_boundary();
         std::cout << "ALL GEOMETRIC FEATURE TESTS PASSED\n";
         return 0;
     } catch (const std::exception& error) {

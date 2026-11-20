@@ -241,6 +241,66 @@ ShapeOperatorEstimate estimate_algebraic_shape_operator(
     return result;
 }
 
+std::vector<MultiScaleShapeOperatorEstimate> estimate_multiscale_aso(
+    std::size_t query_index,
+    const std::vector<std::size_t>& neighbor_counts,
+    const std::vector<Eigen::Vector3d>& points,
+    const std::vector<Eigen::Vector3d>& normals) {
+    std::vector<MultiScaleShapeOperatorEstimate> result;
+    if (points.size() != normals.size() || query_index >= points.size() ||
+        points.size() < 4) return result;
+    std::vector<double> squared_distances;
+    squared_distances.reserve(points.size());
+    for (const auto& point : points)
+        squared_distances.push_back((point - points[query_index]).squaredNorm());
+    result.reserve(neighbor_counts.size());
+    for (const std::size_t requested : neighbor_counts) {
+        MultiScaleShapeOperatorEstimate scale;
+        scale.neighbors = std::clamp<std::size_t>(requested, 4, points.size() - 1);
+        std::vector<double> work = squared_distances;
+        std::nth_element(work.begin(), work.begin() + scale.neighbors, work.end());
+        scale.radius = 1.001 * std::sqrt(work[scale.neighbors]);
+        scale.aso = estimate_algebraic_shape_operator(
+            points[query_index], scale.radius, points, normals);
+        result.push_back(scale);
+    }
+    return result;
+}
+
+CurvatureBoundaryEstimate estimate_curvature_boundary(
+    const Eigen::Vector3d& point_i,
+    const Eigen::Vector3d& normal_i,
+    const Eigen::Vector3d& point_j,
+    const Eigen::Vector3d& normal_j,
+    const ShapeOperatorEstimate& shape_operator,
+    double noise_floor) {
+    CurvatureBoundaryEstimate result;
+    if (!shape_operator.valid || !point_i.allFinite() || !point_j.allFinite() ||
+        !normal_i.allFinite() || !normal_j.allFinite()) return result;
+    Eigen::Vector3d ni = normal_i.normalized();
+    Eigen::Vector3d nj = normal_j.normalized();
+    if (!ni.allFinite() || !nj.allFinite()) return result;
+    if (ni.dot(nj) < 0.0) nj = -nj;
+    const Eigen::Vector3d displacement = point_j - point_i;
+    const Eigen::Vector3d tangent_displacement =
+        displacement - displacement.dot(ni) * ni;
+    Eigen::Vector3d predicted = Eigen::Vector3d::Zero();
+    for (int direction = 0; direction < 2; ++direction) {
+        const Eigen::Vector3d basis = shape_operator.directions.col(direction);
+        predicted += shape_operator.curvatures(direction) *
+                     basis.dot(tangent_displacement) * basis;
+    }
+    const Eigen::Vector3d observed = nj - ni;
+    result.observed_normal_change = observed.norm();
+    result.predicted_normal_change = predicted.norm();
+    result.residual = (observed - predicted).norm();
+    result.relative_residual = result.residual /
+        std::max(noise_floor, result.observed_normal_change +
+                              result.predicted_normal_change);
+    result.valid = std::isfinite(result.relative_residual);
+    return result;
+}
+
 PointPairEstimate estimate_point_pair_invariants(
     const std::vector<Eigen::Vector3d>& points,
     const std::vector<Eigen::Vector3d>& normals,

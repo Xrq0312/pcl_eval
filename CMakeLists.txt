@@ -47,6 +47,9 @@ target_compile_definitions(geometry_feature_probe PRIVATE ${PCL_DEFINITIONS})
 add_executable(geometry_feature_synthetic src/feature_synthetic.cpp)
 target_link_libraries(geometry_feature_synthetic PRIVATE geometric_features)
 
+add_executable(geometry_boundary_synthetic src/feature_boundary_synthetic.cpp)
+target_link_libraries(geometry_boundary_synthetic PRIVATE geometric_features)
+
 if(BUILD_TESTING)
     add_executable(primitive_core_tests tests/test_core.cpp)
     target_link_libraries(primitive_core_tests PRIVATE primitive_core)

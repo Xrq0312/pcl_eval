@@ -45,6 +45,20 @@ struct PointPairEstimate {
     std::size_t pairs = 0;
 };
 
+struct MultiScaleShapeOperatorEstimate {
+    std::size_t neighbors = 0;
+    double radius = 0.0;
+    ShapeOperatorEstimate aso;
+};
+
+struct CurvatureBoundaryEstimate {
+    bool valid = false;
+    double observed_normal_change = 0.0;
+    double predicted_normal_change = 0.0;
+    double residual = 0.0;
+    double relative_residual = 0.0;
+};
+
 struct PatchFeatures {
     Spectrum3 position_spectrum;
     Spectrum3 normal_spectrum;
@@ -84,6 +98,23 @@ ShapeOperatorEstimate estimate_algebraic_shape_operator(
     double radius,
     const std::vector<Eigen::Vector3d>& points,
     const std::vector<Eigen::Vector3d>& normals);
+
+std::vector<MultiScaleShapeOperatorEstimate> estimate_multiscale_aso(
+    std::size_t query_index,
+    const std::vector<std::size_t>& neighbor_counts,
+    const std::vector<Eigen::Vector3d>& points,
+    const std::vector<Eigen::Vector3d>& normals);
+
+// Compare an observed normal difference to the first-order variation predicted
+// by a local shape operator. Large unexplained residual is a boundary cue, not
+// by itself a proof of an instance boundary.
+CurvatureBoundaryEstimate estimate_curvature_boundary(
+    const Eigen::Vector3d& point_i,
+    const Eigen::Vector3d& normal_i,
+    const Eigen::Vector3d& point_j,
+    const Eigen::Vector3d& normal_j,
+    const ShapeOperatorEstimate& shape_operator,
+    double noise_floor = 1e-6);
 
 PointPairEstimate estimate_point_pair_invariants(
     const std::vector<Eigen::Vector3d>& points,

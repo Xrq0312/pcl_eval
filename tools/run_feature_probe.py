@@ -131,6 +131,66 @@ def summarize(records: list[dict]) -> dict:
             and r["oracle_normal_low_rank"]["axis_degrees"] < 2.0
             and r["oracle_normal_low_rank"]["axis_offset_relative"] < 0.10),
     }
+
+    robust_reliability: dict[str, dict[str, dict[str, float | int | None]]] = {
+        "sphere": {}, "cylinder": {},
+    }
+    for primitive_type, candidate_key in (
+            ("sphere", "robust_sphere_candidates"),
+            ("cylinder", "robust_cylinder_candidates")):
+        by_estimator: dict[str, list[dict]] = {}
+        for record in records:
+            if record["type"] != primitive_type:
+                continue
+            for candidate in record.get(candidate_key, []):
+                by_estimator.setdefault(candidate["estimator"], []).append(candidate)
+        for estimator, candidates in sorted(by_estimator.items()):
+            valid = [candidate for candidate in candidates if candidate.get("valid")]
+            if primitive_type == "sphere":
+                successes = sum(
+                    candidate.get("radius_relative_error", float("inf")) < 0.05
+                    and candidate.get("center_relative_error", float("inf")) < 0.10
+                    for candidate in valid
+                )
+            else:
+                successes = sum(
+                    candidate.get("radius_relative_error", float("inf")) < 0.05
+                    and candidate.get("axis_degrees", float("inf")) < 2.0
+                    and candidate.get("axis_offset_relative", float("inf")) < 0.10
+                    for candidate in valid
+                )
+            robust_reliability[primitive_type][estimator] = {
+                "successes": successes,
+                "valid": len(valid),
+                "total": len(candidates),
+                "recall": successes / len(candidates) if candidates else None,
+                "mean_runtime_ms": statistics.fmean(
+                    candidate["runtime_ms"] for candidate in candidates
+                ) if candidates else None,
+            }
+
+    competition_ablations = {}
+    for field in ("model_competition_without_stability", "model_competition",
+                  "model_competition_soft_geometry", "model_competition_combined"):
+        competition_confusion: Counter[tuple[str, str]] = Counter()
+        competition_rejected = 0
+        competition_correct = 0
+        for record in records:
+            selected = record.get(field, {}).get("selected", "rejected")
+            competition_confusion[(record["type"], selected)] += 1
+            competition_rejected += selected == "rejected"
+            competition_correct += selected == record["type"]
+        competition_ablations[field] = {
+            "correct": competition_correct,
+            "total": total,
+            "accuracy_with_rejection_as_error": competition_correct / total if total else None,
+            "rejected": competition_rejected,
+            "rejection_rate": competition_rejected / total if total else None,
+            "confusion": [
+                {"truth": truth, "prediction": prediction, "count": count}
+                for (truth, prediction), count in sorted(competition_confusion.items())
+            ],
+        }
     return {
         "instances": total,
         "classification_correct": correct,
@@ -145,6 +205,8 @@ def summarize(records: list[dict]) -> dict:
             for (truth, prediction), count in sorted(confusion.items())
         ],
         "low_rank_reliability": reliability,
+        "robust_candidate_reliability": robust_reliability,
+        "model_competition_ablation": competition_ablations,
         "parameter_error_means": {
             name: statistics.fmean(values)
             for name, values in sorted(parameter_errors.items()) if values
@@ -159,6 +221,9 @@ def summarize(records: list[dict]) -> dict:
             record["feature_ms"] for record in records) if records else None,
         "mean_aso_ms": statistics.fmean(
             record["aso_ms"] for record in records) if records else None,
+        "mean_candidate_and_competition_ms": statistics.fmean(
+            record["candidate_and_competition_ms"] for record in records
+        ) if records else None,
     }
 
 

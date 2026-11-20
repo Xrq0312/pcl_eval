@@ -1,4 +1,5 @@
 #include "pcl_eval/geometric_features.hpp"
+#include "pcl_eval/robust_candidates.hpp"
 
 #include <nlohmann/json.hpp>
 #include <pcl/features/normal_3d_omp.h>
@@ -198,6 +199,52 @@ double line_distance(const Eigen::Vector3d& point,
     return ((point - line_point).cross(line_axis.normalized())).norm();
 }
 
+json sphere_candidates_json(
+    const std::vector<pcl_eval::candidates::SphereCandidate>& candidates) {
+    json output = json::array();
+    for (const auto& candidate : candidates) {
+        output.push_back({
+            {"estimator", pcl_eval::candidates::to_string(candidate.estimator)},
+            {"valid", candidate.valid}, {"radius", candidate.radius},
+            {"center", {candidate.center.x(), candidate.center.y(), candidate.center.z()}},
+            {"median_residual", candidate.median_residual},
+            {"trimmed_rmse", candidate.trimmed_rmse},
+            {"condition", candidate.condition}, {"runtime_ms", candidate.runtime_ms}});
+    }
+    return output;
+}
+
+json cylinder_candidates_json(
+    const std::vector<pcl_eval::candidates::CylinderCandidate>& candidates) {
+    json output = json::array();
+    for (const auto& candidate : candidates) {
+        output.push_back({
+            {"estimator", pcl_eval::candidates::to_string(candidate.estimator)},
+            {"valid", candidate.valid}, {"radius", candidate.radius},
+            {"axis_point", {candidate.axis_point.x(), candidate.axis_point.y(),
+                            candidate.axis_point.z()}},
+            {"axis_direction", {candidate.axis_direction.x(), candidate.axis_direction.y(),
+                                candidate.axis_direction.z()}},
+            {"median_residual", candidate.median_residual},
+            {"trimmed_rmse", candidate.trimmed_rmse},
+            {"condition", candidate.condition}, {"runtime_ms", candidate.runtime_ms}});
+    }
+    return output;
+}
+
+json competition_json(const pcl_eval::candidates::CompetitionResult& competition) {
+    json scores = json::array();
+    for (const auto& score : competition.scores) {
+        scores.push_back({{"type", pcl_eval::candidates::to_string(score.type)},
+            {"source", score.source}, {"valid", score.valid}, {"bic", score.bic},
+            {"normalized_rmse", score.normalized_rmse},
+            {"stability", score.stability}, {"parameters", score.parameters}});
+    }
+    return {{"selected", pcl_eval::candidates::to_string(competition.selected)},
+        {"rejected", competition.rejected}, {"confidence", competition.confidence},
+        {"scores", scores}};
+}
+
 json probe_instance(const std::string& sample_name, int instance,
                     const std::string& type,
                     const std::vector<Eigen::Vector3d>& original_points,
@@ -227,6 +274,19 @@ json probe_instance(const std::string& sample_name, int instance,
     const auto aso = pcl_eval::features::estimate_algebraic_shape_operator(
         points[query_index], aso_radius, points, normals);
     const auto aso_done = std::chrono::steady_clock::now();
+    const auto sphere_candidates = pcl_eval::candidates::generate_sphere_candidates(
+        points, normals);
+    const auto cylinder_candidates = pcl_eval::candidates::generate_cylinder_candidates(
+        points, normals);
+    const auto competition = pcl_eval::candidates::compete_models(
+        points, normals, 0.08, 0.02, 1.0, 0.0);
+    const auto competition_without_stability = pcl_eval::candidates::compete_models(
+        points, normals, 0.08, 0.02, 0.0);
+    const auto competition_soft_geometry = pcl_eval::candidates::compete_models(
+        points, normals, 0.08, 0.02, 0.0, 0.25);
+    const auto competition_combined = pcl_eval::candidates::compete_models(
+        points, normals, 0.08, 0.02, 1.0, 0.25);
+    const auto candidates_done = std::chrono::steady_clock::now();
     auto milliseconds = [](auto duration) {
         return std::chrono::duration<double, std::milli>(duration).count();
     };
@@ -235,6 +295,7 @@ json probe_instance(const std::string& sample_name, int instance,
         {"source_points", original_points.size()}, {"used_points", points.size()},
         {"normal_ms", milliseconds(normal_done - started)},
         {"feature_ms", milliseconds(feature_done - normal_done)},
+        {"candidate_and_competition_ms", milliseconds(candidates_done - aso_done)},
         {"aso_ms", milliseconds(aso_done - feature_done)},
         {"aso", {
             {"valid", aso.valid}, {"radius", aso_radius},
@@ -274,7 +335,16 @@ json probe_instance(const std::string& sample_name, int instance,
             {"sphere_radius", std::abs(features.point_pairs.sphere_signed_radius)},
             {"sphere_residual", features.point_pairs.sphere_residual},
             {"cylinder_radius", std::abs(features.point_pairs.cylinder_signed_radius)},
-            {"cylinder_residual", features.point_pairs.cylinder_residual}}}
+            {"cylinder_residual", features.point_pairs.cylinder_residual}}},
+        {"robust_sphere_candidates", sphere_candidates_json(sphere_candidates)},
+        {"robust_cylinder_candidates", cylinder_candidates_json(cylinder_candidates)},
+        {"model_competition", competition_json(competition)}
+        ,{"model_competition_without_stability",
+            competition_json(competition_without_stability)}
+        ,{"model_competition_soft_geometry",
+            competition_json(competition_soft_geometry)}
+        ,{"model_competition_combined",
+            competition_json(competition_combined)}
     };
 
     if (ground_truth != nullptr && ground_truth->value("has_params", false)) {
@@ -306,6 +376,12 @@ json probe_instance(const std::string& sample_name, int instance,
                 {"center_relative_error",
                     (oracle.sphere_low_rank.anchor - center).norm() / radius},
                 {"normalized_rmse", oracle.sphere_low_rank.normalized_rmse}};
+            for (std::size_t i = 0; i < sphere_candidates.size(); ++i) {
+                output["robust_sphere_candidates"][i]["radius_relative_error"] =
+                    std::abs(sphere_candidates[i].radius - radius) / radius;
+                output["robust_sphere_candidates"][i]["center_relative_error"] =
+                    (sphere_candidates[i].center - center).norm() / radius;
+            }
         } else if (type == "cylinder" && ground_truth->contains("radius") &&
                    ground_truth->contains("axis_direction") &&
                    ground_truth->contains("axis_point")) {
@@ -342,6 +418,14 @@ json probe_instance(const std::string& sample_name, int instance,
                 {"axis_offset_relative",
                     line_distance(oracle.cylinder_low_rank.anchor, axis_point, axis) / radius},
                 {"normalized_rmse", oracle.cylinder_low_rank.normalized_rmse}};
+            for (std::size_t i = 0; i < cylinder_candidates.size(); ++i) {
+                output["robust_cylinder_candidates"][i]["radius_relative_error"] =
+                    std::abs(cylinder_candidates[i].radius - radius) / radius;
+                output["robust_cylinder_candidates"][i]["axis_degrees"] =
+                    vector_angle_deg(cylinder_candidates[i].axis_direction, axis);
+                output["robust_cylinder_candidates"][i]["axis_offset_relative"] =
+                    line_distance(cylinder_candidates[i].axis_point, axis_point, axis) / radius;
+            }
         }
         output["parameter_errors"] = errors;
     }

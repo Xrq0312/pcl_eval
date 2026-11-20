@@ -1,5 +1,9 @@
 # pcl_eval
 
+独立传统几何特征实验（ASO、法向补偿低秩、点对不变量及真实数据反例）见
+[`docs/GEOMETRIC_FEATURE_LAB.md`](docs/GEOMETRIC_FEATURE_LAB.md)。该实验模块不链接
+生产检测核心，现有算法仍作为基线保留。
+
 Reproducible evaluation and staged development of CPU geometric-primitive
 fitting for point clouds.  The target primitives are planes, spheres and
 cylinders.  The repository keeps the original published evaluation artifacts

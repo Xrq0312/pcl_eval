@@ -27,9 +27,32 @@ endif()
 add_executable(native_primitive_fit src/main.cpp)
 target_link_libraries(native_primitive_fit PRIVATE primitive_core)
 
+# Independent feature laboratory. It deliberately does not link primitive_core
+# so experiments cannot silently change the production detector.
+add_library(geometric_features src/geometric_features.cpp)
+target_include_directories(geometric_features PUBLIC include PRIVATE third_party)
+target_link_libraries(geometric_features PUBLIC Eigen3::Eigen)
+if(MSVC)
+    target_compile_options(geometric_features PRIVATE /W4 /permissive- /EHsc)
+else()
+    target_compile_options(geometric_features PRIVATE -Wall -Wextra -Wpedantic)
+endif()
+
+add_executable(geometry_feature_probe src/feature_probe.cpp)
+target_include_directories(geometry_feature_probe PRIVATE ${PCL_INCLUDE_DIRS})
+target_link_libraries(geometry_feature_probe PRIVATE
+    geometric_features ${PCL_LIBRARIES} nlohmann_json::nlohmann_json)
+target_compile_definitions(geometry_feature_probe PRIVATE ${PCL_DEFINITIONS})
+
+add_executable(geometry_feature_synthetic src/feature_synthetic.cpp)
+target_link_libraries(geometry_feature_synthetic PRIVATE geometric_features)
+
 if(BUILD_TESTING)
     add_executable(primitive_core_tests tests/test_core.cpp)
     target_link_libraries(primitive_core_tests PRIVATE primitive_core)
     add_test(NAME primitive_core_tests COMMAND primitive_core_tests)
+    add_executable(geometric_features_tests tests/test_geometric_features.cpp)
+    target_link_libraries(geometric_features_tests PRIVATE geometric_features)
+    add_test(NAME geometric_features_tests COMMAND geometric_features_tests)
 endif()
 

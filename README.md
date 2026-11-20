@@ -9,6 +9,10 @@ fitting for point clouds.  The target primitives are planes, spheres and
 cylinders.  The repository keeps the original published evaluation artifacts
 as a frozen baseline and develops new algorithms additively.
 
+The independent robust-candidate, multi-model competition, and point-only
+cylinder-voting study is documented in
+[`docs/ROBUST_CANDIDATE_LAB.md`](docs/ROBUST_CANDIDATE_LAB.md).
+
 ## Important source audit result
 
 The upstream `main` commit (`85c50e7`) does **not** contain the C++ sources

@@ -46,6 +46,7 @@ if(MSVC)
 else()
     target_compile_options(robust_candidates PRIVATE -Wall -Wextra -Wpedantic)
 endif()
+target_link_libraries(primitive_core PRIVATE robust_candidates)
 
 add_library(cylinder_voting src/cylinder_voting.cpp)
 target_include_directories(cylinder_voting PUBLIC include)

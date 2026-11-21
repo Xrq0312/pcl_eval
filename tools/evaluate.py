@@ -173,6 +173,10 @@ def proposal_support(model, points, normals, config):
     if threshold <= 0:
         return np.zeros(len(points), dtype=bool)
     support = pred_surface_distances(points, ptype, coeff) <= threshold
+    if "local_scope_center" in model and "local_scope_radius" in model:
+        center = np.asarray(model["local_scope_center"], dtype=float)
+        support &= np.linalg.norm(points - center, axis=1) <= float(
+            model["local_scope_radius"])
     if normals is None:
         return support
     normal_norm = np.linalg.norm(normals, axis=1)
@@ -379,7 +383,8 @@ def hungarian_match(iou):
 
 
 # ---------------------------------------------------------------- evaluation
-def evaluate_sample(sample_dir, pred_prefix, iou_detect=IOU_DETECT):
+def evaluate_sample(sample_dir, pred_prefix, iou_detect=IOU_DETECT,
+                    include_failure_attribution=True):
     gt_inst, gt_type, gt_prims = load_gt(sample_dir)
     region, premerge, final, meta = load_pred(pred_prefix)
     if len(gt_inst) != len(final):
@@ -391,9 +396,10 @@ def evaluate_sample(sample_dir, pred_prefix, iou_detect=IOU_DETECT):
            "num_points": n,
            "timing_seconds": meta.get("timing_seconds", {}),
            "config": meta.get("config", {})}
-    res["failure_attribution"] = attribute_failures(
+    res["failure_attribution"] = (attribute_failures(
         gt_inst, gt_by_id, premerge, final, meta, pred_prefix,
-        detection_iou=iou_detect)
+        detection_iou=iou_detect) if include_failure_attribution else
+        {"available": False, "reason": "disabled for this evaluation run"})
 
     # ------- stage-wise instance metrics (premerge = B, final = D)
     for stage, labels in (("premerge", premerge), ("final", final)):
@@ -659,12 +665,14 @@ def main():
     ap.add_argument("--pred-prefix")
     ap.add_argument("--out", default=None)
     ap.add_argument("--dataset", default="?")
+    ap.add_argument("--skip-failure-attribution", action="store_true")
     ap.add_argument("--aggregate", nargs=2, metavar=("RESULTS_ROOT", "CSV"))
     args = ap.parse_args()
     if args.aggregate:
         aggregate(args.aggregate[0], args.aggregate[1])
         return
-    res = evaluate_sample(args.sample_dir, args.pred_prefix)
+    res = evaluate_sample(args.sample_dir, args.pred_prefix,
+                          include_failure_attribution=not args.skip_failure_attribution)
     res["dataset"] = args.dataset
     out = args.out or os.path.join(os.path.dirname(args.pred_prefix) or ".",
                                    "evaluation.json")

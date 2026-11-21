@@ -9,7 +9,10 @@
 namespace pcl_eval {
 
 enum class PrimitiveType { Plane, Sphere, Cylinder };
-enum class PipelineStage { GlobalRansac, GlobalLocal, JointOptimization, BoundaryAware };
+enum class PipelineStage {
+    GlobalRansac, GlobalLocal, JointOptimization, BoundaryAware,
+    AdaptiveLocal, BalancedSelection
+};
 
 struct Config {
     PipelineStage stage = PipelineStage::GlobalLocal;
@@ -18,8 +21,10 @@ struct Config {
     double normal_angle_deg = 25.0;
     int normal_k = 24;
     int min_points = 40;
+    int small_min_points = 20;
     int global_iterations = 1800;
     int local_iterations = 1800;
+    int adaptive_local_anchors = 2048;
     int pilot_size = 4096;
     int proposal_pool_size = 96;
     int region_k = 12;
@@ -52,6 +57,11 @@ struct PrimitiveModel {
     double fit_threshold = 0.0;
     std::string proposal_source;
     int parent_model = -1;
+    // Adaptive local proposals keep a spatial scope so a small face is not
+    // immediately expanded across every coplanar/disconnected surface.
+    bool local_scope = false;
+    Eigen::Vector3d scope_center = Eigen::Vector3d::Zero();
+    double scope_radius = 0.0;
 };
 
 struct Timing {

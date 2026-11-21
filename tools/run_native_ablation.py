@@ -48,11 +48,14 @@ def main():
     parser.add_argument("--stages", default="global_local,joint_opt")
     parser.add_argument("--distance", type=float, default=0.02)
     parser.add_argument("--min-points", type=int, default=80)
+    parser.add_argument("--small-min-points", type=int, default=20)
+    parser.add_argument("--adaptive-local-anchors", type=int, default=2048)
     parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--manifest")
     parser.add_argument("--split", choices=("all", "development", "audit"),
                         default="all")
     parser.add_argument("--force", action="store_true")
+    parser.add_argument("--skip-failure-attribution", action="store_true")
     args = parser.parse_args()
 
     root = Path(__file__).resolve().parents[1]
@@ -89,16 +92,22 @@ def main():
                 command = [args.exe, "--input", str(point_file),
                            "--output-prefix", str(prefix), "--stage", stage,
                            "--distance", str(args.distance), "--min-points",
-                           str(args.min_points)]
+                           str(args.min_points), "--small-min-points",
+                           str(args.small_min_points), "--adaptive-local-anchors",
+                           str(args.adaptive_local_anchors)]
                 pixel_map = sample / "pixel_map.txt"
                 if pixel_map.exists():
                     command += ["--pixel-map", str(pixel_map)]
                 start = time.perf_counter()
                 subprocess.run(command, cwd=root, check=True)
                 wall = time.perf_counter() - start
-                subprocess.run([sys.executable, str(root / "tools" / "evaluate.py"),
-                                "--sample-dir", str(sample), "--pred-prefix", str(prefix),
-                                "--out", str(evaluation_file), "--dataset", samples_root.name],
+                evaluate_command = [
+                    sys.executable, str(root / "tools" / "evaluate.py"),
+                    "--sample-dir", str(sample), "--pred-prefix", str(prefix),
+                    "--out", str(evaluation_file), "--dataset", samples_root.name]
+                if args.skip_failure_attribution:
+                    evaluate_command.append("--skip-failure-attribution")
+                subprocess.run(evaluate_command,
                                cwd=root, check=True)
                 with open(output_dir / "run.json", "w", encoding="utf-8") as stream:
                     json.dump({"command": command, "wall_seconds": wall}, stream, indent=2)

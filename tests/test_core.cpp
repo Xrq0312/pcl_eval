@@ -97,11 +97,39 @@ void test_global_local_pipeline() {
     require(result.labels == repeated.labels, "fixed-seed labels must be deterministic");
 }
 
+void test_adaptive_candidate_lifecycle() {
+    std::vector<Eigen::Vector3d> points;
+    std::vector<Eigen::Vector3d> normals;
+    add_plane(points, normals, -2.0);
+    add_sphere(points, normals);
+    add_cylinder(points, normals);
+    pcl_eval::Config config;
+    config.stage = pcl_eval::PipelineStage::AdaptiveLocal;
+    config.distance_threshold = 0.008;
+    config.min_points = 70;
+    config.small_min_points = 20;
+    config.global_iterations = 300;
+    config.local_iterations = 0;
+    config.adaptive_local_anchors = 128;
+    config.proposal_pool_size = 32;
+    config.max_models = 16;
+    config.seed = 19;
+    const auto result = pcl_eval::fit_primitives(points, config, &normals);
+    require(!result.screened_proposals.empty(), "adaptive stage must export screened proposals");
+    require(!result.proposals.empty(), "adaptive stage must retain valid proposals");
+    require(!result.selected_models.empty(), "adaptive stage must select models");
+    require(result.labels.size() == points.size(), "adaptive labels must cover the input array");
+    const auto repeated = pcl_eval::fit_primitives(points, config, &normals);
+    require(result.labels == repeated.labels,
+            "adaptive stage labels must be deterministic for a fixed seed");
+}
+
 }  // namespace
 
 int main() {
     try {
         test_global_local_pipeline();
+        test_adaptive_candidate_lifecycle();
         std::cout << "ALL CORE TESTS PASSED\n";
         return 0;
     } catch (const std::exception& error) {

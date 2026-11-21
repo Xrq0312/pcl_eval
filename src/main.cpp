@@ -39,9 +39,10 @@ struct LoadedCloud {
 void usage() {
     std::cout
         << "native_primitive_fit --input points.txt|cloud.pcd --output-prefix PATH\n"
-        << "  [--stage global_ransac|global_local|joint_opt|boundary_aware] [--distance VALUE]\n"
+        << "  [--stage global_ransac|global_local|joint_opt|boundary_aware|adaptive_local|balanced_select] [--distance VALUE]\n"
         << "  [--pixel-map pixel_map.txt]\n"
-        << "  [--min-points N] [--global-iterations N] [--local-iterations N]\n"
+        << "  [--min-points N] [--small-min-points N] [--global-iterations N]\n"
+        << "  [--local-iterations N] [--adaptive-local-anchors N]\n"
         << "  [--max-refit-rmse-factor VALUE] (0 disables the post-refit gate)\n"
         << "  [--normal-k N] [--seed N] [--threads N]\n";
 }
@@ -71,8 +72,12 @@ Arguments parse_args(int argc, char** argv) {
         else if (key == "--stage") args.config.stage = pcl_eval::parse_stage(value());
         else if (key == "--distance") args.config.distance_threshold = parse_number<double>(value(), "--distance");
         else if (key == "--min-points") args.config.min_points = parse_number<int>(value(), "--min-points");
+        else if (key == "--small-min-points")
+            args.config.small_min_points = parse_number<int>(value(), "--small-min-points");
         else if (key == "--global-iterations") args.config.global_iterations = parse_number<int>(value(), "--global-iterations");
         else if (key == "--local-iterations") args.config.local_iterations = parse_number<int>(value(), "--local-iterations");
+        else if (key == "--adaptive-local-anchors")
+            args.config.adaptive_local_anchors = parse_number<int>(value(), "--adaptive-local-anchors");
         else if (key == "--normal-k") args.config.normal_k = parse_number<int>(value(), "--normal-k");
         else if (key == "--max-refit-rmse-factor")
             args.config.max_refit_rmse_factor = parse_number<double>(
@@ -163,13 +168,19 @@ LoadedCloud load_cloud(const fs::path& path) {
 }
 
 json model_json(const pcl_eval::PrimitiveModel& model, int id) {
-    return {
+    json output = {
         {"id", id}, {"type", pcl_eval::to_string(model.type)},
         {"points", model.points.size()}, {"regions", 1}, {"rmse", model.rmse},
         {"score", model.score}, {"fit_threshold", model.fit_threshold},
         {"coefficients", model.coefficients},
         {"proposal_source", model.proposal_source}, {"parent_model", model.parent_model}
     };
+    if (model.local_scope) {
+        output["local_scope_center"] = {
+            model.scope_center.x(), model.scope_center.y(), model.scope_center.z()};
+        output["local_scope_radius"] = model.scope_radius;
+    }
+    return output;
 }
 
 json model_array_json(const std::vector<pcl_eval::PrimitiveModel>& models) {
@@ -219,6 +230,8 @@ void write_outputs(const fs::path& prefix,
             {"stage", pcl_eval::to_string(config.stage)},
             {"distance", result.distance_threshold}, {"spacing", result.spacing},
             {"min_points", config.min_points}, {"normal_k", config.normal_k},
+            {"small_min_points", config.small_min_points},
+            {"adaptive_local_anchors", config.adaptive_local_anchors},
             {"normal_angle_deg", config.normal_angle_deg},
             {"global_iterations", config.global_iterations},
             {"local_iterations", config.local_iterations}, {"seed", config.seed},

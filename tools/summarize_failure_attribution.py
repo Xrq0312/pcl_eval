@@ -67,9 +67,19 @@ def main() -> None:
     for stage_dir in sorted(path for path in args.results_root.iterdir()
                             if path.is_dir()):
         records = []
+        scene_rows = []
         unavailable = []
         for evaluation_path in sorted(stage_dir.glob("*/evaluation.json")):
             payload = json.loads(evaluation_path.read_text(encoding="utf-8"))
+            final = payload["final_instance"]
+            scene_rows.append({
+                "gt": int(final["num_gt_target"]),
+                "pred": int(final["num_pred_target"]),
+                "detected": int(final.get("num_detected_target", 0)),
+                "typed": int(final.get("num_detected_typed", 0)),
+                "miou_sum": float(final["miou_target"]) * int(final["num_gt_target"]),
+                "seconds": payload.get("timing_seconds", {}).get("total"),
+            })
             attribution = payload.get("failure_attribution", {})
             if not attribution.get("available"):
                 unavailable.append(evaluation_path.parent.name)
@@ -83,7 +93,27 @@ def main() -> None:
                 record["size"] = size_bin(int(record["points"]))
                 record["complexity"] = metadata.get("complexity", "unknown")
                 records.append(record)
+        total_gt = sum(row["gt"] for row in scene_rows)
+        total_pred = sum(row["pred"] for row in scene_rows)
+        measured_seconds = [float(row["seconds"]) for row in scene_rows
+                            if row["seconds"] is not None]
         result["stages"][stage_dir.name] = {
+            "scene_detection_micro": {
+                "samples": len(scene_rows), "gt_target_instances": total_gt,
+                "predicted_target_instances": total_pred,
+                "recall_iou50": (sum(row["detected"] for row in scene_rows) / total_gt
+                                 if total_gt else None),
+                "precision_iou50": (sum(row["detected"] for row in scene_rows) / total_pred
+                                    if total_pred else None),
+                "typed_recall_iou50": (sum(row["typed"] for row in scene_rows) / total_gt
+                                       if total_gt else None),
+                "typed_precision_iou50": (sum(row["typed"] for row in scene_rows) / total_pred
+                                          if total_pred else None),
+                "miou": (sum(row["miou_sum"] for row in scene_rows) / total_gt
+                         if total_gt else None),
+                "mean_algorithm_seconds": (sum(measured_seconds) / len(measured_seconds)
+                                           if measured_seconds else None),
+            },
             "overall": summarize(records),
             "by_type": grouped(records, "type"),
             "by_instance_size": grouped(records, "size"),

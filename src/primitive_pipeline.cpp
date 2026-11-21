@@ -1,4 +1,5 @@
 #include "pcl_eval/primitive_pipeline.hpp"
+#include "pcl_eval/robust_candidates.hpp"
 
 #include <pcl/features/normal_3d_omp.h>
 #include <pcl/features/integral_image_normal.h>
@@ -28,6 +29,24 @@ namespace {
 using Clock = std::chrono::steady_clock;
 constexpr double kEps = 1e-12;
 constexpr double kPi = 3.141592653589793238462643383279502884;
+
+bool uses_joint_assignment(PipelineStage stage) {
+    return stage == PipelineStage::JointOptimization ||
+           stage == PipelineStage::BoundaryAware ||
+           stage == PipelineStage::AdaptiveLocal ||
+           stage == PipelineStage::BalancedSelection;
+}
+
+bool uses_adaptive_local(PipelineStage stage) {
+    return stage == PipelineStage::AdaptiveLocal ||
+           stage == PipelineStage::BalancedSelection;
+}
+
+int effective_min_points(const Config& config) {
+    return uses_adaptive_local(config.stage)
+        ? std::min(config.min_points, config.small_min_points)
+        : config.min_points;
+}
 
 struct Observations {
     std::vector<Eigen::Vector3d> points;
@@ -231,6 +250,8 @@ void evaluate_model(PrimitiveModel& model, const Observations& obs,
     double score = 0.0;
     double squared_error = 0.0;
     for (int index : indices) {
+        if (model.local_scope &&
+            (obs.points[index] - model.scope_center).norm() > model.scope_radius) continue;
         const double distance = residual(model, obs.points[index]);
         if (!(distance <= threshold)) continue;
         double alignment = 1.0;
@@ -597,6 +618,103 @@ void trim_pool(std::vector<Candidate>& pool, int limit) {
     if (static_cast<int>(pool.size()) > limit) pool.resize(limit);
 }
 
+PrimitiveModel sphere_model(const candidates::SphereCandidate& value,
+                            const std::string& source) {
+    PrimitiveModel model;
+    model.type = PrimitiveType::Sphere;
+    model.coefficients = {value.center.x(), value.center.y(), value.center.z(),
+                          value.radius};
+    model.rmse = value.trimmed_rmse;
+    model.proposal_source = source;
+    return model;
+}
+
+PrimitiveModel cylinder_model(const candidates::CylinderCandidate& value,
+                              const std::string& source) {
+    PrimitiveModel model;
+    model.type = PrimitiveType::Cylinder;
+    const Eigen::Vector3d axis = canonical_direction(value.axis_direction);
+    Eigen::Vector3d origin = value.axis_point - axis * axis.dot(value.axis_point);
+    model.coefficients = {origin.x(), origin.y(), origin.z(),
+                          axis.x(), axis.y(), axis.z(), value.radius};
+    model.rmse = value.trimmed_rmse;
+    model.proposal_source = source;
+    return model;
+}
+
+void generate_adaptive_local_proposals(
+    Observations& obs, const Config& config, double threshold,
+    std::mt19937_64& rng, std::vector<Candidate>& output) {
+    if (config.adaptive_local_anchors <= 0 || obs.points.empty()) return;
+    const int scales[] = {24, 48, 96, 192, 384};
+    const double minimum_alignment = std::cos(config.normal_angle_deg * kPi / 180.0);
+    const int local_minimum = std::max(8, effective_min_points(config) / 2);
+    std::uniform_int_distribution<int> anchor_pick(0, static_cast<int>(obs.points.size()) - 1);
+    std::vector<int> neighbors;
+    std::vector<float> squared;
+
+    auto append = [&](PrimitiveModel model, int anchor, double scope_radius,
+                      const std::vector<int>& local_indices) {
+        model.local_scope = true;
+        model.scope_center = obs.points[anchor];
+        model.scope_radius = scope_radius;
+        model.fit_threshold = threshold;
+        evaluate_model(model, obs, local_indices, threshold, minimum_alignment);
+        if (static_cast<int>(model.points.size()) < local_minimum) return;
+        output.push_back({std::move(model)});
+    };
+
+    for (int iteration = 0; iteration < config.adaptive_local_anchors; ++iteration) {
+        const int anchor = anchor_pick(rng);
+        const int k = std::min(static_cast<int>(obs.points.size()), scales[iteration % 5]);
+        neighbors.resize(k);
+        squared.resize(k);
+        const int found = obs.tree.nearestKSearch(anchor, k, neighbors, squared);
+        if (found < local_minimum) continue;
+        neighbors.resize(found);
+        squared.resize(found);
+        const double scope_radius = 1.25 * std::sqrt(
+            std::max(0.0f, squared[static_cast<std::size_t>(found - 1)]));
+        if (!(scope_radius > 0.0)) continue;
+        const PrimitiveType type = iteration % 3 == 0 ? PrimitiveType::Plane
+                                  : iteration % 3 == 1 ? PrimitiveType::Sphere
+                                                       : PrimitiveType::Cylinder;
+        const std::string prefix = "adaptive_k" + std::to_string(k) + ":";
+        if (type == PrimitiveType::Plane) {
+            PrimitiveModel model;
+            model.type = type;
+            if (refit_model(obs, neighbors, model))
+                append(std::move(model), anchor, scope_radius, neighbors);
+            continue;
+        }
+        std::vector<Eigen::Vector3d> local_points;
+        std::vector<Eigen::Vector3d> local_normals;
+        local_points.reserve(neighbors.size());
+        local_normals.reserve(neighbors.size());
+        for (int index : neighbors) {
+            if (!obs.normal_valid[index]) continue;
+            local_points.push_back(obs.points[index]);
+            local_normals.push_back(obs.normals[index]);
+        }
+        if (local_points.size() < static_cast<std::size_t>(local_minimum)) continue;
+        if (type == PrimitiveType::Sphere) {
+            for (const auto& candidate : candidates::generate_sphere_candidates(
+                     local_points, local_normals, 256)) {
+                if (!candidate.valid) continue;
+                append(sphere_model(candidate, prefix + candidates::to_string(candidate.estimator)),
+                       anchor, scope_radius, neighbors);
+            }
+        } else {
+            for (const auto& candidate : candidates::generate_cylinder_candidates(
+                     local_points, local_normals, 256)) {
+                if (!candidate.valid) continue;
+                append(cylinder_model(candidate, prefix + candidates::to_string(candidate.estimator)),
+                       anchor, scope_radius, neighbors);
+            }
+        }
+    }
+}
+
 std::vector<Candidate> generate_proposals(
     Observations& obs, const Config& config, double threshold, double spacing,
     std::vector<PrimitiveModel>* screened,
@@ -646,20 +764,25 @@ std::vector<Candidate> generate_proposals(
     }
 
     if (config.stage != PipelineStage::GlobalRansac) {
-        const int scales[] = {64, 256, 1024, 4096, 16384};
-        std::uniform_int_distribution<int> anchor_pick(0, n - 1);
-        std::vector<int> neighbors;
-        std::vector<float> squared;
-        for (int iteration = 0; iteration < config.local_iterations; ++iteration) {
-            const int anchor = anchor_pick(rng);
-            const int k = std::min(n, scales[iteration % 5]);
-            neighbors.resize(k); squared.resize(k);
-            const int found = obs.tree.nearestKSearch(anchor, k, neighbors, squared);
-            neighbors.resize(std::max(0, found));
-            const PrimitiveType type = iteration % 3 == 0 ? PrimitiveType::Plane
-                                      : iteration % 3 == 1 ? PrimitiveType::Sphere
-                                                           : PrimitiveType::Cylinder;
-            propose(type, neighbors, "local_k" + std::to_string(k));
+        if (uses_adaptive_local(config.stage)) {
+            generate_adaptive_local_proposals(
+                obs, config, threshold, rng, region_candidates);
+        } else {
+            const int scales[] = {64, 256, 1024, 4096, 16384};
+            std::uniform_int_distribution<int> anchor_pick(0, n - 1);
+            std::vector<int> neighbors;
+            std::vector<float> squared;
+            for (int iteration = 0; iteration < config.local_iterations; ++iteration) {
+                const int anchor = anchor_pick(rng);
+                const int k = std::min(n, scales[iteration % 5]);
+                neighbors.resize(k); squared.resize(k);
+                const int found = obs.tree.nearestKSearch(anchor, k, neighbors, squared);
+                neighbors.resize(std::max(0, found));
+                const PrimitiveType type = iteration % 3 == 0 ? PrimitiveType::Plane
+                                          : iteration % 3 == 1 ? PrimitiveType::Sphere
+                                                               : PrimitiveType::Cylinder;
+                propose(type, neighbors, "local_k" + std::to_string(k));
+            }
         }
 
         // Region growing is deliberately only a proposal source.  The final
@@ -689,27 +812,27 @@ std::vector<Candidate> generate_proposals(
                                  std::make_move_iterator(pool.begin()),
                                  std::make_move_iterator(pool.end()));
     }
+    const int candidate_minimum = effective_min_points(config);
     for (auto& candidate : region_candidates) {
         evaluate_model(candidate.model, obs, all, threshold, minimum_alignment);
         candidate.model.fit_threshold = threshold;
         if (screened != nullptr) screened->push_back(candidate.model);
         for (int pass = 0; pass < 2 &&
-             static_cast<int>(candidate.model.points.size()) >= config.min_points; ++pass) {
+             static_cast<int>(candidate.model.points.size()) >= candidate_minimum; ++pass) {
             const auto support = candidate.model.points;
             if (!refit_model(obs, support, candidate.model)) {
                 if (refit_failed != nullptr) refit_failed->push_back(candidate.model);
                 break;
             }
             candidate.model.proposal_source += "+refit";
-            const bool adaptive = config.stage == PipelineStage::JointOptimization ||
-                                  config.stage == PipelineStage::BoundaryAware;
+            const bool adaptive = uses_joint_assignment(config.stage);
             const double adaptive_threshold = adaptive
                 ? std::clamp(4.0 * candidate.model.rmse, threshold, 3.0 * threshold)
                 : threshold;
             candidate.model.fit_threshold = adaptive_threshold;
             evaluate_model(candidate.model, obs, all, adaptive_threshold, minimum_alignment);
         }
-        if (static_cast<int>(candidate.model.points.size()) >= config.min_points &&
+        if (static_cast<int>(candidate.model.points.size()) >= candidate_minimum &&
             finite_coefficients(candidate.model) &&
             geometry_is_observable(candidate.model, obs, candidate.model.points, threshold))
             result.push_back(std::move(candidate));
@@ -732,9 +855,19 @@ double support_iou(const std::vector<int>& a, const std::vector<int>& b) {
 
 std::vector<PrimitiveModel> select_models(std::vector<Candidate> candidates,
                                           const Config& config, int point_count) {
-    std::sort(candidates.begin(), candidates.end(), [](const Candidate& a, const Candidate& b) {
-        const double qa = a.model.score / std::sqrt(std::max<std::size_t>(1, a.model.points.size()));
-        const double qb = b.model.score / std::sqrt(std::max<std::size_t>(1, b.model.points.size()));
+    const bool balanced = config.stage == PipelineStage::BalancedSelection;
+    auto quality = [&](const PrimitiveModel& model) {
+        const double points = static_cast<double>(std::max<std::size_t>(1, model.points.size()));
+        if (!balanced) return model.score / std::sqrt(points);
+        const double threshold = model.fit_threshold > 0.0
+            ? model.fit_threshold : config.distance_threshold;
+        const double normalized_rmse = model.rmse / std::max(threshold, kEps);
+        return model.score / points - 0.20 * normalized_rmse +
+               0.015 * std::log1p(points);
+    };
+    std::sort(candidates.begin(), candidates.end(), [&](const Candidate& a, const Candidate& b) {
+        const double qa = quality(a.model);
+        const double qb = quality(b.model);
         if (qa != qb) return qa > qb;
         return a.model.rmse < b.model.rmse;
     });
@@ -742,10 +875,21 @@ std::vector<PrimitiveModel> select_models(std::vector<Candidate> candidates,
     std::vector<PrimitiveModel> selected;
     for (auto& candidate : candidates) {
         if (static_cast<int>(selected.size()) >= config.max_models) break;
+        if (balanced) {
+            const double count = static_cast<double>(
+                std::max<std::size_t>(1, candidate.model.points.size()));
+            const double threshold = candidate.model.fit_threshold > 0.0
+                ? candidate.model.fit_threshold : config.distance_threshold;
+            if (candidate.model.score / count < 0.65 ||
+                candidate.model.rmse / std::max(threshold, kEps) > 0.60) continue;
+        }
         bool duplicate = false;
         for (const auto& existing : selected) {
-            if (existing.type == candidate.model.type &&
-                support_iou(existing.points, candidate.model.points) > 0.72) {
+            const double overlap = support_iou(existing.points, candidate.model.points);
+            const double duplicate_threshold = existing.type == candidate.model.type
+                ? (balanced ? 0.55 : 0.72) : 0.72;
+            if ((existing.type == candidate.model.type || balanced) &&
+                overlap > duplicate_threshold) {
                 duplicate = true;
                 break;
             }
@@ -754,7 +898,9 @@ std::vector<PrimitiveModel> select_models(std::vector<Candidate> candidates,
         const int novel = static_cast<int>(std::count_if(
             candidate.model.points.begin(), candidate.model.points.end(),
             [&](int index) { return !covered[index]; }));
-        if (novel < std::max(8, config.min_points / 2)) continue;
+        if (novel < std::max(8, effective_min_points(config) / 2)) continue;
+        if (balanced && novel < static_cast<int>(
+                std::ceil(0.30 * candidate.model.points.size()))) continue;
         for (int index : candidate.model.points) covered[index] = 1;
         selected.push_back(std::move(candidate.model));
     }
@@ -770,6 +916,9 @@ std::vector<int> assign_points(const Observations& obs,
         double best_cost = std::numeric_limits<double>::infinity();
         int best = -1;
         for (std::size_t m = 0; m < models.size(); ++m) {
+            if (models[m].local_scope &&
+                (obs.points[i] - models[m].scope_center).norm() > models[m].scope_radius)
+                continue;
             const double model_threshold = models[m].fit_threshold > 0.0
                 ? models[m].fit_threshold : threshold;
             const double distance = residual(models[m], obs.points[i]);
@@ -795,11 +944,12 @@ void compact_and_refit(Observations& obs, const Config& config, double threshold
                        std::vector<int>& labels) {
     std::vector<PrimitiveModel> kept;
     std::vector<int> remap(models.size(), -1);
+    const int minimum_points = effective_min_points(config);
     for (std::size_t model_id = 0; model_id < models.size(); ++model_id) {
         std::vector<int> support;
         for (std::size_t i = 0; i < labels.size(); ++i)
             if (labels[i] == static_cast<int>(model_id)) support.push_back(static_cast<int>(i));
-        if (static_cast<int>(support.size()) < config.min_points) continue;
+        if (static_cast<int>(support.size()) < minimum_points) continue;
         PrimitiveModel model = models[model_id];
         const double previous_threshold = model.fit_threshold > 0.0
             ? model.fit_threshold : threshold;
@@ -813,8 +963,9 @@ void compact_and_refit(Observations& obs, const Config& config, double threshold
         // the support under the tolerance that admitted it.
         if (config.max_refit_rmse_factor > 0.0 &&
             model.rmse > config.max_refit_rmse_factor * previous_threshold) continue;
-        if (config.stage == PipelineStage::JointOptimization ||
-            config.stage == PipelineStage::BoundaryAware) {
+        if (config.stage == PipelineStage::BalancedSelection &&
+            model.rmse > 0.45 * previous_threshold) continue;
+        if (uses_joint_assignment(config.stage)) {
             model.fit_threshold = std::clamp(4.0 * model.rmse, threshold, 3.0 * threshold);
         } else {
             model.fit_threshold = threshold;
@@ -976,7 +1127,9 @@ std::string to_string(PipelineStage stage) {
     if (stage == PipelineStage::GlobalRansac) return "global_ransac";
     if (stage == PipelineStage::GlobalLocal) return "global_local";
     if (stage == PipelineStage::JointOptimization) return "joint_opt";
-    return "boundary_aware";
+    if (stage == PipelineStage::BoundaryAware) return "boundary_aware";
+    if (stage == PipelineStage::AdaptiveLocal) return "adaptive_local";
+    return "balanced_select";
 }
 
 PipelineStage parse_stage(const std::string& value) {
@@ -984,6 +1137,8 @@ PipelineStage parse_stage(const std::string& value) {
     if (value == "global_local") return PipelineStage::GlobalLocal;
     if (value == "joint_opt") return PipelineStage::JointOptimization;
     if (value == "boundary_aware") return PipelineStage::BoundaryAware;
+    if (value == "adaptive_local") return PipelineStage::AdaptiveLocal;
+    if (value == "balanced_select") return PipelineStage::BalancedSelection;
     throw std::runtime_error("unknown stage: " + value);
 }
 
@@ -992,7 +1147,9 @@ FitResult fit_primitives(const std::vector<Eigen::Vector3d>& points,
                          const std::vector<Eigen::Vector3d>* supplied_normals,
                          const OrganizedGrid* organized_grid) {
     if (points.size() < 4) throw std::runtime_error("at least four points are required");
-    if (config.min_points < 3 || config.global_iterations < 0 || config.local_iterations < 0)
+    if (config.min_points < 3 || config.small_min_points < 3 ||
+        config.global_iterations < 0 || config.local_iterations < 0 ||
+        config.adaptive_local_anchors < 0)
         throw std::runtime_error("invalid primitive fitting configuration");
     const auto total_begin = Clock::now();
     FitResult result;
@@ -1021,10 +1178,9 @@ FitResult fit_primitives(const std::vector<Eigen::Vector3d>& points,
     auto models = select_models(std::move(candidates), config, static_cast<int>(points.size()));
     result.selected_models = models;
     const double minimum_alignment = std::cos(config.normal_angle_deg * kPi / 180.0);
-    const bool joint_stage = config.stage == PipelineStage::JointOptimization ||
-                             config.stage == PipelineStage::BoundaryAware;
-    const double support_prior_weight = joint_stage
-        ? config.joint_support_prior : 0.0;
+    const bool joint_stage = uses_joint_assignment(config.stage);
+    const double support_prior_weight = config.stage == PipelineStage::BalancedSelection
+        ? 0.0 : (joint_stage ? config.joint_support_prior : 0.0);
     auto labels = assign_points(obs, models, result.distance_threshold, minimum_alignment,
                                 support_prior_weight);
     result.timing.selection = seconds(selection_begin, Clock::now());

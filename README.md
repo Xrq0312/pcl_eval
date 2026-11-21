@@ -12,6 +12,8 @@ as a frozen baseline and develops new algorithms additively.
 The independent robust-candidate, multi-model competition, and point-only
 cylinder-voting study is documented in
 [`docs/ROBUST_CANDIDATE_LAB.md`](docs/ROBUST_CANDIDATE_LAB.md).
+The reproducible ParSeNet-train-derived ABCParts-Mini100 protocol and results
+are in [`docs/ABCPARTS_MINI_REPORT.md`](docs/ABCPARTS_MINI_REPORT.md).
 
 ## Important source audit result
 

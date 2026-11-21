@@ -49,6 +49,9 @@ def main():
     parser.add_argument("--distance", type=float, default=0.02)
     parser.add_argument("--min-points", type=int, default=80)
     parser.add_argument("--limit", type=int, default=0)
+    parser.add_argument("--manifest")
+    parser.add_argument("--split", choices=("all", "development", "audit"),
+                        default="all")
     parser.add_argument("--force", action="store_true")
     args = parser.parse_args()
 
@@ -58,6 +61,15 @@ def main():
     stages = [value.strip() for value in args.stages.split(",") if value.strip()]
     samples = sorted(path for path in samples_root.iterdir()
                      if path.is_dir() and (path / "gt_labels.csv").exists())
+    if args.split != "all":
+        if not args.manifest:
+            raise ValueError("--manifest is required when --split is not all")
+        manifest = json.loads(Path(args.manifest).read_text(encoding="utf-8"))
+        development = set(manifest["smoke_sample_names"])
+        if args.split == "development":
+            samples = [path for path in samples if path.name in development]
+        else:
+            samples = [path for path in samples if path.name not in development]
     if args.limit:
         samples = samples[:args.limit]
     rows = []

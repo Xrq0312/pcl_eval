@@ -14,6 +14,8 @@ cylinder-voting study is documented in
 [`docs/ROBUST_CANDIDATE_LAB.md`](docs/ROBUST_CANDIDATE_LAB.md).
 The reproducible ParSeNet-train-derived ABCParts-Mini100 protocol and results
 are in [`docs/ABCPARTS_MINI_REPORT.md`](docs/ABCPARTS_MINI_REPORT.md).
+The staged proposal-loss attribution, adaptive local candidate and selection
+study is in [`docs/LOCAL_CANDIDATE_LAB.md`](docs/LOCAL_CANDIDATE_LAB.md).
 
 ## Important source audit result
 

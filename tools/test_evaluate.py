@@ -128,9 +128,16 @@ def make_fake_pred(tmp_prefix, pts, rows):
         {"id": 2, "type": "cylinder", "points": 60, "regions": 1, "rmse": 0.0,
          "inlier_ratio": 1.0, "coefficients": [0, 0, 0, 0, 0, 1, 1.0]},
     ]
-    meta = {"config": {"ablation": "D"}, "num_points": n, "num_regions": 1,
+    diagnostics = {
+        "screened_proposals": models, "refit_failed_proposals": [],
+        "filtered_proposals": [], "proposals": models,
+        "selected_models": models,
+    }
+    meta = {"config": {"ablation": "D", "distance": 0.02,
+                       "normal_angle_deg": 25.0},
+            "num_points": n, "num_regions": 1,
             "timing_seconds": {}, "premerge_models": models, "models": models,
-            "failed_regions": []}
+            "diagnostics": diagnostics, "failed_regions": []}
     with open(tmp_prefix + "_primitives.json", "w") as f:
         json.dump(meta, f)
 
@@ -155,6 +162,9 @@ def test_full_eval():
         check("perfect_miou", abs(f["miou_target"] - 1.0) < 1e-9,
               f["miou_target"])
         check("perfect_ptacc", res["point_type_accuracy_target"] > 0.99)
+        attribution = res["failure_attribution"]
+        check("perfect_failure_attribution", attribution["available"] and
+              attribution["counts"].get("detected") == 3, attribution)
         # typed must not exceed target detection rate
         check("typed_le_target",
               f["detection_typed_rate"] <= f["detection_target_rate"] + 1e-12)

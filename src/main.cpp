@@ -172,6 +172,13 @@ json model_json(const pcl_eval::PrimitiveModel& model, int id) {
     };
 }
 
+json model_array_json(const std::vector<pcl_eval::PrimitiveModel>& models) {
+    json output = json::array();
+    for (std::size_t i = 0; i < models.size(); ++i)
+        output.push_back(model_json(models[i], static_cast<int>(i)));
+    return output;
+}
+
 void write_outputs(const fs::path& prefix,
                    const std::vector<Eigen::Vector3d>& points,
                    const pcl_eval::Config& config,
@@ -204,12 +211,8 @@ void write_outputs(const fs::path& prefix,
         models << "\"\n";
     }
 
-    json premerge = json::array();
-    for (std::size_t i = 0; i < result.premerge_models.size(); ++i)
-        premerge.push_back(model_json(result.premerge_models[i], static_cast<int>(i)));
-    json final = json::array();
-    for (std::size_t i = 0; i < result.models.size(); ++i)
-        final.push_back(model_json(result.models[i], static_cast<int>(i)));
+    const json premerge = model_array_json(result.premerge_models);
+    const json final = model_array_json(result.models);
     const json metadata = {
         {"implementation", "independent-stage1-global-local"},
         {"config", {
@@ -221,7 +224,15 @@ void write_outputs(const fs::path& prefix,
             {"local_iterations", config.local_iterations}, {"seed", config.seed},
             {"max_refit_rmse_factor", config.max_refit_rmse_factor}
         }},
-        {"num_points", points.size()}, {"premerge_models", premerge}, {"models", final},
+        {"num_points", points.size()},
+        {"diagnostics", {
+            {"screened_proposals", model_array_json(result.screened_proposals)},
+            {"refit_failed_proposals", model_array_json(result.refit_failed_proposals)},
+            {"filtered_proposals", model_array_json(result.filtered_proposals)},
+            {"proposals", model_array_json(result.proposals)},
+            {"selected_models", model_array_json(result.selected_models)}
+        }},
+        {"premerge_models", premerge}, {"models", final},
         {"failed_regions", json::array()},
         {"timing_seconds", {
             {"normals", result.timing.normals}, {"proposals", result.timing.proposals},

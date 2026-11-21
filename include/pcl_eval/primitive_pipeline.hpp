@@ -64,6 +64,13 @@ struct Timing {
 };
 
 struct FitResult {
+    // Proposal lifecycle snapshots for offline failure attribution. These are
+    // detector outputs only: no ground truth is consumed by the fitter.
+    std::vector<PrimitiveModel> screened_proposals;
+    std::vector<PrimitiveModel> refit_failed_proposals;
+    std::vector<PrimitiveModel> filtered_proposals;
+    std::vector<PrimitiveModel> proposals;
+    std::vector<PrimitiveModel> selected_models;
     std::vector<PrimitiveModel> premerge_models;
     std::vector<PrimitiveModel> models;
     std::vector<int> premerge_labels;

@@ -597,8 +597,11 @@ void trim_pool(std::vector<Candidate>& pool, int limit) {
     if (static_cast<int>(pool.size()) > limit) pool.resize(limit);
 }
 
-std::vector<Candidate> generate_proposals(Observations& obs, const Config& config,
-                                          double threshold, double spacing) {
+std::vector<Candidate> generate_proposals(
+    Observations& obs, const Config& config, double threshold, double spacing,
+    std::vector<PrimitiveModel>* screened,
+    std::vector<PrimitiveModel>* refit_failed,
+    std::vector<PrimitiveModel>* filtered) {
     const int n = static_cast<int>(obs.points.size());
     std::vector<int> all(n);
     std::iota(all.begin(), all.end(), 0);
@@ -688,10 +691,15 @@ std::vector<Candidate> generate_proposals(Observations& obs, const Config& confi
     }
     for (auto& candidate : region_candidates) {
         evaluate_model(candidate.model, obs, all, threshold, minimum_alignment);
+        candidate.model.fit_threshold = threshold;
+        if (screened != nullptr) screened->push_back(candidate.model);
         for (int pass = 0; pass < 2 &&
              static_cast<int>(candidate.model.points.size()) >= config.min_points; ++pass) {
             const auto support = candidate.model.points;
-            if (!refit_model(obs, support, candidate.model)) break;
+            if (!refit_model(obs, support, candidate.model)) {
+                if (refit_failed != nullptr) refit_failed->push_back(candidate.model);
+                break;
+            }
             candidate.model.proposal_source += "+refit";
             const bool adaptive = config.stage == PipelineStage::JointOptimization ||
                                   config.stage == PipelineStage::BoundaryAware;
@@ -705,6 +713,8 @@ std::vector<Candidate> generate_proposals(Observations& obs, const Config& confi
             finite_coefficients(candidate.model) &&
             geometry_is_observable(candidate.model, obs, candidate.model.points, threshold))
             result.push_back(std::move(candidate));
+        else if (filtered != nullptr)
+            filtered->push_back(candidate.model);
     }
     return result;
 }
@@ -999,11 +1009,17 @@ FitResult fit_primitives(const std::vector<Eigen::Vector3d>& points,
     result.timing.normals = seconds(normals_begin, Clock::now());
 
     const auto proposal_begin = Clock::now();
-    auto candidates = generate_proposals(obs, config, result.distance_threshold, result.spacing);
+    auto candidates = generate_proposals(
+        obs, config, result.distance_threshold, result.spacing,
+        &result.screened_proposals, &result.refit_failed_proposals,
+        &result.filtered_proposals);
+    result.proposals.reserve(candidates.size());
+    for (const auto& candidate : candidates) result.proposals.push_back(candidate.model);
     result.timing.proposals = seconds(proposal_begin, Clock::now());
 
     const auto selection_begin = Clock::now();
     auto models = select_models(std::move(candidates), config, static_cast<int>(points.size()));
+    result.selected_models = models;
     const double minimum_alignment = std::cos(config.normal_angle_deg * kPi / 180.0);
     const bool joint_stage = config.stage == PipelineStage::JointOptimization ||
                              config.stage == PipelineStage::BoundaryAware;

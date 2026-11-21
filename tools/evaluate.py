@@ -83,6 +83,31 @@ def load_pred(prefix):
     return region, premerge, final, meta
 
 
+def load_pred_observations(prefix):
+    """Read detector coordinates/normals used to reproduce proposal support."""
+    points, normals = {}, {}
+    with open(prefix + "_labels.csv", newline="") as f:
+        reader = csv.DictReader(f)
+        fields = set(reader.fieldnames or [])
+        if not {"x", "y", "z"}.issubset(fields):
+            return None, None
+        have_normals = {"normal_x", "normal_y", "normal_z"}.issubset(fields)
+        for row in reader:
+            index = int(row["point_index"])
+            points[index] = [float(row["x"]), float(row["y"]), float(row["z"])]
+            if have_normals:
+                normals[index] = [float(row["normal_x"]), float(row["normal_y"]),
+                                  float(row["normal_z"])]
+    if not points:
+        return None, None
+    ordered_points = np.asarray([points[index] for index in range(max(points) + 1)])
+    ordered_normals = None
+    if len(normals) == len(points):
+        ordered_normals = np.asarray(
+            [normals[index] for index in range(max(points) + 1)])
+    return ordered_points, ordered_normals
+
+
 def pred_type_of(meta, stage):
     key = "models" if stage == "final" else "premerge_models"
     return [m["type"] for m in meta.get(key, [])]
@@ -138,6 +163,130 @@ def pred_surface_distances(pts, ptype, coeff):
         perp = np.linalg.norm(d - np.outer(d @ u, u), axis=1)
         return np.abs(perp - c[6])
     return np.full(len(pts), np.nan)
+
+
+def proposal_support(model, points, normals, config):
+    """Reconstruct the detector's geometric/normal support for a model."""
+    ptype = model["type"]
+    coeff = np.asarray(model["coefficients"], dtype=float)
+    threshold = float(model.get("fit_threshold") or config.get("distance", 0.0))
+    if threshold <= 0:
+        return np.zeros(len(points), dtype=bool)
+    support = pred_surface_distances(points, ptype, coeff) <= threshold
+    if normals is None:
+        return support
+    normal_norm = np.linalg.norm(normals, axis=1)
+    valid = np.isfinite(normal_norm) & (normal_norm > EPS)
+    unit_normals = normals / np.maximum(normal_norm[:, None], EPS)
+    if ptype == "plane":
+        expected = np.tile(v3(coeff[:3]), (len(points), 1))
+    elif ptype == "sphere":
+        expected = points - coeff[:3]
+    elif ptype == "cylinder":
+        axis = v3(coeff[3:6])
+        delta = points - coeff[:3]
+        expected = delta - np.outer(delta @ axis, axis)
+    else:
+        return np.zeros(len(points), dtype=bool)
+    expected_norm = np.linalg.norm(expected, axis=1)
+    expected_unit = expected / np.maximum(expected_norm[:, None], EPS)
+    alignment = np.abs(np.sum(expected_unit * unit_normals, axis=1))
+    minimum = math.cos(math.radians(float(config.get("normal_angle_deg", 25.0))))
+    support &= (~valid) | ((expected_norm > EPS) & (alignment >= minimum))
+    return support
+
+
+def best_typed_model_iou(gt_mask, gt_type, models, points, normals, config):
+    best = 0.0
+    for model in models:
+        if model.get("type") != gt_type:
+            continue
+        mask = proposal_support(model, points, normals, config)
+        intersection = int(np.count_nonzero(gt_mask & mask))
+        union = int(np.count_nonzero(gt_mask | mask))
+        if union:
+            best = max(best, intersection / union)
+    return best
+
+
+def best_label_iou(gt_mask, gt_type, labels, models, typed=True):
+    best = 0.0
+    for model_id, model in enumerate(models):
+        if typed and model.get("type") != gt_type:
+            continue
+        mask = labels == model_id
+        intersection = int(np.count_nonzero(gt_mask & mask))
+        union = int(np.count_nonzero(gt_mask | mask))
+        if union:
+            best = max(best, intersection / union)
+    return best
+
+
+def attribute_failures(gt_inst, gt_by_id, premerge, final, meta, prefix,
+                       proposal_iou=0.30, detection_iou=0.50):
+    diagnostics = meta.get("diagnostics")
+    if not diagnostics:
+        return {"available": False, "reason": "detector did not export lifecycle diagnostics"}
+    points, normals = load_pred_observations(prefix)
+    if points is None or len(points) != len(gt_inst):
+        return {"available": False, "reason": "prediction observations unavailable"}
+    config = meta.get("config", {})
+    stage_keys = ("screened_proposals", "refit_failed_proposals",
+                  "filtered_proposals", "proposals", "selected_models")
+    stages = {key: diagnostics.get(key, []) for key in stage_keys}
+    premerge_models = meta.get("premerge_models", [])
+    final_models = meta.get("models", [])
+    records = []
+    counts = {}
+    for instance_id in sorted(set(gt_inst.tolist()) - {-1}):
+        primitive = gt_by_id[instance_id]
+        if primitive["type"] not in TARGET_TYPES:
+            continue
+        gt_mask = gt_inst == instance_id
+        best = {
+            key: best_typed_model_iou(gt_mask, primitive["type"], models,
+                                      points, normals, config)
+            for key, models in stages.items()
+        }
+        best["premerge"] = best_label_iou(
+            gt_mask, primitive["type"], premerge, premerge_models)
+        best["final_typed"] = best_label_iou(
+            gt_mask, primitive["type"], final, final_models)
+        best["final_any_type"] = best_label_iou(
+            gt_mask, primitive["type"], final, final_models, typed=False)
+        if best["final_typed"] >= detection_iou:
+            outcome = "detected"
+        elif best["premerge"] >= detection_iou:
+            outcome = "final_merge_or_connectivity_failure"
+        elif best["selected_models"] >= proposal_iou:
+            outcome = "assignment_or_refit_failure"
+        elif best["proposals"] >= proposal_iou:
+            outcome = "candidate_selection_failure"
+        elif best["screened_proposals"] >= proposal_iou:
+            outcome = ("candidate_refit_failure" if
+                       best["refit_failed_proposals"] >= proposal_iou else
+                       "candidate_filter_failure")
+        else:
+            outcome = "candidate_not_generated"
+        if (outcome != "detected" and best["final_any_type"] >= detection_iou and
+                best["final_typed"] < detection_iou):
+            outcome = "wrong_type_competition"
+        counts[outcome] = counts.get(outcome, 0) + 1
+        records.append({
+            "instance_id": int(instance_id), "type": primitive["type"],
+            "points": int(np.count_nonzero(gt_mask)), "outcome": outcome,
+            "best_typed_iou": {key: round(float(value), 6)
+                               for key, value in best.items()},
+        })
+    return {
+        "available": True,
+        "proposal_iou_threshold": proposal_iou,
+        "detection_iou_threshold": detection_iou,
+        "counts": dict(sorted(counts.items())),
+        "records": records,
+        "note": ("Proposal support is reconstructed from exported coefficients, "
+                 "distance thresholds and detector normals; GT is evaluation-only."),
+    }
 
 
 def line_line_distance(p1, u1, p2, u2):
@@ -242,6 +391,9 @@ def evaluate_sample(sample_dir, pred_prefix, iou_detect=IOU_DETECT):
            "num_points": n,
            "timing_seconds": meta.get("timing_seconds", {}),
            "config": meta.get("config", {})}
+    res["failure_attribution"] = attribute_failures(
+        gt_inst, gt_by_id, premerge, final, meta, pred_prefix,
+        detection_iou=iou_detect)
 
     # ------- stage-wise instance metrics (premerge = B, final = D)
     for stage, labels in (("premerge", premerge), ("final", final)):

@@ -3676,5 +3676,11 @@
     "mini_017_train_12950",
     "mini_018_train_03315",
     "mini_019_train_00716"
-  ]
+  ],
+  "local_candidate_evaluation_protocol": {
+    "frozen_on": "2026-11-20",
+    "development": "the 20 names in smoke_sample_names",
+    "audit": "the remaining 80 adapted_samples, evaluated only after development choices are frozen",
+    "warning": "Both partitions are ParSeNet training-split derived; neither is an official ABCParts test set."
+  }
 }

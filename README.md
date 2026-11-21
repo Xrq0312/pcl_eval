@@ -65,8 +65,11 @@ ctest --preset release --output-on-failure
 `native_primitive_fit` accepts unorganized TXT/PCD/PLY input and reuses PLY
 normals when all of them are valid. For range-camera
 data, `--pixel-map` optionally supplies image topology; no label or GT data is
-read by the fitter.  Available ablation stages are `global_ransac`,
-`global_local`, and `joint_opt`.
+read by the fitter. Available baseline stages are `global_ransac`,
+`global_local`, and `joint_opt`. The non-default experimental stages
+`adaptive_local` and `balanced_select` are documented in
+[`docs/LOCAL_CANDIDATE_LAB.md`](docs/LOCAL_CANDIDATE_LAB.md); neither changes
+the baseline stage paths.
 
 ## Development policy
 

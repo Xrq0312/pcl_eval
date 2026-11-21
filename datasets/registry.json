@@ -53,6 +53,27 @@
       "license_note": "HPNet README does not state a dataset license; preserve ABC/ParSeNet provenance and review terms before redistribution."
     },
     {
+      "id": "abcparts_parsenet_train_mini100",
+      "name": "ABCParts-Mini100 (ParSeNet train-derived)",
+      "source": "https://github.com/Hippogriff/parsenet-codebase",
+      "local_source": "data/train_data.h5 supplied by the user",
+      "format": "ParSeNet monolithic HDF5: points/normals (24000,10000,3), labels/prim (24000,10000)",
+      "official_split": "train",
+      "point_instance_gt": true,
+      "primitive_type_gt": true,
+      "primitive_parameter_gt": false,
+      "derived_parameter_reference": "quality-gated fits from official points/normals; never reported as original CAD GT",
+      "normal_gt": true,
+      "selection_manifest": "datasets/abcparts_mini100_manifest.json",
+      "selection_seed": 20261120,
+      "sample_count": 100,
+      "smoke_count": 20,
+      "integration": "tools/prepare_abcparts_mini.py",
+      "download_policy": "no download required; do not fetch the 69 GB HPNet archive",
+      "annotation_status": "official ParSeNet train segmentation/type labels; derived parameter references only",
+      "evaluation_note": "This is a reproducible train-derived stress benchmark, not an official ABCParts test result. The supplied HDF5 omits train_ids.txt, so stable HDF5 row indices are used as sample IDs."
+    },
+    {
       "id": "ba_primitive_fitting",
       "name": "BA-Primitive Fitting Dataset",
       "source": "https://github.com/lucabaronti/BA-Primitive_Fitting_Dataset",

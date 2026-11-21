@@ -280,6 +280,10 @@ def evaluate_sample(sample_dir, pred_prefix, iou_detect=IOU_DETECT):
             # main one-to-one target metrics
             "detection_target_rate": len(det_target) / max(n_target_gt, 1),
             "detection_typed_rate": len(det_typed) / max(n_target_gt, 1),
+            "detection_target_precision": len(det_target) / max(n_target_pred, 1),
+            "detection_typed_precision": len(det_typed) / max(n_target_pred, 1),
+            "num_detected_target": len(det_target),
+            "num_detected_typed": len(det_typed),
             # diagnostic (not one-to-one)
             "best_iou_target_diag_rate": (
                 sum(1 for g in g_ids if g_type[g] in TARGET_TYPES

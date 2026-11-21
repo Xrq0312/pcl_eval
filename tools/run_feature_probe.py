@@ -143,7 +143,13 @@ def summarize(records: list[dict]) -> dict:
             if record["type"] != primitive_type:
                 continue
             for candidate in record.get(candidate_key, []):
-                by_estimator.setdefault(candidate["estimator"], []).append(candidate)
+                required_error = ("center_relative_error" if primitive_type == "sphere"
+                                  else "axis_offset_relative")
+                # Parameter reliability is defined only when the adapter marks
+                # a GT/derived reference as usable. Do not count unavailable or
+                # quality-rejected parameters as failed candidate fits.
+                if required_error in candidate:
+                    by_estimator.setdefault(candidate["estimator"], []).append(candidate)
         for estimator, candidates in sorted(by_estimator.items()):
             valid = [candidate for candidate in candidates if candidate.get("valid")]
             if primitive_type == "sphere":

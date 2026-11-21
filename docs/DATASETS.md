@@ -1,6 +1,6 @@
 # Dataset integration status
 
-Audit date: 2026-11-19. Machine-readable facts and license caveats live in
+Audit date: 2026-11-20. Machine-readable facts and license caveats live in
 `datasets/registry.json`; this page describes the executable integration path.
 No download runs implicitly.
 
@@ -35,6 +35,26 @@ missing parameters instead of dropping their points.
 ```powershell
 ./tools/run_python.ps1 tools/adapt_abcparts.py --help
 ```
+
+### ABCParts-Mini100 (ParSeNet train-derived)
+
+The user-supplied `data/train_data.h5` is the ParSeNet monolithic training
+split: 24,000 objects with 10,000 points each and official point, normal,
+instance-label, and primitive-type arrays. It has no `T_param` field or
+`train_ids.txt`. A fixed seed and checked-in manifest select 100 HDF5 rows,
+with the first 20 frozen as a smoke subset. Plane, sphere, and cylinder
+parameters are quality-gated derived references, not original CAD analytic GT.
+
+```powershell
+./tools/run_python.ps1 tools/prepare_abcparts_mini.py `
+  --input data/train_data.h5 `
+  --manifest datasets/abcparts_mini100_manifest.json `
+  --out-root samples/abcparts_mini100 --reuse-manifest
+```
+
+This set is a reproducible train-derived stress benchmark, not an official
+ABCParts test score. The full protocol and results are in
+`docs/ABCPARTS_MINI_REPORT.md`.
 
 ## Tier B: controlled derived references
 

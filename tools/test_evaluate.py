@@ -148,6 +148,10 @@ def test_full_eval():
               abs(f["detection_target_rate"] - 1.0) < 1e-9,
               f["detection_target_rate"])
         check("perfect_typed", abs(f["detection_typed_rate"] - 1.0) < 1e-9)
+        check("perfect_precision_target",
+              abs(f["detection_target_precision"] - 1.0) < 1e-9)
+        check("perfect_precision_typed",
+              abs(f["detection_typed_precision"] - 1.0) < 1e-9)
         check("perfect_miou", abs(f["miou_target"] - 1.0) < 1e-9,
               f["miou_target"])
         check("perfect_ptacc", res["point_type_accuracy_target"] > 0.99)
@@ -190,6 +194,9 @@ def test_typed_le_target_imperfect():
         check("mismatch_target_ge_typed",
               f["detection_target_rate"] > f["detection_typed_rate"],
               (f["detection_target_rate"], f["detection_typed_rate"]))
+        check("mismatch_precision_target_ge_typed",
+              f["detection_target_precision"] > f["detection_typed_precision"],
+              (f["detection_target_precision"], f["detection_typed_precision"]))
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 

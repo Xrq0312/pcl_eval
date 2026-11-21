@@ -1,0 +1,3680 @@
+{
+  "schema_version": 1,
+  "selection_version": "abcparts_train_mini_stratified_v2",
+  "source": {
+    "path": "data\\train_data.h5",
+    "file_size": 6720004096,
+    "official_split": "train",
+    "format": {
+      "labels": {
+        "shape": [
+          24000,
+          10000
+        ],
+        "dtype": "int16",
+        "compression": null
+      },
+      "normals": {
+        "shape": [
+          24000,
+          10000,
+          3
+        ],
+        "dtype": "float32",
+        "compression": null
+      },
+      "points": {
+        "shape": [
+          24000,
+          10000,
+          3
+        ],
+        "dtype": "float32",
+        "compression": null
+      },
+      "prim": {
+        "shape": [
+          24000,
+          10000
+        ],
+        "dtype": "int16",
+        "compression": null
+      }
+    },
+    "source_project": "ParSeNet ABCParts",
+    "source_url": "https://github.com/Hippogriff/parsenet-codebase",
+    "parameter_note": "No T_param field in supplied HDF5."
+  },
+  "seed": 20261120,
+  "count": 100,
+  "smoke_count": 20,
+  "selection": {
+    "complexity_thresholds": {
+      "simple_max_instances": 8,
+      "medium_max_instances": 22
+    },
+    "selected_complexity_counts": {
+      "simple": 20,
+      "medium": 40,
+      "complex": 40
+    },
+    "requested_quotas": {
+      "has_plane": 80,
+      "has_sphere": 20,
+      "has_cylinder": 50,
+      "has_small_target": 20,
+      "has_non_target": 50,
+      "is_complex": 40,
+      "has_multiple_targets": 50
+    },
+    "achieved": {
+      "has_plane": 100,
+      "has_sphere": 75,
+      "has_cylinder": 100,
+      "has_small_target": 86,
+      "has_non_target": 100,
+      "is_complex": 40,
+      "has_multiple_targets": 97
+    },
+    "eligible_samples": 22355,
+    "availability": {
+      "has_plane": 21750,
+      "has_sphere": 2118,
+      "has_cylinder": 17033,
+      "has_small_target": 13264,
+      "has_non_target": 19809,
+      "is_complex": 7105,
+      "has_multiple_targets": 16632
+    }
+  },
+  "samples": [
+    {
+      "source_index": 2172,
+      "instances": 8,
+      "target_instances": 5,
+      "non_target_instances": 3,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 78,
+      "type_counts": {
+        "sphere": 3,
+        "closed_spline": 2,
+        "cylinder": 1,
+        "plane": 1,
+        "cone": 1
+      },
+      "complexity": "simple"
+    },
+    {
+      "source_index": 23958,
+      "instances": 12,
+      "target_instances": 7,
+      "non_target_instances": 5,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 57,
+      "type_counts": {
+        "extrusion": 1,
+        "revolution": 2,
+        "plane": 3,
+        "sphere": 2,
+        "cone": 1,
+        "cylinder": 2,
+        "closed_spline": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 4329,
+      "instances": 50,
+      "target_instances": 22,
+      "non_target_instances": 28,
+      "small_target_instances_le100": 17,
+      "minimum_target_points": 3,
+      "type_counts": {
+        "plane": 19,
+        "cylinder": 2,
+        "sphere": 1,
+        "closed_spline": 1,
+        "open_spline": 21,
+        "cone": 6
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 3307,
+      "instances": 22,
+      "target_instances": 8,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 3,
+      "minimum_target_points": 72,
+      "type_counts": {
+        "plane": 5,
+        "closed_spline": 9,
+        "cylinder": 2,
+        "cone": 4,
+        "sphere": 1,
+        "open_spline": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 15490,
+      "instances": 50,
+      "target_instances": 35,
+      "non_target_instances": 15,
+      "small_target_instances_le100": 24,
+      "minimum_target_points": 3,
+      "type_counts": {
+        "plane": 19,
+        "open_spline": 8,
+        "closed_spline": 5,
+        "cone": 2,
+        "sphere": 8,
+        "cylinder": 8
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 22760,
+      "instances": 8,
+      "target_instances": 6,
+      "non_target_instances": 2,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 5,
+      "type_counts": {
+        "plane": 3,
+        "cylinder": 2,
+        "cone": 1,
+        "sphere": 1,
+        "closed_spline": 1
+      },
+      "complexity": "simple"
+    },
+    {
+      "source_index": 2771,
+      "instances": 22,
+      "target_instances": 8,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 3,
+      "minimum_target_points": 70,
+      "type_counts": {
+        "plane": 5,
+        "closed_spline": 9,
+        "cylinder": 2,
+        "cone": 4,
+        "sphere": 1,
+        "open_spline": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 18316,
+      "instances": 50,
+      "target_instances": 34,
+      "non_target_instances": 16,
+      "small_target_instances_le100": 18,
+      "minimum_target_points": 6,
+      "type_counts": {
+        "extrusion": 10,
+        "plane": 21,
+        "open_spline": 4,
+        "cylinder": 11,
+        "closed_spline": 2,
+        "sphere": 2
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 22977,
+      "instances": 22,
+      "target_instances": 8,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 5,
+      "minimum_target_points": 33,
+      "type_counts": {
+        "plane": 5,
+        "closed_spline": 12,
+        "open_spline": 1,
+        "sphere": 1,
+        "cone": 1,
+        "cylinder": 2
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 3430,
+      "instances": 50,
+      "target_instances": 22,
+      "non_target_instances": 28,
+      "small_target_instances_le100": 17,
+      "minimum_target_points": 2,
+      "type_counts": {
+        "open_spline": 21,
+        "plane": 19,
+        "cylinder": 2,
+        "cone": 6,
+        "closed_spline": 1,
+        "sphere": 1
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 21329,
+      "instances": 8,
+      "target_instances": 5,
+      "non_target_instances": 3,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 39,
+      "type_counts": {
+        "cone": 1,
+        "plane": 1,
+        "cylinder": 3,
+        "sphere": 1,
+        "closed_spline": 2
+      },
+      "complexity": "simple"
+    },
+    {
+      "source_index": 3436,
+      "instances": 22,
+      "target_instances": 8,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 3,
+      "minimum_target_points": 63,
+      "type_counts": {
+        "plane": 5,
+        "closed_spline": 9,
+        "cylinder": 2,
+        "cone": 4,
+        "sphere": 1,
+        "open_spline": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 14811,
+      "instances": 50,
+      "target_instances": 24,
+      "non_target_instances": 26,
+      "small_target_instances_le100": 19,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "plane": 20,
+        "cylinder": 3,
+        "sphere": 1,
+        "closed_spline": 1,
+        "open_spline": 19,
+        "cone": 6
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 8954,
+      "instances": 22,
+      "target_instances": 8,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 3,
+      "minimum_target_points": 74,
+      "type_counts": {
+        "plane": 5,
+        "closed_spline": 9,
+        "cylinder": 2,
+        "cone": 4,
+        "sphere": 1,
+        "open_spline": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 560,
+      "instances": 50,
+      "target_instances": 22,
+      "non_target_instances": 28,
+      "small_target_instances_le100": 17,
+      "minimum_target_points": 4,
+      "type_counts": {
+        "plane": 19,
+        "cylinder": 2,
+        "sphere": 1,
+        "closed_spline": 1,
+        "open_spline": 21,
+        "cone": 6
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 15079,
+      "instances": 8,
+      "target_instances": 6,
+      "non_target_instances": 2,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "closed_spline": 1,
+        "sphere": 3,
+        "plane": 2,
+        "cylinder": 1,
+        "open_spline": 1
+      },
+      "complexity": "simple"
+    },
+    {
+      "source_index": 3235,
+      "instances": 22,
+      "target_instances": 8,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 3,
+      "minimum_target_points": 72,
+      "type_counts": {
+        "plane": 5,
+        "closed_spline": 9,
+        "cylinder": 2,
+        "cone": 4,
+        "sphere": 1,
+        "open_spline": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 12950,
+      "instances": 50,
+      "target_instances": 22,
+      "non_target_instances": 28,
+      "small_target_instances_le100": 17,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "open_spline": 21,
+        "cone": 6,
+        "plane": 19,
+        "cylinder": 2,
+        "closed_spline": 1,
+        "sphere": 1
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 3315,
+      "instances": 22,
+      "target_instances": 8,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 3,
+      "minimum_target_points": 74,
+      "type_counts": {
+        "plane": 5,
+        "closed_spline": 9,
+        "cylinder": 2,
+        "cone": 4,
+        "sphere": 1,
+        "open_spline": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 716,
+      "instances": 50,
+      "target_instances": 22,
+      "non_target_instances": 28,
+      "small_target_instances_le100": 17,
+      "minimum_target_points": 3,
+      "type_counts": {
+        "open_spline": 21,
+        "cylinder": 2,
+        "cone": 6,
+        "plane": 19,
+        "closed_spline": 1,
+        "sphere": 1
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 13545,
+      "instances": 8,
+      "target_instances": 4,
+      "non_target_instances": 4,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 104,
+      "type_counts": {
+        "revolution": 1,
+        "closed_spline": 2,
+        "cone": 1,
+        "plane": 2,
+        "cylinder": 1,
+        "sphere": 1
+      },
+      "complexity": "simple"
+    },
+    {
+      "source_index": 3972,
+      "instances": 22,
+      "target_instances": 11,
+      "non_target_instances": 11,
+      "small_target_instances_le100": 4,
+      "minimum_target_points": 3,
+      "type_counts": {
+        "plane": 7,
+        "cone": 4,
+        "cylinder": 2,
+        "open_spline": 5,
+        "sphere": 2,
+        "closed_spline": 2
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 21754,
+      "instances": 50,
+      "target_instances": 36,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 21,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "extrusion": 2,
+        "cylinder": 13,
+        "open_spline": 4,
+        "plane": 23,
+        "cone": 7,
+        "closed_spline": 1
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 10257,
+      "instances": 22,
+      "target_instances": 6,
+      "non_target_instances": 16,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 274,
+      "type_counts": {
+        "cylinder": 2,
+        "plane": 3,
+        "cone": 1,
+        "open_spline": 12,
+        "closed_spline": 3,
+        "sphere": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 8801,
+      "instances": 50,
+      "target_instances": 36,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 21,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "extrusion": 2,
+        "cylinder": 13,
+        "open_spline": 4,
+        "plane": 23,
+        "cone": 7,
+        "closed_spline": 1
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 21549,
+      "instances": 8,
+      "target_instances": 4,
+      "non_target_instances": 4,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 156,
+      "type_counts": {
+        "sphere": 1,
+        "closed_spline": 3,
+        "cylinder": 2,
+        "plane": 1,
+        "cone": 1
+      },
+      "complexity": "simple"
+    },
+    {
+      "source_index": 3400,
+      "instances": 22,
+      "target_instances": 8,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 3,
+      "minimum_target_points": 68,
+      "type_counts": {
+        "plane": 5,
+        "closed_spline": 9,
+        "cylinder": 2,
+        "cone": 4,
+        "sphere": 1,
+        "open_spline": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 20271,
+      "instances": 50,
+      "target_instances": 36,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 21,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "extrusion": 2,
+        "cylinder": 13,
+        "open_spline": 4,
+        "plane": 23,
+        "cone": 7,
+        "closed_spline": 1
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 3524,
+      "instances": 22,
+      "target_instances": 8,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 3,
+      "minimum_target_points": 67,
+      "type_counts": {
+        "plane": 5,
+        "closed_spline": 9,
+        "cylinder": 2,
+        "cone": 4,
+        "sphere": 1,
+        "open_spline": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 12502,
+      "instances": 50,
+      "target_instances": 36,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 21,
+      "minimum_target_points": 2,
+      "type_counts": {
+        "extrusion": 2,
+        "cylinder": 13,
+        "open_spline": 4,
+        "plane": 23,
+        "cone": 7,
+        "closed_spline": 1
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 11894,
+      "instances": 8,
+      "target_instances": 5,
+      "non_target_instances": 3,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 61,
+      "type_counts": {
+        "cylinder": 2,
+        "plane": 2,
+        "sphere": 1,
+        "closed_spline": 2,
+        "cone": 1
+      },
+      "complexity": "simple"
+    },
+    {
+      "source_index": 9389,
+      "instances": 22,
+      "target_instances": 17,
+      "non_target_instances": 5,
+      "small_target_instances_le100": 10,
+      "minimum_target_points": 23,
+      "type_counts": {
+        "revolution": 1,
+        "cone": 1,
+        "plane": 14,
+        "extrusion": 2,
+        "cylinder": 3,
+        "open_spline": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 13206,
+      "instances": 50,
+      "target_instances": 36,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 12,
+      "minimum_target_points": 17,
+      "type_counts": {
+        "plane": 17,
+        "cylinder": 19,
+        "extrusion": 1,
+        "open_spline": 8,
+        "closed_spline": 4,
+        "cone": 1
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 3650,
+      "instances": 22,
+      "target_instances": 8,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 3,
+      "minimum_target_points": 70,
+      "type_counts": {
+        "plane": 5,
+        "closed_spline": 9,
+        "cylinder": 2,
+        "cone": 4,
+        "sphere": 1,
+        "open_spline": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 16155,
+      "instances": 50,
+      "target_instances": 36,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 20,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "extrusion": 2,
+        "cylinder": 13,
+        "open_spline": 4,
+        "plane": 23,
+        "cone": 7,
+        "closed_spline": 1
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 20919,
+      "instances": 8,
+      "target_instances": 5,
+      "non_target_instances": 3,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 183,
+      "type_counts": {
+        "cone": 1,
+        "cylinder": 2,
+        "plane": 3,
+        "extrusion": 1,
+        "open_spline": 1
+      },
+      "complexity": "simple"
+    },
+    {
+      "source_index": 23659,
+      "instances": 21,
+      "target_instances": 16,
+      "non_target_instances": 5,
+      "small_target_instances_le100": 6,
+      "minimum_target_points": 2,
+      "type_counts": {
+        "open_spline": 3,
+        "plane": 9,
+        "sphere": 1,
+        "cylinder": 6,
+        "closed_spline": 1,
+        "extrusion": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 3550,
+      "instances": 49,
+      "target_instances": 41,
+      "non_target_instances": 8,
+      "small_target_instances_le100": 17,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "cylinder": 19,
+        "plane": 20,
+        "closed_spline": 4,
+        "cone": 2,
+        "sphere": 2,
+        "open_spline": 2
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 9215,
+      "instances": 21,
+      "target_instances": 12,
+      "non_target_instances": 9,
+      "small_target_instances_le100": 8,
+      "minimum_target_points": 6,
+      "type_counts": {
+        "closed_spline": 1,
+        "cone": 1,
+        "open_spline": 2,
+        "cylinder": 5,
+        "extrusion": 5,
+        "plane": 7
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 7752,
+      "instances": 49,
+      "target_instances": 35,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 24,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "closed_spline": 5,
+        "plane": 12,
+        "sphere": 1,
+        "cone": 1,
+        "cylinder": 22,
+        "open_spline": 8
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 23085,
+      "instances": 8,
+      "target_instances": 6,
+      "non_target_instances": 2,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 4,
+      "type_counts": {
+        "plane": 3,
+        "cylinder": 2,
+        "cone": 1,
+        "sphere": 1,
+        "closed_spline": 1
+      },
+      "complexity": "simple"
+    },
+    {
+      "source_index": 5134,
+      "instances": 21,
+      "target_instances": 11,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 4,
+      "minimum_target_points": 4,
+      "type_counts": {
+        "plane": 7,
+        "cone": 4,
+        "cylinder": 2,
+        "open_spline": 4,
+        "sphere": 2,
+        "closed_spline": 2
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 10053,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 26,
+      "minimum_target_points": 6,
+      "type_counts": {
+        "plane": 22,
+        "closed_spline": 2,
+        "cylinder": 10,
+        "sphere": 7,
+        "cone": 4,
+        "open_spline": 4
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 411,
+      "instances": 21,
+      "target_instances": 6,
+      "non_target_instances": 15,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 94,
+      "type_counts": {
+        "open_spline": 7,
+        "cone": 7,
+        "plane": 3,
+        "cylinder": 2,
+        "closed_spline": 1,
+        "sphere": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 19306,
+      "instances": 49,
+      "target_instances": 36,
+      "non_target_instances": 13,
+      "small_target_instances_le100": 20,
+      "minimum_target_points": 4,
+      "type_counts": {
+        "cone": 6,
+        "plane": 10,
+        "cylinder": 18,
+        "open_spline": 4,
+        "closed_spline": 3,
+        "sphere": 8
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 9759,
+      "instances": 8,
+      "target_instances": 6,
+      "non_target_instances": 2,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 69,
+      "type_counts": {
+        "closed_spline": 1,
+        "cone": 1,
+        "sphere": 1,
+        "cylinder": 4,
+        "plane": 1
+      },
+      "complexity": "simple"
+    },
+    {
+      "source_index": 3126,
+      "instances": 21,
+      "target_instances": 16,
+      "non_target_instances": 5,
+      "small_target_instances_le100": 2,
+      "minimum_target_points": 33,
+      "type_counts": {
+        "extrusion": 1,
+        "plane": 13,
+        "cone": 1,
+        "open_spline": 2,
+        "cylinder": 3,
+        "closed_spline": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 1316,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 26,
+      "minimum_target_points": 7,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "sphere": 7,
+        "open_spline": 4,
+        "cone": 4,
+        "closed_spline": 2
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 390,
+      "instances": 21,
+      "target_instances": 17,
+      "non_target_instances": 4,
+      "small_target_instances_le100": 9,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "plane": 11,
+        "closed_spline": 2,
+        "open_spline": 1,
+        "sphere": 2,
+        "cylinder": 4,
+        "cone": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 23302,
+      "instances": 49,
+      "target_instances": 35,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 19,
+      "minimum_target_points": 2,
+      "type_counts": {
+        "extrusion": 2,
+        "cylinder": 13,
+        "open_spline": 4,
+        "plane": 22,
+        "cone": 7,
+        "closed_spline": 1
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 4364,
+      "instances": 8,
+      "target_instances": 4,
+      "non_target_instances": 4,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 56,
+      "type_counts": {
+        "revolution": 2,
+        "plane": 2,
+        "cone": 1,
+        "closed_spline": 1,
+        "cylinder": 2
+      },
+      "complexity": "simple"
+    },
+    {
+      "source_index": 20668,
+      "instances": 20,
+      "target_instances": 10,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 8,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "extrusion": 1,
+        "cone": 2,
+        "open_spline": 4,
+        "plane": 6,
+        "closed_spline": 3,
+        "cylinder": 4
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 17783,
+      "instances": 49,
+      "target_instances": 42,
+      "non_target_instances": 7,
+      "small_target_instances_le100": 15,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "extrusion": 1,
+        "open_spline": 1,
+        "cylinder": 16,
+        "plane": 26,
+        "closed_spline": 3,
+        "cone": 2
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 17784,
+      "instances": 20,
+      "target_instances": 9,
+      "non_target_instances": 11,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 204,
+      "type_counts": {
+        "cylinder": 6,
+        "closed_spline": 1,
+        "open_spline": 5,
+        "cone": 5,
+        "sphere": 1,
+        "plane": 2
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 1310,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 26,
+      "minimum_target_points": 5,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "sphere": 7,
+        "open_spline": 4,
+        "cone": 4,
+        "closed_spline": 2
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 20918,
+      "instances": 8,
+      "target_instances": 5,
+      "non_target_instances": 3,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 175,
+      "type_counts": {
+        "cone": 1,
+        "cylinder": 2,
+        "plane": 3,
+        "extrusion": 1,
+        "open_spline": 1
+      },
+      "complexity": "simple"
+    },
+    {
+      "source_index": 22160,
+      "instances": 20,
+      "target_instances": 14,
+      "non_target_instances": 6,
+      "small_target_instances_le100": 10,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "revolution": 1,
+        "sphere": 1,
+        "cylinder": 7,
+        "open_spline": 3,
+        "plane": 6,
+        "closed_spline": 2
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 388,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 28,
+      "minimum_target_points": 5,
+      "type_counts": {
+        "sphere": 7,
+        "cylinder": 10,
+        "plane": 22,
+        "open_spline": 4,
+        "cone": 4,
+        "closed_spline": 2
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 11182,
+      "instances": 20,
+      "target_instances": 15,
+      "non_target_instances": 5,
+      "small_target_instances_le100": 10,
+      "minimum_target_points": 4,
+      "type_counts": {
+        "cylinder": 7,
+        "open_spline": 2,
+        "closed_spline": 2,
+        "plane": 6,
+        "sphere": 2,
+        "cone": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 1168,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 24,
+      "minimum_target_points": 6,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "sphere": 7,
+        "open_spline": 4,
+        "closed_spline": 2,
+        "cone": 4
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 5440,
+      "instances": 8,
+      "target_instances": 2,
+      "non_target_instances": 6,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 1391,
+      "type_counts": {
+        "closed_spline": 3,
+        "cone": 2,
+        "revolution": 1,
+        "plane": 1,
+        "cylinder": 1
+      },
+      "complexity": "simple"
+    },
+    {
+      "source_index": 1848,
+      "instances": 20,
+      "target_instances": 15,
+      "non_target_instances": 5,
+      "small_target_instances_le100": 4,
+      "minimum_target_points": 34,
+      "type_counts": {
+        "cylinder": 6,
+        "plane": 6,
+        "closed_spline": 2,
+        "open_spline": 2,
+        "sphere": 3,
+        "cone": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 13121,
+      "instances": 49,
+      "target_instances": 36,
+      "non_target_instances": 13,
+      "small_target_instances_le100": 23,
+      "minimum_target_points": 3,
+      "type_counts": {
+        "plane": 21,
+        "cylinder": 14,
+        "open_spline": 3,
+        "cone": 1,
+        "closed_spline": 9,
+        "sphere": 1
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 13424,
+      "instances": 19,
+      "target_instances": 6,
+      "non_target_instances": 13,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 11,
+      "type_counts": {
+        "cone": 3,
+        "cylinder": 4,
+        "sphere": 1,
+        "closed_spline": 8,
+        "revolution": 2,
+        "plane": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 1339,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 26,
+      "minimum_target_points": 6,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "sphere": 7,
+        "open_spline": 4,
+        "cone": 4,
+        "closed_spline": 2
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 17749,
+      "instances": 8,
+      "target_instances": 5,
+      "non_target_instances": 3,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 38,
+      "type_counts": {
+        "cone": 1,
+        "plane": 1,
+        "cylinder": 3,
+        "sphere": 1,
+        "closed_spline": 2
+      },
+      "complexity": "simple"
+    },
+    {
+      "source_index": 18867,
+      "instances": 19,
+      "target_instances": 10,
+      "non_target_instances": 9,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 180,
+      "type_counts": {
+        "plane": 5,
+        "open_spline": 2,
+        "cone": 5,
+        "cylinder": 2,
+        "sphere": 3,
+        "closed_spline": 2
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 11433,
+      "instances": 49,
+      "target_instances": 36,
+      "non_target_instances": 13,
+      "small_target_instances_le100": 24,
+      "minimum_target_points": 3,
+      "type_counts": {
+        "plane": 21,
+        "cylinder": 14,
+        "open_spline": 3,
+        "cone": 1,
+        "closed_spline": 9,
+        "sphere": 1
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 19032,
+      "instances": 19,
+      "target_instances": 10,
+      "non_target_instances": 9,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 137,
+      "type_counts": {
+        "plane": 5,
+        "open_spline": 2,
+        "sphere": 3,
+        "cylinder": 2,
+        "cone": 5,
+        "closed_spline": 2
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 1099,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 26,
+      "minimum_target_points": 4,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "sphere": 7,
+        "open_spline": 4,
+        "cone": 4,
+        "closed_spline": 2
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 14209,
+      "instances": 8,
+      "target_instances": 4,
+      "non_target_instances": 4,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 460,
+      "type_counts": {
+        "cylinder": 1,
+        "plane": 1,
+        "closed_spline": 3,
+        "cone": 1,
+        "sphere": 2
+      },
+      "complexity": "simple"
+    },
+    {
+      "source_index": 16170,
+      "instances": 19,
+      "target_instances": 8,
+      "non_target_instances": 11,
+      "small_target_instances_le100": 2,
+      "minimum_target_points": 40,
+      "type_counts": {
+        "cone": 3,
+        "closed_spline": 6,
+        "cylinder": 4,
+        "open_spline": 2,
+        "sphere": 2,
+        "plane": 2
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 1098,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 26,
+      "minimum_target_points": 5,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "sphere": 7,
+        "open_spline": 4,
+        "cone": 4,
+        "closed_spline": 2
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 2624,
+      "instances": 19,
+      "target_instances": 8,
+      "non_target_instances": 11,
+      "small_target_instances_le100": 2,
+      "minimum_target_points": 38,
+      "type_counts": {
+        "cone": 3,
+        "closed_spline": 6,
+        "cylinder": 4,
+        "open_spline": 2,
+        "sphere": 2,
+        "plane": 2
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 9907,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 26,
+      "minimum_target_points": 5,
+      "type_counts": {
+        "plane": 22,
+        "closed_spline": 2,
+        "cylinder": 10,
+        "sphere": 7,
+        "cone": 4,
+        "open_spline": 4
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 1606,
+      "instances": 8,
+      "target_instances": 2,
+      "non_target_instances": 6,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 527,
+      "type_counts": {
+        "closed_spline": 4,
+        "cone": 1,
+        "plane": 1,
+        "revolution": 1,
+        "cylinder": 1
+      },
+      "complexity": "simple"
+    },
+    {
+      "source_index": 12295,
+      "instances": 19,
+      "target_instances": 15,
+      "non_target_instances": 4,
+      "small_target_instances_le100": 2,
+      "minimum_target_points": 53,
+      "type_counts": {
+        "plane": 5,
+        "open_spline": 2,
+        "cylinder": 8,
+        "closed_spline": 1,
+        "sphere": 2,
+        "cone": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 18355,
+      "instances": 49,
+      "target_instances": 35,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 20,
+      "minimum_target_points": 2,
+      "type_counts": {
+        "extrusion": 2,
+        "cylinder": 13,
+        "open_spline": 4,
+        "plane": 22,
+        "cone": 7,
+        "closed_spline": 1
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 5014,
+      "instances": 18,
+      "target_instances": 13,
+      "non_target_instances": 5,
+      "small_target_instances_le100": 5,
+      "minimum_target_points": 4,
+      "type_counts": {
+        "plane": 9,
+        "closed_spline": 2,
+        "open_spline": 1,
+        "sphere": 3,
+        "cylinder": 1,
+        "cone": 2
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 23011,
+      "instances": 49,
+      "target_instances": 41,
+      "non_target_instances": 8,
+      "small_target_instances_le100": 26,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "cone": 1,
+        "open_spline": 2,
+        "cylinder": 26,
+        "plane": 11,
+        "sphere": 4,
+        "closed_spline": 5
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 19091,
+      "instances": 8,
+      "target_instances": 6,
+      "non_target_instances": 2,
+      "small_target_instances_le100": 4,
+      "minimum_target_points": 46,
+      "type_counts": {
+        "cylinder": 2,
+        "plane": 3,
+        "closed_spline": 1,
+        "sphere": 1,
+        "cone": 1
+      },
+      "complexity": "simple"
+    },
+    {
+      "source_index": 17027,
+      "instances": 18,
+      "target_instances": 7,
+      "non_target_instances": 11,
+      "small_target_instances_le100": 5,
+      "minimum_target_points": 2,
+      "type_counts": {
+        "extrusion": 1,
+        "cone": 4,
+        "open_spline": 5,
+        "plane": 5,
+        "closed_spline": 1,
+        "cylinder": 2
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 745,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 26,
+      "minimum_target_points": 5,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "sphere": 7,
+        "open_spline": 4,
+        "cone": 4,
+        "closed_spline": 2
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 444,
+      "instances": 18,
+      "target_instances": 10,
+      "non_target_instances": 8,
+      "small_target_instances_le100": 4,
+      "minimum_target_points": 2,
+      "type_counts": {
+        "open_spline": 2,
+        "sphere": 2,
+        "cylinder": 4,
+        "plane": 4,
+        "closed_spline": 3,
+        "cone": 3
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 17676,
+      "instances": 49,
+      "target_instances": 35,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 20,
+      "minimum_target_points": 3,
+      "type_counts": {
+        "extrusion": 2,
+        "cylinder": 13,
+        "open_spline": 4,
+        "plane": 22,
+        "cone": 7,
+        "closed_spline": 1
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 12785,
+      "instances": 8,
+      "target_instances": 3,
+      "non_target_instances": 5,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 1090,
+      "type_counts": {
+        "closed_spline": 2,
+        "plane": 2,
+        "extrusion": 1,
+        "cylinder": 1,
+        "cone": 2
+      },
+      "complexity": "simple"
+    },
+    {
+      "source_index": 5020,
+      "instances": 18,
+      "target_instances": 13,
+      "non_target_instances": 5,
+      "small_target_instances_le100": 5,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "plane": 9,
+        "closed_spline": 2,
+        "open_spline": 1,
+        "sphere": 3,
+        "cylinder": 1,
+        "cone": 2
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 887,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 26,
+      "minimum_target_points": 4,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "sphere": 7,
+        "open_spline": 4,
+        "cone": 4,
+        "closed_spline": 2
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 10158,
+      "instances": 17,
+      "target_instances": 14,
+      "non_target_instances": 3,
+      "small_target_instances_le100": 8,
+      "minimum_target_points": 5,
+      "type_counts": {
+        "plane": 8,
+        "cylinder": 5,
+        "sphere": 1,
+        "cone": 1,
+        "closed_spline": 1,
+        "open_spline": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 1146,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 25,
+      "minimum_target_points": 7,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "sphere": 7,
+        "open_spline": 4,
+        "closed_spline": 2,
+        "cone": 4
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 10130,
+      "instances": 8,
+      "target_instances": 5,
+      "non_target_instances": 3,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 24,
+      "type_counts": {
+        "cylinder": 3,
+        "closed_spline": 1,
+        "sphere": 1,
+        "cone": 2,
+        "plane": 1
+      },
+      "complexity": "simple"
+    },
+    {
+      "source_index": 23561,
+      "instances": 17,
+      "target_instances": 10,
+      "non_target_instances": 7,
+      "small_target_instances_le100": 8,
+      "minimum_target_points": 14,
+      "type_counts": {
+        "plane": 4,
+        "open_spline": 4,
+        "sphere": 2,
+        "cylinder": 4,
+        "cone": 2,
+        "closed_spline": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 4300,
+      "instances": 49,
+      "target_instances": 22,
+      "non_target_instances": 27,
+      "small_target_instances_le100": 17,
+      "minimum_target_points": 4,
+      "type_counts": {
+        "plane": 19,
+        "cone": 5,
+        "cylinder": 2,
+        "open_spline": 21,
+        "closed_spline": 1,
+        "sphere": 1
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 7682,
+      "instances": 17,
+      "target_instances": 9,
+      "non_target_instances": 8,
+      "small_target_instances_le100": 5,
+      "minimum_target_points": 4,
+      "type_counts": {
+        "extrusion": 2,
+        "cone": 3,
+        "plane": 6,
+        "cylinder": 3,
+        "closed_spline": 2,
+        "open_spline": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 17499,
+      "instances": 49,
+      "target_instances": 35,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 20,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "extrusion": 2,
+        "cylinder": 13,
+        "open_spline": 4,
+        "plane": 22,
+        "cone": 7,
+        "closed_spline": 1
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 3166,
+      "instances": 8,
+      "target_instances": 5,
+      "non_target_instances": 3,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 24,
+      "type_counts": {
+        "closed_spline": 1,
+        "cone": 1,
+        "cylinder": 2,
+        "plane": 3,
+        "open_spline": 1
+      },
+      "complexity": "simple"
+    },
+    {
+      "source_index": 9863,
+      "instances": 16,
+      "target_instances": 10,
+      "non_target_instances": 6,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 132,
+      "type_counts": {
+        "cylinder": 4,
+        "open_spline": 2,
+        "plane": 4,
+        "closed_spline": 3,
+        "sphere": 2,
+        "cone": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 9908,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 24,
+      "minimum_target_points": 6,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "cone": 4,
+        "closed_spline": 2,
+        "sphere": 7,
+        "open_spline": 4
+      },
+      "complexity": "complex"
+    },
+    {
+      "source_index": 12784,
+      "instances": 16,
+      "target_instances": 10,
+      "non_target_instances": 6,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 183,
+      "type_counts": {
+        "extrusion": 2,
+        "plane": 8,
+        "open_spline": 2,
+        "cylinder": 2,
+        "cone": 1,
+        "closed_spline": 1
+      },
+      "complexity": "medium"
+    },
+    {
+      "source_index": 601,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 24,
+      "minimum_target_points": 6,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "sphere": 7,
+        "open_spline": 4,
+        "closed_spline": 2,
+        "cone": 4
+      },
+      "complexity": "complex"
+    }
+  ],
+  "adapted_samples": [
+    {
+      "name": "mini_000_train_02172",
+      "source_index": 2172,
+      "instances": 8,
+      "target_instances": 5,
+      "non_target_instances": 3,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 78,
+      "type_counts": {
+        "sphere": 3,
+        "closed_spline": 2,
+        "cylinder": 1,
+        "plane": 1,
+        "cone": 1
+      },
+      "complexity": "simple",
+      "sample_sha256": "d6ea6cc30cc6a8ff58776b9e817e9a4bc827fc62e7d8558996046a31f7535472"
+    },
+    {
+      "name": "mini_001_train_23958",
+      "source_index": 23958,
+      "instances": 12,
+      "target_instances": 7,
+      "non_target_instances": 5,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 57,
+      "type_counts": {
+        "extrusion": 1,
+        "revolution": 2,
+        "plane": 3,
+        "sphere": 2,
+        "cone": 1,
+        "cylinder": 2,
+        "closed_spline": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "d0c89adc7735ce1a2f72feedce969d2c135f67649444e7db5c4f0234a4309ff0"
+    },
+    {
+      "name": "mini_002_train_04329",
+      "source_index": 4329,
+      "instances": 50,
+      "target_instances": 22,
+      "non_target_instances": 28,
+      "small_target_instances_le100": 17,
+      "minimum_target_points": 3,
+      "type_counts": {
+        "plane": 19,
+        "cylinder": 2,
+        "sphere": 1,
+        "closed_spline": 1,
+        "open_spline": 21,
+        "cone": 6
+      },
+      "complexity": "complex",
+      "sample_sha256": "c27ac206a5a4e1276e3d56218582206e0697a0fe8c6448cefe2c95865a646f3a"
+    },
+    {
+      "name": "mini_003_train_03307",
+      "source_index": 3307,
+      "instances": 22,
+      "target_instances": 8,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 3,
+      "minimum_target_points": 72,
+      "type_counts": {
+        "plane": 5,
+        "closed_spline": 9,
+        "cylinder": 2,
+        "cone": 4,
+        "sphere": 1,
+        "open_spline": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "737333fa40b039df36eae440cb49c84be4ace61b7e2f5116db6e3a549b9773d6"
+    },
+    {
+      "name": "mini_004_train_15490",
+      "source_index": 15490,
+      "instances": 50,
+      "target_instances": 35,
+      "non_target_instances": 15,
+      "small_target_instances_le100": 24,
+      "minimum_target_points": 3,
+      "type_counts": {
+        "plane": 19,
+        "open_spline": 8,
+        "closed_spline": 5,
+        "cone": 2,
+        "sphere": 8,
+        "cylinder": 8
+      },
+      "complexity": "complex",
+      "sample_sha256": "0ae47632da1f6741e4792ec56021bc43eff3b576994a6bab222f8c99affa95de"
+    },
+    {
+      "name": "mini_005_train_22760",
+      "source_index": 22760,
+      "instances": 8,
+      "target_instances": 6,
+      "non_target_instances": 2,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 5,
+      "type_counts": {
+        "plane": 3,
+        "cylinder": 2,
+        "cone": 1,
+        "sphere": 1,
+        "closed_spline": 1
+      },
+      "complexity": "simple",
+      "sample_sha256": "0f81fb0f6cecbd995f2336f95668383f2edf5af46b1bc0cf3ec6bae02f46ad9d"
+    },
+    {
+      "name": "mini_006_train_02771",
+      "source_index": 2771,
+      "instances": 22,
+      "target_instances": 8,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 3,
+      "minimum_target_points": 70,
+      "type_counts": {
+        "plane": 5,
+        "closed_spline": 9,
+        "cylinder": 2,
+        "cone": 4,
+        "sphere": 1,
+        "open_spline": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "ee3745a90d5e80d779f1d61209ee9dd9db5e84d1b4928fcb785d5a4062c75f73"
+    },
+    {
+      "name": "mini_007_train_18316",
+      "source_index": 18316,
+      "instances": 50,
+      "target_instances": 34,
+      "non_target_instances": 16,
+      "small_target_instances_le100": 18,
+      "minimum_target_points": 6,
+      "type_counts": {
+        "extrusion": 10,
+        "plane": 21,
+        "open_spline": 4,
+        "cylinder": 11,
+        "closed_spline": 2,
+        "sphere": 2
+      },
+      "complexity": "complex",
+      "sample_sha256": "a080e14c482e83c14a05f8b229f53f1ffde4c0e544da6b6213ea4fa31f7ac5fa"
+    },
+    {
+      "name": "mini_008_train_22977",
+      "source_index": 22977,
+      "instances": 22,
+      "target_instances": 8,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 5,
+      "minimum_target_points": 33,
+      "type_counts": {
+        "plane": 5,
+        "closed_spline": 12,
+        "open_spline": 1,
+        "sphere": 1,
+        "cone": 1,
+        "cylinder": 2
+      },
+      "complexity": "medium",
+      "sample_sha256": "80b4b08bae86efff4fb6034d7101d841ae717ab7ec6d87636ec5aa866cb3adea"
+    },
+    {
+      "name": "mini_009_train_03430",
+      "source_index": 3430,
+      "instances": 50,
+      "target_instances": 22,
+      "non_target_instances": 28,
+      "small_target_instances_le100": 17,
+      "minimum_target_points": 2,
+      "type_counts": {
+        "open_spline": 21,
+        "plane": 19,
+        "cylinder": 2,
+        "cone": 6,
+        "closed_spline": 1,
+        "sphere": 1
+      },
+      "complexity": "complex",
+      "sample_sha256": "67d02f2fccd57818ffe12177f98ee1816f3da6f43c236d17238d82478fd1db58"
+    },
+    {
+      "name": "mini_010_train_21329",
+      "source_index": 21329,
+      "instances": 8,
+      "target_instances": 5,
+      "non_target_instances": 3,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 39,
+      "type_counts": {
+        "cone": 1,
+        "plane": 1,
+        "cylinder": 3,
+        "sphere": 1,
+        "closed_spline": 2
+      },
+      "complexity": "simple",
+      "sample_sha256": "8cb698744482f05228a588b25b7271cbdef1cc2a30416e7393256aef43d4778e"
+    },
+    {
+      "name": "mini_011_train_03436",
+      "source_index": 3436,
+      "instances": 22,
+      "target_instances": 8,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 3,
+      "minimum_target_points": 63,
+      "type_counts": {
+        "plane": 5,
+        "closed_spline": 9,
+        "cylinder": 2,
+        "cone": 4,
+        "sphere": 1,
+        "open_spline": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "b1be1f6972cdafdba8df5288b129a64ee3983c49165ed9c3380cefffefc5fe51"
+    },
+    {
+      "name": "mini_012_train_14811",
+      "source_index": 14811,
+      "instances": 50,
+      "target_instances": 24,
+      "non_target_instances": 26,
+      "small_target_instances_le100": 19,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "plane": 20,
+        "cylinder": 3,
+        "sphere": 1,
+        "closed_spline": 1,
+        "open_spline": 19,
+        "cone": 6
+      },
+      "complexity": "complex",
+      "sample_sha256": "454e89748197b5a93ecb8b32b6e8a283344307c4ded172743d21aeb4e05c617e"
+    },
+    {
+      "name": "mini_013_train_08954",
+      "source_index": 8954,
+      "instances": 22,
+      "target_instances": 8,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 3,
+      "minimum_target_points": 74,
+      "type_counts": {
+        "plane": 5,
+        "closed_spline": 9,
+        "cylinder": 2,
+        "cone": 4,
+        "sphere": 1,
+        "open_spline": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "062d607ed3647ebd394177484acbef0f07cfe82e287ddf7cd65933486ddaef3a"
+    },
+    {
+      "name": "mini_014_train_00560",
+      "source_index": 560,
+      "instances": 50,
+      "target_instances": 22,
+      "non_target_instances": 28,
+      "small_target_instances_le100": 17,
+      "minimum_target_points": 4,
+      "type_counts": {
+        "plane": 19,
+        "cylinder": 2,
+        "sphere": 1,
+        "closed_spline": 1,
+        "open_spline": 21,
+        "cone": 6
+      },
+      "complexity": "complex",
+      "sample_sha256": "f54ee71563897967c7d2f801cc7eeb658fc03cc8ef8c1ff5a45ff084171f4b9b"
+    },
+    {
+      "name": "mini_015_train_15079",
+      "source_index": 15079,
+      "instances": 8,
+      "target_instances": 6,
+      "non_target_instances": 2,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "closed_spline": 1,
+        "sphere": 3,
+        "plane": 2,
+        "cylinder": 1,
+        "open_spline": 1
+      },
+      "complexity": "simple",
+      "sample_sha256": "fdd68918131cac307755d7e73d0e262aabd4a900084fa2746a7d9c7c286f3bd8"
+    },
+    {
+      "name": "mini_016_train_03235",
+      "source_index": 3235,
+      "instances": 22,
+      "target_instances": 8,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 3,
+      "minimum_target_points": 72,
+      "type_counts": {
+        "plane": 5,
+        "closed_spline": 9,
+        "cylinder": 2,
+        "cone": 4,
+        "sphere": 1,
+        "open_spline": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "ca8cd99559a3f23c58d72192044cb43fb94d8b8f03137a682791b9a93abe915b"
+    },
+    {
+      "name": "mini_017_train_12950",
+      "source_index": 12950,
+      "instances": 50,
+      "target_instances": 22,
+      "non_target_instances": 28,
+      "small_target_instances_le100": 17,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "open_spline": 21,
+        "cone": 6,
+        "plane": 19,
+        "cylinder": 2,
+        "closed_spline": 1,
+        "sphere": 1
+      },
+      "complexity": "complex",
+      "sample_sha256": "ea1d2848f267df90ddfdee6865121b7fc24fea6099542bfa01572cb17291f3f3"
+    },
+    {
+      "name": "mini_018_train_03315",
+      "source_index": 3315,
+      "instances": 22,
+      "target_instances": 8,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 3,
+      "minimum_target_points": 74,
+      "type_counts": {
+        "plane": 5,
+        "closed_spline": 9,
+        "cylinder": 2,
+        "cone": 4,
+        "sphere": 1,
+        "open_spline": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "bb8fcfcd6d244c36e34f047a4ddfde480f7d9f0ec436145bc8fa5824f9e5198d"
+    },
+    {
+      "name": "mini_019_train_00716",
+      "source_index": 716,
+      "instances": 50,
+      "target_instances": 22,
+      "non_target_instances": 28,
+      "small_target_instances_le100": 17,
+      "minimum_target_points": 3,
+      "type_counts": {
+        "open_spline": 21,
+        "cylinder": 2,
+        "cone": 6,
+        "plane": 19,
+        "closed_spline": 1,
+        "sphere": 1
+      },
+      "complexity": "complex",
+      "sample_sha256": "054b043327550ea664bab314db429439c60835172aeb96136e8a61f7d02b0b93"
+    },
+    {
+      "name": "mini_020_train_13545",
+      "source_index": 13545,
+      "instances": 8,
+      "target_instances": 4,
+      "non_target_instances": 4,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 104,
+      "type_counts": {
+        "revolution": 1,
+        "closed_spline": 2,
+        "cone": 1,
+        "plane": 2,
+        "cylinder": 1,
+        "sphere": 1
+      },
+      "complexity": "simple",
+      "sample_sha256": "3ddf506d8907c43ace1549ede68b6c11481229062d9d8fcbce4a2f1b450f8131"
+    },
+    {
+      "name": "mini_021_train_03972",
+      "source_index": 3972,
+      "instances": 22,
+      "target_instances": 11,
+      "non_target_instances": 11,
+      "small_target_instances_le100": 4,
+      "minimum_target_points": 3,
+      "type_counts": {
+        "plane": 7,
+        "cone": 4,
+        "cylinder": 2,
+        "open_spline": 5,
+        "sphere": 2,
+        "closed_spline": 2
+      },
+      "complexity": "medium",
+      "sample_sha256": "12c4342d29ba5b378e9b40899bd0d869c00a7dd6685744af2aa11cf1e2bb8ea3"
+    },
+    {
+      "name": "mini_022_train_21754",
+      "source_index": 21754,
+      "instances": 50,
+      "target_instances": 36,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 21,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "extrusion": 2,
+        "cylinder": 13,
+        "open_spline": 4,
+        "plane": 23,
+        "cone": 7,
+        "closed_spline": 1
+      },
+      "complexity": "complex",
+      "sample_sha256": "0fdae3da5dd8f903ccf37d50cbaf2d79d3e73cc3e45e4ae9c8ac62297bbf5329"
+    },
+    {
+      "name": "mini_023_train_10257",
+      "source_index": 10257,
+      "instances": 22,
+      "target_instances": 6,
+      "non_target_instances": 16,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 274,
+      "type_counts": {
+        "cylinder": 2,
+        "plane": 3,
+        "cone": 1,
+        "open_spline": 12,
+        "closed_spline": 3,
+        "sphere": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "bfc081030810d758b2a7a00633c3195f77b42a6be832060e5b820ad8f192b690"
+    },
+    {
+      "name": "mini_024_train_08801",
+      "source_index": 8801,
+      "instances": 50,
+      "target_instances": 36,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 21,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "extrusion": 2,
+        "cylinder": 13,
+        "open_spline": 4,
+        "plane": 23,
+        "cone": 7,
+        "closed_spline": 1
+      },
+      "complexity": "complex",
+      "sample_sha256": "6d3978449afe7522db14329debb12fbd35f558ab36cd7dabbc6ff927ad958a6c"
+    },
+    {
+      "name": "mini_025_train_21549",
+      "source_index": 21549,
+      "instances": 8,
+      "target_instances": 4,
+      "non_target_instances": 4,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 156,
+      "type_counts": {
+        "sphere": 1,
+        "closed_spline": 3,
+        "cylinder": 2,
+        "plane": 1,
+        "cone": 1
+      },
+      "complexity": "simple",
+      "sample_sha256": "a1f424ff3cf205df010b7b09fc6e102323e5393cf910b1f25c0c65824c12c7a5"
+    },
+    {
+      "name": "mini_026_train_03400",
+      "source_index": 3400,
+      "instances": 22,
+      "target_instances": 8,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 3,
+      "minimum_target_points": 68,
+      "type_counts": {
+        "plane": 5,
+        "closed_spline": 9,
+        "cylinder": 2,
+        "cone": 4,
+        "sphere": 1,
+        "open_spline": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "398fb62db3e510961aac8531842b6ffa8502b5a5d4e070975507ce4e9e8c1559"
+    },
+    {
+      "name": "mini_027_train_20271",
+      "source_index": 20271,
+      "instances": 50,
+      "target_instances": 36,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 21,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "extrusion": 2,
+        "cylinder": 13,
+        "open_spline": 4,
+        "plane": 23,
+        "cone": 7,
+        "closed_spline": 1
+      },
+      "complexity": "complex",
+      "sample_sha256": "4900f12c5361901c40832829c33f924276289cf23dd3988e68a30ccdb62710ce"
+    },
+    {
+      "name": "mini_028_train_03524",
+      "source_index": 3524,
+      "instances": 22,
+      "target_instances": 8,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 3,
+      "minimum_target_points": 67,
+      "type_counts": {
+        "plane": 5,
+        "closed_spline": 9,
+        "cylinder": 2,
+        "cone": 4,
+        "sphere": 1,
+        "open_spline": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "a35bd93a321bc0d4ccf71ebe5dae5794c8968e2ad26d1672ce3379fd3ac9efc4"
+    },
+    {
+      "name": "mini_029_train_12502",
+      "source_index": 12502,
+      "instances": 50,
+      "target_instances": 36,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 21,
+      "minimum_target_points": 2,
+      "type_counts": {
+        "extrusion": 2,
+        "cylinder": 13,
+        "open_spline": 4,
+        "plane": 23,
+        "cone": 7,
+        "closed_spline": 1
+      },
+      "complexity": "complex",
+      "sample_sha256": "d4fe16e198ea8a4931420a6a5475615b46407b2ad472b4da34e14218ea2ef910"
+    },
+    {
+      "name": "mini_030_train_11894",
+      "source_index": 11894,
+      "instances": 8,
+      "target_instances": 5,
+      "non_target_instances": 3,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 61,
+      "type_counts": {
+        "cylinder": 2,
+        "plane": 2,
+        "sphere": 1,
+        "closed_spline": 2,
+        "cone": 1
+      },
+      "complexity": "simple",
+      "sample_sha256": "6b0fdd31df59061fc7adea74fff942cab6901bb2d2921e0d4ba793e72950e2fa"
+    },
+    {
+      "name": "mini_031_train_09389",
+      "source_index": 9389,
+      "instances": 22,
+      "target_instances": 17,
+      "non_target_instances": 5,
+      "small_target_instances_le100": 10,
+      "minimum_target_points": 23,
+      "type_counts": {
+        "revolution": 1,
+        "cone": 1,
+        "plane": 14,
+        "extrusion": 2,
+        "cylinder": 3,
+        "open_spline": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "f3bfb77522d130715b42573956f1ee7edd5a41ea326dd154f8f6039e74d9264e"
+    },
+    {
+      "name": "mini_032_train_13206",
+      "source_index": 13206,
+      "instances": 50,
+      "target_instances": 36,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 12,
+      "minimum_target_points": 17,
+      "type_counts": {
+        "plane": 17,
+        "cylinder": 19,
+        "extrusion": 1,
+        "open_spline": 8,
+        "closed_spline": 4,
+        "cone": 1
+      },
+      "complexity": "complex",
+      "sample_sha256": "33a0f65f7ad14a0a47a3c92fc56a67586ca0e0d94050791e9f438b427d5185a3"
+    },
+    {
+      "name": "mini_033_train_03650",
+      "source_index": 3650,
+      "instances": 22,
+      "target_instances": 8,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 3,
+      "minimum_target_points": 70,
+      "type_counts": {
+        "plane": 5,
+        "closed_spline": 9,
+        "cylinder": 2,
+        "cone": 4,
+        "sphere": 1,
+        "open_spline": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "801ccca7304f97011ffde925361dcdc99ff80a963af7a3e7f5e1415dd8105d1f"
+    },
+    {
+      "name": "mini_034_train_16155",
+      "source_index": 16155,
+      "instances": 50,
+      "target_instances": 36,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 20,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "extrusion": 2,
+        "cylinder": 13,
+        "open_spline": 4,
+        "plane": 23,
+        "cone": 7,
+        "closed_spline": 1
+      },
+      "complexity": "complex",
+      "sample_sha256": "cf8dab03a22be9e88056efc5a4350d5253efcb1c8d14c0fe7e346c0d310d916a"
+    },
+    {
+      "name": "mini_035_train_20919",
+      "source_index": 20919,
+      "instances": 8,
+      "target_instances": 5,
+      "non_target_instances": 3,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 183,
+      "type_counts": {
+        "cone": 1,
+        "cylinder": 2,
+        "plane": 3,
+        "extrusion": 1,
+        "open_spline": 1
+      },
+      "complexity": "simple",
+      "sample_sha256": "54604287846f765737f1746bc94c765ee03d9539fbdfc0ef14449850635528ce"
+    },
+    {
+      "name": "mini_036_train_23659",
+      "source_index": 23659,
+      "instances": 21,
+      "target_instances": 16,
+      "non_target_instances": 5,
+      "small_target_instances_le100": 6,
+      "minimum_target_points": 2,
+      "type_counts": {
+        "open_spline": 3,
+        "plane": 9,
+        "sphere": 1,
+        "cylinder": 6,
+        "closed_spline": 1,
+        "extrusion": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "81af4e831d4133588027f1d298214837f61e192fb3be26447a42fe8281b52df0"
+    },
+    {
+      "name": "mini_037_train_03550",
+      "source_index": 3550,
+      "instances": 49,
+      "target_instances": 41,
+      "non_target_instances": 8,
+      "small_target_instances_le100": 17,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "cylinder": 19,
+        "plane": 20,
+        "closed_spline": 4,
+        "cone": 2,
+        "sphere": 2,
+        "open_spline": 2
+      },
+      "complexity": "complex",
+      "sample_sha256": "6228b5901d7cd8e20328b451eef039a63c2c3b924d65c756a721b512f512ae29"
+    },
+    {
+      "name": "mini_038_train_09215",
+      "source_index": 9215,
+      "instances": 21,
+      "target_instances": 12,
+      "non_target_instances": 9,
+      "small_target_instances_le100": 8,
+      "minimum_target_points": 6,
+      "type_counts": {
+        "closed_spline": 1,
+        "cone": 1,
+        "open_spline": 2,
+        "cylinder": 5,
+        "extrusion": 5,
+        "plane": 7
+      },
+      "complexity": "medium",
+      "sample_sha256": "073a47e4cf05ee8ee158d337fa16d6586feb781e59f4281aafed7175663aefe2"
+    },
+    {
+      "name": "mini_039_train_07752",
+      "source_index": 7752,
+      "instances": 49,
+      "target_instances": 35,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 24,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "closed_spline": 5,
+        "plane": 12,
+        "sphere": 1,
+        "cone": 1,
+        "cylinder": 22,
+        "open_spline": 8
+      },
+      "complexity": "complex",
+      "sample_sha256": "e6889bc6192142aebdbddfb5b8038ad38f016ba3b1781ec999e21ffe97c1e5c8"
+    },
+    {
+      "name": "mini_040_train_23085",
+      "source_index": 23085,
+      "instances": 8,
+      "target_instances": 6,
+      "non_target_instances": 2,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 4,
+      "type_counts": {
+        "plane": 3,
+        "cylinder": 2,
+        "cone": 1,
+        "sphere": 1,
+        "closed_spline": 1
+      },
+      "complexity": "simple",
+      "sample_sha256": "2b683b32f9e653f97882acc0e716e83d8438e8184a155d3d1d3b9c0772f2f333"
+    },
+    {
+      "name": "mini_041_train_05134",
+      "source_index": 5134,
+      "instances": 21,
+      "target_instances": 11,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 4,
+      "minimum_target_points": 4,
+      "type_counts": {
+        "plane": 7,
+        "cone": 4,
+        "cylinder": 2,
+        "open_spline": 4,
+        "sphere": 2,
+        "closed_spline": 2
+      },
+      "complexity": "medium",
+      "sample_sha256": "dce633b3beeb339c901c42aebd579ea0632b2753a82af783dbdc80892b65ebc6"
+    },
+    {
+      "name": "mini_042_train_10053",
+      "source_index": 10053,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 26,
+      "minimum_target_points": 6,
+      "type_counts": {
+        "plane": 22,
+        "closed_spline": 2,
+        "cylinder": 10,
+        "sphere": 7,
+        "cone": 4,
+        "open_spline": 4
+      },
+      "complexity": "complex",
+      "sample_sha256": "09886a9b8b5219769065f48b478ded18bacd6ae29735ce480d7db4e5ef57a1ed"
+    },
+    {
+      "name": "mini_043_train_00411",
+      "source_index": 411,
+      "instances": 21,
+      "target_instances": 6,
+      "non_target_instances": 15,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 94,
+      "type_counts": {
+        "open_spline": 7,
+        "cone": 7,
+        "plane": 3,
+        "cylinder": 2,
+        "closed_spline": 1,
+        "sphere": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "1ac41358e60599f9f4edb172beb88d81e42e00f97b0d85b5d123435154c15cf9"
+    },
+    {
+      "name": "mini_044_train_19306",
+      "source_index": 19306,
+      "instances": 49,
+      "target_instances": 36,
+      "non_target_instances": 13,
+      "small_target_instances_le100": 20,
+      "minimum_target_points": 4,
+      "type_counts": {
+        "cone": 6,
+        "plane": 10,
+        "cylinder": 18,
+        "open_spline": 4,
+        "closed_spline": 3,
+        "sphere": 8
+      },
+      "complexity": "complex",
+      "sample_sha256": "a2739348ce540498647be6828ff5bd6a3bf34f1a720f10f2deee9f5001f763e2"
+    },
+    {
+      "name": "mini_045_train_09759",
+      "source_index": 9759,
+      "instances": 8,
+      "target_instances": 6,
+      "non_target_instances": 2,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 69,
+      "type_counts": {
+        "closed_spline": 1,
+        "cone": 1,
+        "sphere": 1,
+        "cylinder": 4,
+        "plane": 1
+      },
+      "complexity": "simple",
+      "sample_sha256": "d0d4e2df343306f730676cd0afa258cfced7d90da276b5064f2fab8b27aa7432"
+    },
+    {
+      "name": "mini_046_train_03126",
+      "source_index": 3126,
+      "instances": 21,
+      "target_instances": 16,
+      "non_target_instances": 5,
+      "small_target_instances_le100": 2,
+      "minimum_target_points": 33,
+      "type_counts": {
+        "extrusion": 1,
+        "plane": 13,
+        "cone": 1,
+        "open_spline": 2,
+        "cylinder": 3,
+        "closed_spline": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "f83fe8ae0c2cfba154f7cf2f143ff086d37700f748af297a61ae6637da0086cf"
+    },
+    {
+      "name": "mini_047_train_01316",
+      "source_index": 1316,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 26,
+      "minimum_target_points": 7,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "sphere": 7,
+        "open_spline": 4,
+        "cone": 4,
+        "closed_spline": 2
+      },
+      "complexity": "complex",
+      "sample_sha256": "173688c1817add766d4b83e9787ab56cbd134474d5fbd40f09a13395d95b7d2f"
+    },
+    {
+      "name": "mini_048_train_00390",
+      "source_index": 390,
+      "instances": 21,
+      "target_instances": 17,
+      "non_target_instances": 4,
+      "small_target_instances_le100": 9,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "plane": 11,
+        "closed_spline": 2,
+        "open_spline": 1,
+        "sphere": 2,
+        "cylinder": 4,
+        "cone": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "2a7c7d5785fe9a58e7f5a222e12b2a9a6da3a73c7e47e3573f52e1082b2a06c4"
+    },
+    {
+      "name": "mini_049_train_23302",
+      "source_index": 23302,
+      "instances": 49,
+      "target_instances": 35,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 19,
+      "minimum_target_points": 2,
+      "type_counts": {
+        "extrusion": 2,
+        "cylinder": 13,
+        "open_spline": 4,
+        "plane": 22,
+        "cone": 7,
+        "closed_spline": 1
+      },
+      "complexity": "complex",
+      "sample_sha256": "887f69711c32d674d14dbf5916b45a3b4ae19fd58b04cadcc21b22c3fb2a998f"
+    },
+    {
+      "name": "mini_050_train_04364",
+      "source_index": 4364,
+      "instances": 8,
+      "target_instances": 4,
+      "non_target_instances": 4,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 56,
+      "type_counts": {
+        "revolution": 2,
+        "plane": 2,
+        "cone": 1,
+        "closed_spline": 1,
+        "cylinder": 2
+      },
+      "complexity": "simple",
+      "sample_sha256": "469d6c1672b0de65fc4fad6c526b863e52b11c8d7e4fb4cb0b7e0bed3f2a41d9"
+    },
+    {
+      "name": "mini_051_train_20668",
+      "source_index": 20668,
+      "instances": 20,
+      "target_instances": 10,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 8,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "extrusion": 1,
+        "cone": 2,
+        "open_spline": 4,
+        "plane": 6,
+        "closed_spline": 3,
+        "cylinder": 4
+      },
+      "complexity": "medium",
+      "sample_sha256": "4ce1fff6f9e6bdcb885df50af7e50cc8e279abadd5fd24bfa7725d8d4b5f09a5"
+    },
+    {
+      "name": "mini_052_train_17783",
+      "source_index": 17783,
+      "instances": 49,
+      "target_instances": 42,
+      "non_target_instances": 7,
+      "small_target_instances_le100": 15,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "extrusion": 1,
+        "open_spline": 1,
+        "cylinder": 16,
+        "plane": 26,
+        "closed_spline": 3,
+        "cone": 2
+      },
+      "complexity": "complex",
+      "sample_sha256": "89a90957b9c7e944c5c407bffa61c7ee17a23215d80e874f74a50585c986d477"
+    },
+    {
+      "name": "mini_053_train_17784",
+      "source_index": 17784,
+      "instances": 20,
+      "target_instances": 9,
+      "non_target_instances": 11,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 204,
+      "type_counts": {
+        "cylinder": 6,
+        "closed_spline": 1,
+        "open_spline": 5,
+        "cone": 5,
+        "sphere": 1,
+        "plane": 2
+      },
+      "complexity": "medium",
+      "sample_sha256": "07cbb222c57cc956a95c17a0ed15e4a37b028a1e7a1b6e10aad880b4423921f7"
+    },
+    {
+      "name": "mini_054_train_01310",
+      "source_index": 1310,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 26,
+      "minimum_target_points": 5,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "sphere": 7,
+        "open_spline": 4,
+        "cone": 4,
+        "closed_spline": 2
+      },
+      "complexity": "complex",
+      "sample_sha256": "adf5b9228ec00777eb82b66cee7065bfd4aab8f86c434a9c113826b51c88b096"
+    },
+    {
+      "name": "mini_055_train_20918",
+      "source_index": 20918,
+      "instances": 8,
+      "target_instances": 5,
+      "non_target_instances": 3,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 175,
+      "type_counts": {
+        "cone": 1,
+        "cylinder": 2,
+        "plane": 3,
+        "extrusion": 1,
+        "open_spline": 1
+      },
+      "complexity": "simple",
+      "sample_sha256": "b5e1db20d88d4092bdae3a69cad880299a3c6117125cb5908f1fa9f433967c2e"
+    },
+    {
+      "name": "mini_056_train_22160",
+      "source_index": 22160,
+      "instances": 20,
+      "target_instances": 14,
+      "non_target_instances": 6,
+      "small_target_instances_le100": 10,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "revolution": 1,
+        "sphere": 1,
+        "cylinder": 7,
+        "open_spline": 3,
+        "plane": 6,
+        "closed_spline": 2
+      },
+      "complexity": "medium",
+      "sample_sha256": "c61ef03ebe3f2a0fb215f60957d25b545c8e29b405488f78a10a893ba34b9884"
+    },
+    {
+      "name": "mini_057_train_00388",
+      "source_index": 388,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 28,
+      "minimum_target_points": 5,
+      "type_counts": {
+        "sphere": 7,
+        "cylinder": 10,
+        "plane": 22,
+        "open_spline": 4,
+        "cone": 4,
+        "closed_spline": 2
+      },
+      "complexity": "complex",
+      "sample_sha256": "d4153a1a0c59dda1f017bfa432fe5563e1e239d613f098c3d61608fc924f385f"
+    },
+    {
+      "name": "mini_058_train_11182",
+      "source_index": 11182,
+      "instances": 20,
+      "target_instances": 15,
+      "non_target_instances": 5,
+      "small_target_instances_le100": 10,
+      "minimum_target_points": 4,
+      "type_counts": {
+        "cylinder": 7,
+        "open_spline": 2,
+        "closed_spline": 2,
+        "plane": 6,
+        "sphere": 2,
+        "cone": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "86f3f576d35ed111f4cede20155517303cc971286eba0d332bf5ed560a052760"
+    },
+    {
+      "name": "mini_059_train_01168",
+      "source_index": 1168,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 24,
+      "minimum_target_points": 6,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "sphere": 7,
+        "open_spline": 4,
+        "closed_spline": 2,
+        "cone": 4
+      },
+      "complexity": "complex",
+      "sample_sha256": "d5d0553b97fa2c2bece511b1926ae20164dd89ad7950a0bce4ceaef82e24f4ed"
+    },
+    {
+      "name": "mini_060_train_05440",
+      "source_index": 5440,
+      "instances": 8,
+      "target_instances": 2,
+      "non_target_instances": 6,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 1391,
+      "type_counts": {
+        "closed_spline": 3,
+        "cone": 2,
+        "revolution": 1,
+        "plane": 1,
+        "cylinder": 1
+      },
+      "complexity": "simple",
+      "sample_sha256": "683874045ddce823a74d9ae503c1f7a5d9a8eec496cdb1e576978b8b75af54c2"
+    },
+    {
+      "name": "mini_061_train_01848",
+      "source_index": 1848,
+      "instances": 20,
+      "target_instances": 15,
+      "non_target_instances": 5,
+      "small_target_instances_le100": 4,
+      "minimum_target_points": 34,
+      "type_counts": {
+        "cylinder": 6,
+        "plane": 6,
+        "closed_spline": 2,
+        "open_spline": 2,
+        "sphere": 3,
+        "cone": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "31963201debbd9e9fbe5222ab4c9fbc50d81b35fa95d57f2165baf9229a6dfc5"
+    },
+    {
+      "name": "mini_062_train_13121",
+      "source_index": 13121,
+      "instances": 49,
+      "target_instances": 36,
+      "non_target_instances": 13,
+      "small_target_instances_le100": 23,
+      "minimum_target_points": 3,
+      "type_counts": {
+        "plane": 21,
+        "cylinder": 14,
+        "open_spline": 3,
+        "cone": 1,
+        "closed_spline": 9,
+        "sphere": 1
+      },
+      "complexity": "complex",
+      "sample_sha256": "a494471ba5d18ca7f710c4d1a2703d4b6f641cc12cb0cd7e348e78f93bfc6447"
+    },
+    {
+      "name": "mini_063_train_13424",
+      "source_index": 13424,
+      "instances": 19,
+      "target_instances": 6,
+      "non_target_instances": 13,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 11,
+      "type_counts": {
+        "cone": 3,
+        "cylinder": 4,
+        "sphere": 1,
+        "closed_spline": 8,
+        "revolution": 2,
+        "plane": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "2e1df9771e0faf5522f0b9c7aca41fa58a8a2e386d314304500d1a3b346eb48f"
+    },
+    {
+      "name": "mini_064_train_01339",
+      "source_index": 1339,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 26,
+      "minimum_target_points": 6,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "sphere": 7,
+        "open_spline": 4,
+        "cone": 4,
+        "closed_spline": 2
+      },
+      "complexity": "complex",
+      "sample_sha256": "6b780b21d2fdc097de38e3a37e234be59643efd174ed370036cddd5b1917abf9"
+    },
+    {
+      "name": "mini_065_train_17749",
+      "source_index": 17749,
+      "instances": 8,
+      "target_instances": 5,
+      "non_target_instances": 3,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 38,
+      "type_counts": {
+        "cone": 1,
+        "plane": 1,
+        "cylinder": 3,
+        "sphere": 1,
+        "closed_spline": 2
+      },
+      "complexity": "simple",
+      "sample_sha256": "f4e3130c5a3f19b1b1cf9559bf38840f18eb245fb72e422c69a5c6d35706a0e1"
+    },
+    {
+      "name": "mini_066_train_18867",
+      "source_index": 18867,
+      "instances": 19,
+      "target_instances": 10,
+      "non_target_instances": 9,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 180,
+      "type_counts": {
+        "plane": 5,
+        "open_spline": 2,
+        "cone": 5,
+        "cylinder": 2,
+        "sphere": 3,
+        "closed_spline": 2
+      },
+      "complexity": "medium",
+      "sample_sha256": "e0e94bd3b364478700638a3394d17af76c5214bd3ec8c55c33ecec138f79c004"
+    },
+    {
+      "name": "mini_067_train_11433",
+      "source_index": 11433,
+      "instances": 49,
+      "target_instances": 36,
+      "non_target_instances": 13,
+      "small_target_instances_le100": 24,
+      "minimum_target_points": 3,
+      "type_counts": {
+        "plane": 21,
+        "cylinder": 14,
+        "open_spline": 3,
+        "cone": 1,
+        "closed_spline": 9,
+        "sphere": 1
+      },
+      "complexity": "complex",
+      "sample_sha256": "fc31f066011046d8130eeed70073c1c40176da40c30771d64f7b52d5c08b16cb"
+    },
+    {
+      "name": "mini_068_train_19032",
+      "source_index": 19032,
+      "instances": 19,
+      "target_instances": 10,
+      "non_target_instances": 9,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 137,
+      "type_counts": {
+        "plane": 5,
+        "open_spline": 2,
+        "sphere": 3,
+        "cylinder": 2,
+        "cone": 5,
+        "closed_spline": 2
+      },
+      "complexity": "medium",
+      "sample_sha256": "ba9b117a65ca9daba0b7fbf43d6903b80f59c9d7e69f80efb7299fe13556a205"
+    },
+    {
+      "name": "mini_069_train_01099",
+      "source_index": 1099,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 26,
+      "minimum_target_points": 4,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "sphere": 7,
+        "open_spline": 4,
+        "cone": 4,
+        "closed_spline": 2
+      },
+      "complexity": "complex",
+      "sample_sha256": "fbe508bac2e239ff69a1a37e15d6b0155ce8a40e9f78f3cbdd44b59df34a42ba"
+    },
+    {
+      "name": "mini_070_train_14209",
+      "source_index": 14209,
+      "instances": 8,
+      "target_instances": 4,
+      "non_target_instances": 4,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 460,
+      "type_counts": {
+        "cylinder": 1,
+        "plane": 1,
+        "closed_spline": 3,
+        "cone": 1,
+        "sphere": 2
+      },
+      "complexity": "simple",
+      "sample_sha256": "cfe2d596631d33d1f9977fd92f732198789f9932db05bec198e6b008b2471686"
+    },
+    {
+      "name": "mini_071_train_16170",
+      "source_index": 16170,
+      "instances": 19,
+      "target_instances": 8,
+      "non_target_instances": 11,
+      "small_target_instances_le100": 2,
+      "minimum_target_points": 40,
+      "type_counts": {
+        "cone": 3,
+        "closed_spline": 6,
+        "cylinder": 4,
+        "open_spline": 2,
+        "sphere": 2,
+        "plane": 2
+      },
+      "complexity": "medium",
+      "sample_sha256": "1cba5fa084330992deb351fadb7e908c6a122cd81ecb02e4c5beceabc3377e6c"
+    },
+    {
+      "name": "mini_072_train_01098",
+      "source_index": 1098,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 26,
+      "minimum_target_points": 5,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "sphere": 7,
+        "open_spline": 4,
+        "cone": 4,
+        "closed_spline": 2
+      },
+      "complexity": "complex",
+      "sample_sha256": "96ce6701c21939fc3934df71f0da3ce55c97084171893e8450c57b53b7823594"
+    },
+    {
+      "name": "mini_073_train_02624",
+      "source_index": 2624,
+      "instances": 19,
+      "target_instances": 8,
+      "non_target_instances": 11,
+      "small_target_instances_le100": 2,
+      "minimum_target_points": 38,
+      "type_counts": {
+        "cone": 3,
+        "closed_spline": 6,
+        "cylinder": 4,
+        "open_spline": 2,
+        "sphere": 2,
+        "plane": 2
+      },
+      "complexity": "medium",
+      "sample_sha256": "25be67c6d8f684854b469c6804492ac733808f5b32f878d4a6312fa7d6a4272c"
+    },
+    {
+      "name": "mini_074_train_09907",
+      "source_index": 9907,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 26,
+      "minimum_target_points": 5,
+      "type_counts": {
+        "plane": 22,
+        "closed_spline": 2,
+        "cylinder": 10,
+        "sphere": 7,
+        "cone": 4,
+        "open_spline": 4
+      },
+      "complexity": "complex",
+      "sample_sha256": "bb072c812634611c901d6e53e429640e76f1578b313e68d57e191d9ff37dbbaa"
+    },
+    {
+      "name": "mini_075_train_01606",
+      "source_index": 1606,
+      "instances": 8,
+      "target_instances": 2,
+      "non_target_instances": 6,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 527,
+      "type_counts": {
+        "closed_spline": 4,
+        "cone": 1,
+        "plane": 1,
+        "revolution": 1,
+        "cylinder": 1
+      },
+      "complexity": "simple",
+      "sample_sha256": "df37eea0f75502031176f94327fcbb9000aa426f889b4ec0bc7fad03cd8a5502"
+    },
+    {
+      "name": "mini_076_train_12295",
+      "source_index": 12295,
+      "instances": 19,
+      "target_instances": 15,
+      "non_target_instances": 4,
+      "small_target_instances_le100": 2,
+      "minimum_target_points": 53,
+      "type_counts": {
+        "plane": 5,
+        "open_spline": 2,
+        "cylinder": 8,
+        "closed_spline": 1,
+        "sphere": 2,
+        "cone": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "a7bddd5298d9c3a026408ff40ee5074796e5df78562b04c1abd3b97687226402"
+    },
+    {
+      "name": "mini_077_train_18355",
+      "source_index": 18355,
+      "instances": 49,
+      "target_instances": 35,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 20,
+      "minimum_target_points": 2,
+      "type_counts": {
+        "extrusion": 2,
+        "cylinder": 13,
+        "open_spline": 4,
+        "plane": 22,
+        "cone": 7,
+        "closed_spline": 1
+      },
+      "complexity": "complex",
+      "sample_sha256": "4ee5767faf68fe43b9aa596846f9513826591ed8254184a9d0dee9fd44e2be8c"
+    },
+    {
+      "name": "mini_078_train_05014",
+      "source_index": 5014,
+      "instances": 18,
+      "target_instances": 13,
+      "non_target_instances": 5,
+      "small_target_instances_le100": 5,
+      "minimum_target_points": 4,
+      "type_counts": {
+        "plane": 9,
+        "closed_spline": 2,
+        "open_spline": 1,
+        "sphere": 3,
+        "cylinder": 1,
+        "cone": 2
+      },
+      "complexity": "medium",
+      "sample_sha256": "fa8f257c9999350ffe2d437aacc726144ee6b43ea12f2a4e00d147c96148bd21"
+    },
+    {
+      "name": "mini_079_train_23011",
+      "source_index": 23011,
+      "instances": 49,
+      "target_instances": 41,
+      "non_target_instances": 8,
+      "small_target_instances_le100": 26,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "cone": 1,
+        "open_spline": 2,
+        "cylinder": 26,
+        "plane": 11,
+        "sphere": 4,
+        "closed_spline": 5
+      },
+      "complexity": "complex",
+      "sample_sha256": "e70734e8d98583b8a02e283cfb77a012fab9f0ab1eebe0d317435ad7acf86d25"
+    },
+    {
+      "name": "mini_080_train_19091",
+      "source_index": 19091,
+      "instances": 8,
+      "target_instances": 6,
+      "non_target_instances": 2,
+      "small_target_instances_le100": 4,
+      "minimum_target_points": 46,
+      "type_counts": {
+        "cylinder": 2,
+        "plane": 3,
+        "closed_spline": 1,
+        "sphere": 1,
+        "cone": 1
+      },
+      "complexity": "simple",
+      "sample_sha256": "df0e5c2d26f4046556feb8db4e74b9a9f798739a44d15c6116f1214df9dd2308"
+    },
+    {
+      "name": "mini_081_train_17027",
+      "source_index": 17027,
+      "instances": 18,
+      "target_instances": 7,
+      "non_target_instances": 11,
+      "small_target_instances_le100": 5,
+      "minimum_target_points": 2,
+      "type_counts": {
+        "extrusion": 1,
+        "cone": 4,
+        "open_spline": 5,
+        "plane": 5,
+        "closed_spline": 1,
+        "cylinder": 2
+      },
+      "complexity": "medium",
+      "sample_sha256": "40bc0d44086860c0e8fb22acd0739420a97a5c8a97656257185f2e6e929acd22"
+    },
+    {
+      "name": "mini_082_train_00745",
+      "source_index": 745,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 26,
+      "minimum_target_points": 5,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "sphere": 7,
+        "open_spline": 4,
+        "cone": 4,
+        "closed_spline": 2
+      },
+      "complexity": "complex",
+      "sample_sha256": "2fa42947588f878cb10756d6418415d6bf4d102c5012bcf26b1042a821d8c437"
+    },
+    {
+      "name": "mini_083_train_00444",
+      "source_index": 444,
+      "instances": 18,
+      "target_instances": 10,
+      "non_target_instances": 8,
+      "small_target_instances_le100": 4,
+      "minimum_target_points": 2,
+      "type_counts": {
+        "open_spline": 2,
+        "sphere": 2,
+        "cylinder": 4,
+        "plane": 4,
+        "closed_spline": 3,
+        "cone": 3
+      },
+      "complexity": "medium",
+      "sample_sha256": "469a9d9c70d50b91180f1e06e5659f4f5d5213acde4bbe1cbb729f3a7b066e2a"
+    },
+    {
+      "name": "mini_084_train_17676",
+      "source_index": 17676,
+      "instances": 49,
+      "target_instances": 35,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 20,
+      "minimum_target_points": 3,
+      "type_counts": {
+        "extrusion": 2,
+        "cylinder": 13,
+        "open_spline": 4,
+        "plane": 22,
+        "cone": 7,
+        "closed_spline": 1
+      },
+      "complexity": "complex",
+      "sample_sha256": "91ea8a287a67853fc565d9863ceb43966fa9846137da272438c5d01cf6647434"
+    },
+    {
+      "name": "mini_085_train_12785",
+      "source_index": 12785,
+      "instances": 8,
+      "target_instances": 3,
+      "non_target_instances": 5,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 1090,
+      "type_counts": {
+        "closed_spline": 2,
+        "plane": 2,
+        "extrusion": 1,
+        "cylinder": 1,
+        "cone": 2
+      },
+      "complexity": "simple",
+      "sample_sha256": "45221aa434fc58ef7484152748530c6f52fd9705c23b555a6057a66c9da0aa0e"
+    },
+    {
+      "name": "mini_086_train_05020",
+      "source_index": 5020,
+      "instances": 18,
+      "target_instances": 13,
+      "non_target_instances": 5,
+      "small_target_instances_le100": 5,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "plane": 9,
+        "closed_spline": 2,
+        "open_spline": 1,
+        "sphere": 3,
+        "cylinder": 1,
+        "cone": 2
+      },
+      "complexity": "medium",
+      "sample_sha256": "990007825cf4488af252c96dfbce1d77591224a476af94258be84acaf7e428d8"
+    },
+    {
+      "name": "mini_087_train_00887",
+      "source_index": 887,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 26,
+      "minimum_target_points": 4,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "sphere": 7,
+        "open_spline": 4,
+        "cone": 4,
+        "closed_spline": 2
+      },
+      "complexity": "complex",
+      "sample_sha256": "9b4dd8e6e250d47a2f10eb75d620988a04827fa75b2af7ca617f10c73e41897a"
+    },
+    {
+      "name": "mini_088_train_10158",
+      "source_index": 10158,
+      "instances": 17,
+      "target_instances": 14,
+      "non_target_instances": 3,
+      "small_target_instances_le100": 8,
+      "minimum_target_points": 5,
+      "type_counts": {
+        "plane": 8,
+        "cylinder": 5,
+        "sphere": 1,
+        "cone": 1,
+        "closed_spline": 1,
+        "open_spline": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "df96b6c2e81b1902a88a4d4c7b33cb98f714f9e8e4fd64f9ebd4fb1fac2c8cd4"
+    },
+    {
+      "name": "mini_089_train_01146",
+      "source_index": 1146,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 25,
+      "minimum_target_points": 7,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "sphere": 7,
+        "open_spline": 4,
+        "closed_spline": 2,
+        "cone": 4
+      },
+      "complexity": "complex",
+      "sample_sha256": "d7a5c9b44a0183a30379e81a47d61d5a8854d11c6fa8d7117a9c6b622da339ae"
+    },
+    {
+      "name": "mini_090_train_10130",
+      "source_index": 10130,
+      "instances": 8,
+      "target_instances": 5,
+      "non_target_instances": 3,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 24,
+      "type_counts": {
+        "cylinder": 3,
+        "closed_spline": 1,
+        "sphere": 1,
+        "cone": 2,
+        "plane": 1
+      },
+      "complexity": "simple",
+      "sample_sha256": "885aefa643ee08d4e37801c913e913f5dddd981d1fd4d58179f1c9f0ecf2ab56"
+    },
+    {
+      "name": "mini_091_train_23561",
+      "source_index": 23561,
+      "instances": 17,
+      "target_instances": 10,
+      "non_target_instances": 7,
+      "small_target_instances_le100": 8,
+      "minimum_target_points": 14,
+      "type_counts": {
+        "plane": 4,
+        "open_spline": 4,
+        "sphere": 2,
+        "cylinder": 4,
+        "cone": 2,
+        "closed_spline": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "d051722a8cb9cf77b83b132a38a2d715398059a7b3550bec60cb3005a9854872"
+    },
+    {
+      "name": "mini_092_train_04300",
+      "source_index": 4300,
+      "instances": 49,
+      "target_instances": 22,
+      "non_target_instances": 27,
+      "small_target_instances_le100": 17,
+      "minimum_target_points": 4,
+      "type_counts": {
+        "plane": 19,
+        "cone": 5,
+        "cylinder": 2,
+        "open_spline": 21,
+        "closed_spline": 1,
+        "sphere": 1
+      },
+      "complexity": "complex",
+      "sample_sha256": "8ad30116508c4e0a31de0730db69db04b1e692bf8cc277df18f207c6b4b1d1fd"
+    },
+    {
+      "name": "mini_093_train_07682",
+      "source_index": 7682,
+      "instances": 17,
+      "target_instances": 9,
+      "non_target_instances": 8,
+      "small_target_instances_le100": 5,
+      "minimum_target_points": 4,
+      "type_counts": {
+        "extrusion": 2,
+        "cone": 3,
+        "plane": 6,
+        "cylinder": 3,
+        "closed_spline": 2,
+        "open_spline": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "ab35c4d2c7637cf6c84323b8cba50ad5fa096855a0cb7a9ab0b470595de18a4e"
+    },
+    {
+      "name": "mini_094_train_17499",
+      "source_index": 17499,
+      "instances": 49,
+      "target_instances": 35,
+      "non_target_instances": 14,
+      "small_target_instances_le100": 20,
+      "minimum_target_points": 1,
+      "type_counts": {
+        "extrusion": 2,
+        "cylinder": 13,
+        "open_spline": 4,
+        "plane": 22,
+        "cone": 7,
+        "closed_spline": 1
+      },
+      "complexity": "complex",
+      "sample_sha256": "683def153a79dbbaaa087c0e3cd8e09d6b5f812f7bced62a581334dc549b6575"
+    },
+    {
+      "name": "mini_095_train_03166",
+      "source_index": 3166,
+      "instances": 8,
+      "target_instances": 5,
+      "non_target_instances": 3,
+      "small_target_instances_le100": 1,
+      "minimum_target_points": 24,
+      "type_counts": {
+        "closed_spline": 1,
+        "cone": 1,
+        "cylinder": 2,
+        "plane": 3,
+        "open_spline": 1
+      },
+      "complexity": "simple",
+      "sample_sha256": "2c69eb93d344734b46f43e7fb4d9d224db703fe358c550d8327986e59b5e3748"
+    },
+    {
+      "name": "mini_096_train_09863",
+      "source_index": 9863,
+      "instances": 16,
+      "target_instances": 10,
+      "non_target_instances": 6,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 132,
+      "type_counts": {
+        "cylinder": 4,
+        "open_spline": 2,
+        "plane": 4,
+        "closed_spline": 3,
+        "sphere": 2,
+        "cone": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "9428f71fbb79445375ee94b58e191517606abeef2ed925316fcca64bff3352a7"
+    },
+    {
+      "name": "mini_097_train_09908",
+      "source_index": 9908,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 24,
+      "minimum_target_points": 6,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "cone": 4,
+        "closed_spline": 2,
+        "sphere": 7,
+        "open_spline": 4
+      },
+      "complexity": "complex",
+      "sample_sha256": "5afa4272e19815bf3df8469c92bc2bffb29dc7bcb1b8f3a15b28d4709023f51d"
+    },
+    {
+      "name": "mini_098_train_12784",
+      "source_index": 12784,
+      "instances": 16,
+      "target_instances": 10,
+      "non_target_instances": 6,
+      "small_target_instances_le100": 0,
+      "minimum_target_points": 183,
+      "type_counts": {
+        "extrusion": 2,
+        "plane": 8,
+        "open_spline": 2,
+        "cylinder": 2,
+        "cone": 1,
+        "closed_spline": 1
+      },
+      "complexity": "medium",
+      "sample_sha256": "31053c4fc813b33f56ef70265a73b12ea8b9cb9c905a7881cd2c2f1c4519c671"
+    },
+    {
+      "name": "mini_099_train_00601",
+      "source_index": 601,
+      "instances": 49,
+      "target_instances": 39,
+      "non_target_instances": 10,
+      "small_target_instances_le100": 24,
+      "minimum_target_points": 6,
+      "type_counts": {
+        "cylinder": 10,
+        "plane": 22,
+        "sphere": 7,
+        "open_spline": 4,
+        "closed_spline": 2,
+        "cone": 4
+      },
+      "complexity": "complex",
+      "sample_sha256": "891fb3c1818dba116d87eac14eb5895f0123c620be5ea77460212fdd146fea8e"
+    }
+  ],
+  "smoke_sample_names": [
+    "mini_000_train_02172",
+    "mini_001_train_23958",
+    "mini_002_train_04329",
+    "mini_003_train_03307",
+    "mini_004_train_15490",
+    "mini_005_train_22760",
+    "mini_006_train_02771",
+    "mini_007_train_18316",
+    "mini_008_train_22977",
+    "mini_009_train_03430",
+    "mini_010_train_21329",
+    "mini_011_train_03436",
+    "mini_012_train_14811",
+    "mini_013_train_08954",
+    "mini_014_train_00560",
+    "mini_015_train_15079",
+    "mini_016_train_03235",
+    "mini_017_train_12950",
+    "mini_018_train_03315",
+    "mini_019_train_00716"
+  ]
+}
